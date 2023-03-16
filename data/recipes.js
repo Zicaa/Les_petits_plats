@@ -333,7 +333,7 @@ const recipes = [
         "description":"Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olives à votre gout.",
         "appliance":"Saladier",
         "ustensils":["cuillère en bois", "couteau"],
-        "image" : "Salade_méditerrannéene_fraîche_au_chèvre.jpg"
+        "image" : "Salade_mediterranneene_fraiche_au_chevre.jpg"
     },
     {
         "id": 10,
@@ -1220,7 +1220,7 @@ const recipes = [
         "description":"Éplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une casserole d'eau bouillante. Passer au mixer en ajoutant la crème et l'huile d'olive à son gout. Salez, poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.",
         "appliance": "Mixer",
         "ustensils":["couteau", "économe", "cuillère en bois"],
-        "image" : "Purée_de_patate_douce.jpg"
+        "image" : "Puree_de_patate_douce.jpg"
     },
     {
         "id": 35,
@@ -1592,7 +1592,7 @@ const recipes = [
         "description":"Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. Battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.",
         "appliance": "Casserole",
         "ustensils":["fouet","saladier"],
-        "image" : "Crème_pâtissière.jpg"
+        "image" : "Creme_patissiere.jpg"
     },
     {
         "id": 46,
