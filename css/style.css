@@ -1,0 +1,111 @@
+body {
+  font-family: "Lato","Trebuchet MS",Arial,Helvetica,sans-serif;
+  max-width: 1440px;
+  margin: auto;
+  padding: 2.5rem 7vw 2.5rem;
+}
+
+.recipes-header-form-input {
+  width: 100%;
+  background-color: #e7e7e7;
+  border: none;
+  padding: 1.4rem 4.5rem 1.5rem 1.3rem;
+  border-radius: .3rem;
+  font-size: 1.12rem;
+  font-family: "Lato","Trebuchet MS",Arial,Helvetica,sans-serif;
+  margin-bottom: 1.2rem;
+  appearance: none;
+}
+
+.header-title {
+  font-family: "DM Sans","Trebuchet MS",Arial,Helvetica,sans-serif;
+  text-align: center;
+}
+
+.header-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #d04f4f;
+  font-weight: 700;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.search-icon {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 2rem;
+}
+
+.recipes-header-filters {
+  display: flex;
+  align-items: flex-start;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-right: 1.25rem;
+  border-radius: .5rem;
+  margin-bottom: 1.2rem;
+  z-index: 3;
+}
+
+.dropdown-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-radius: .5rem;
+  padding: 1.5rem;
+  color: white;
+  font-family: "Lato","Trebuchet MS",Arial,Helvetica,sans-serif;
+  font-size: 1.15rem;
+  min-width: 11.5rem;
+}
+
+.dropdown-form {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.dropdown-button-ingredients {
+  background-color: #3282f7;
+}
+
+.dropdown-button-appareil {
+  background-color: #68d9a4;
+}
+
+.dropdown-button-ustensiles {
+  background-color: #ed6454;
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
