@@ -27,6 +27,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width:51;
+  height:47;
 }
 
 .recipes-card-bg {
@@ -60,7 +62,7 @@ a {
 .recipes-section{
   display: grid;
   justify-content: space-between;
-  top: 16.5rem;
+  top: 16rem;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 4%;
   row-gap: 3rem;
@@ -71,6 +73,16 @@ a {
 .recipes-header-filters {
   display: flex;
   align-items: flex-start;
+}
+
+.recipes-card-description {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background-color: #e7e7e7;
+  height: 195px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .dropdown {
@@ -138,21 +150,14 @@ article {
   max-width: 24rem;
 }
 
-.description__title {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.recipes-card-title-h3 {
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   font-size: 1.15rem;
   padding-bottom: 1.25rem;
-  padding-top: .2rem;
+  padding-top: 2rem;
   line-height: 1.5rem;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   white-space: nowrap;
 }
@@ -178,6 +183,7 @@ article {
     width: 100%;
     margin-right: 0rem;
     align-items: flex-start;
+    margin: 0;
   }
   .dropdown-button {
     width: 100%;
@@ -187,5 +193,9 @@ article {
     grid-template-columns: 1fr;
     position: relative;
     top: 0.3rem;
+ }
+
+ .recipes-header-form-input{
+  margin-bottom: 2rem;
  }
 }
