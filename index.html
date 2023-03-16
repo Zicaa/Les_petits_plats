@@ -15,7 +15,7 @@
     <!-- header -->
     <header class="header">
       <a href="index.html" class="header-link" aria-label="Page d'accueil du site Les Petits Plats">
-        <img src="./assets/logo.svg" class="header-link-img" alt="logo Les Petits Plats" width="51" height="47">
+        <img src="./assets/logo.svg" class="header-link-img" alt="logo Les Petits Plats">
         <h1 class="header-title">Les Petits Plats</h1>
       </a>
     </header>
@@ -26,9 +26,9 @@
         <p class="recipes-header-p"><span class="recipes-header-p-bold"></span></p>
         <!-- recherche principale -->
         <form method="GET" action="URL" id="recherche" class="recipes-header-form">
-          <label for="search" class="recipes-header-form-label hidden">Rechercher un ingrédient, appareil, ustensile ou une recette</label>
+          <label for="search" class="recipes-header-form-label hidden">Rechercher une recette</label>
           <input type="search" name="recherche" id="search" class="recipes-header-form-input" minlength="3" maxlength="70"
-            placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"/>
+            placeholder="Rechercher une recette"/>
           <span class="search-icon"><i class="fas fa-search"></i></span>
         </form>
         <!-- filtres -->
@@ -43,7 +43,7 @@
               <input type="search" name="ingredients" id="ingredients" class="dropdown-form-input dropdown-form-input-ingredients" placeholder="Rechercher un ingrédient" />
               <button class="dropdown-form-icon dropdown-form-icon-ingredients iconUp" id="iconUp-ingredients" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
-            <ul class="dropdown-menu" id="menu-ingredients"></ul>
+            <ul class="dropdown-menu" id="menuIngredients"></ul>
           </div>
           <!-- recherche par appareils -->
           <div class="dropdown dropdown--appareil">
@@ -55,7 +55,7 @@
               <input type="search" name="appareil" id="appareil" class="dropdown-form-input dropdown-form-input-appareil" placeholder="Rechercher un appareil" />
               <button class="dropdown-form-icon dropdown-form-icon-appareil iconUp" id="iconUp-appareil" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
-            <ul class="dropdown-menu" id="menu-appareil"></ul>
+            <ul class="dropdown-menu" id="menuAppareil"></ul>
           </div>
           <!-- recherche par ustensiles -->
           <div class="dropdown dropdown-ustensiles">
@@ -67,11 +67,11 @@
               <input type="search" name="ustensiles" id="ustensiles" class="dropdown-form-input dropdown-form-input-ustensiles" placeholder="Rechercher un ustensile" />
               <button class="dropdown-form-icon dropdown-form-icon-ustensiles iconUp" id="iconUp-ustensiles" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
-            <ul class="dropdown-menu" id="menu-ustensiles"></ul>
+            <ul class="dropdown-menu" id="menuUstensiles"></ul>
           </div>
         </div>      
       </section>
-      <!-- Cards recettes de cuisine-->
+      <!-- cards recettes de cuisine-->
       <section class="recipes-section">
         <h2 class="hidden">Recettes</h2>
       </section>
