@@ -5,6 +5,14 @@ body {
   padding: 2.5rem 7vw 2.5rem;
 }
 
+.recipes-header-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
 .recipes-header-form-input {
   width: 100%;
   background-color: #e7e7e7;
@@ -42,6 +50,42 @@ body {
   height: 178px;
 }
 
+.recipes-card-description-content{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 1rem;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.recipes-card-ingredient-name {
+  font-weight: 700;
+  margin: 0;
+}
+
+.recipes-card-ingredient-quantity {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.recipes-card-description-txt {
+  font-family: "Roboto","Trebuchet MS",Arial,Helvetica,sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  height: 110px;
+  box-sizing: border-box;
+  padding-right: 0.7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  hyphens: auto;
+  display: block;
+  max-height: 48.3rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
 h1 {
   font-size: 2.5rem;
   color: #d04f4f;
@@ -59,6 +103,7 @@ a {
   right: 1rem;
   top: 1rem;
   font-size: 2rem;
+  margin: 0;
 }
 
 .recipes-section{
