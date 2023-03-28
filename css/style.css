@@ -177,6 +177,12 @@ a {
   background-color: #ed6454;
 }
 
+.dropdown-menu{
+    grid-template-columns: 1fr;
+    column-gap: 1.5rem;
+    display: grid;
+}
+
 .hidden {
   position: absolute;
   width: 1px;
