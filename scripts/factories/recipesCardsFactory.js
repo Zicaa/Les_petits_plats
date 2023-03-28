@@ -17,21 +17,26 @@ class Element {
 
 // Je crée la fonction qui génère les cards de recettes
 function recipesCardFactory(param) {
+
     const section = document.querySelector('.recipes-section')
   
     for (let i = 0; i < param.length; i++) {
+
       const article = new Element('recipesCard', 'article', 'recipes-card').elmt
       section.appendChild(article)
       article.id = `${param[i].id}`
+
       const link = new Element('recipesCardLink', 'a', 'recipes-card-link').elmt
       article.appendChild(link)
       link.href = '#'
+
       const divImage = new Element('recipesCardBg', 'div', 'recipes-card-bg').elmt
       link.appendChild(divImage)
       const image = new Element('recipesCardImg', 'img', 'recipes-card-img').elmt
       divImage.appendChild(image)
       image.src = `./assets/images/${param[i].image}`
       image.alt = `${param[i].name}`
+
       const divDescription = new Element('recipesCardDescription', 'div', 'recipes-card-description').elmt
       link.appendChild(divDescription)
       const divTitle = new Element('recipesCardTitle', 'div', 'recipes-card-title').elmt
@@ -47,10 +52,13 @@ function recipesCardFactory(param) {
       const time = new Element('recipesCardTitleTimeTxt', 'p', 'recipes-card-title-time-txt').elmt
       divTime.appendChild(time)
       time.textContent = `${param[i].time} min`
+
       const divdescriptionContent = new Element('recipesCardDescriptionContent', 'div', 'recipes-card-description-content').elmt
       divDescription.appendChild(divdescriptionContent)
+
       const ulIngredients = new Element('ulIngredients', 'ul', 'recipes-card-ingredient-list').elmt
       divdescriptionContent.appendChild(ulIngredients)
+      
       displayIngredients(param[i].ingredients, ulIngredients)
       const description = new Element('description', 'p', 'recipes-card-description-txt').elmt
       divdescriptionContent.appendChild(description)

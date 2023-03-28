@@ -5,17 +5,17 @@ let allUstensils
 //fonction de non duplication des éléments dans chaque dropdown
 function noDuplicateDropdownsElements(param) {
   allIngredients = noDuplicateIngredients(param)
-  const ulMenuIngredients = document.getElementById('menuIngredients')
+  const ulMenuIngredients = document.getElementById('menu-ingredients')
   ulMenuIngredients.innerHTML = ''
   sortAndDisplayItems(allIngredients, ulMenuIngredients)
 
   allAppliance = noDuplicateAppliances(param) 
-  const ulMenuAppliances = document.getElementById('menuAppareil')
+  const ulMenuAppliances = document.getElementById('menu-appareil')
   ulMenuAppliances.innerHTML = ''
   sortAndDisplayItems(allAppliance, ulMenuAppliances)
 
   allUstensils = noDuplicateUstensils(param) 
-  const ulMenuUstensils = document.getElementById('menuUstensiles')
+  const ulMenuUstensils = document.getElementById('menu-ustensiles')
   ulMenuUstensils.innerHTML = ''
   sortAndDisplayItems(allUstensils, ulMenuUstensils)
 }

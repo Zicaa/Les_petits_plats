@@ -16,7 +16,7 @@ function editDropdown(event) {
     form = dropdownChildren[1]
     let id = searchNodeId(buttonOpen)
     const ul = document.getElementById(id)
-    console.log(ul);
+    console.log(id);
     buttonOpen.style.display = 'none'
     form.style.display = 'flex'
     ul.style.display = 'grid'
