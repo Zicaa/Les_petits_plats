@@ -3,16 +3,20 @@ function editDropdown(event) {
     event.preventDefault
     const target = window.event.target
     let form, buttonOpen
+
+    // Je pause une condition : si la cible est une icône
     if (target.tagName == 'I') {
       buttonOpen = target.parentNode
     } else {
       buttonOpen = target
     }
+    
     let dropdown = buttonOpen.parentNode
     let dropdownChildren = dropdown.children
     form = dropdownChildren[1]
     let id = searchNodeId(buttonOpen)
     const ul = document.getElementById(id)
+    console.log(ul);
     buttonOpen.style.display = 'none'
     form.style.display = 'flex'
     ul.style.display = 'grid'
@@ -32,7 +36,7 @@ function editDropdown(event) {
     })
   }
   
-  // Fonction permettant de n'avoir qu'un seul menu ouvert
+// Fonction permettant de n'avoir qu'un seul menu ouvert
   function onlyOneDropdownOpen(elem) {
     const buttonOpen = elem
     const dropdownTarget = buttonOpen.parentNode
@@ -96,3 +100,25 @@ function editDropdown(event) {
     } 
   }
   
+
+// Ouverture et fermeture des dropdowns 
+const buttonDropdown = document.querySelectorAll('.dropdown-button')
+buttonDropdown.forEach(button => {
+  button.addEventListener('click', (event) => {
+    editDropdown(event)
+  })
+})
+
+const iconUp = document.querySelectorAll('.iconUp')
+iconUp.forEach(icon => {
+  icon.addEventListener('click', () => {
+    closeDropdown()
+  })
+})
+
+const allButtonClose = document.querySelectorAll('.dropdown-form-icon')
+allButtonClose.forEach(button => {
+  button.addEventListener('click', () => {
+    closeDropdown()
+  })
+})
