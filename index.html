@@ -9,37 +9,38 @@
     <script src="https://kit.fontawesome.com/f418c9c44b.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">      
-    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
+
   <body>
     <!-- header -->
     <header class="header">
-      <a href="index.html" class="header-link" aria-label="Page d'accueil du site Les Petits Plats">
-        <img src="./assets/logo.svg" class="header-link-img" alt="logo Les Petits Plats">
+      <a href="index.html" class="header-link" aria-label="Page d'accueil Les Petits Plats">
+        <img src="./assets/logo.svg" class="header-link-img" alt="logo Les Petits Plats" width="51" height="47">
         <h1 class="header-title">Les Petits Plats</h1>
       </a>
     </header>
     <!-- main -->
     <main class="main">
-      <!-- header de la page de recettes -->
-      <section class="recipes-header">
-        <p class="recipes-header-p"><span class="recipes-header-p-bold"></span></p>
-        <!-- recherche principale -->
-        <form method="GET" action="URL" id="recherche" class="recipes-header-form">
-          <label for="search" class="recipes-header-form-label hidden">Rechercher une recette</label>
+      <!-- header du main -->
+      <header class="header2">
+        <p class="header2__result"><span class="header2__result__bold"></span></p>
+        <!-- form : recherche principale -->
+        <form method="GET" action="URL" id="recherche" class="recipes-header-form" onsubmit="return false">
+          <label for="search" class="recipes-header-form-label hidden">Rechercher un ingrédient, appareil, ustensile ou une recette</label>
           <input type="search" name="recherche" id="search" class="recipes-header-form-input" minlength="3" maxlength="70"
-            placeholder="Rechercher une recette"/>
+            placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette" />
           <span class="search-icon"><i class="fas fa-search"></i></span>
         </form>
-         <!-- tags selectionnés -->
-         <div class="header2__selected">
+        <!-- tags selectionnés -->
+        <div class="header2__selected">
           <ul class="elements elements-ingredients"></ul>
           <ul class="elements elements-appareil" ></ul>
           <ul class="elements elements-ustensiles" ></ul>
         </div>
-        <!-- filtres -->
+        <!-- filtres : recherche avancée -->
         <div class="recipes-header-filters">
-          <!-- recherche par ingrédients -->
+          <!-- filtre : recherche par ingrédients -->
           <div class="dropdown dropdown-ingredients">
             <button type="button" class="dropdown-button dropdown-button-ingredients" id="iconDown-ingredients" tabindex="0">Ingrédients
               <i class="dropdown-button-icon fas fa-chevron-down"></i>
@@ -51,24 +52,24 @@
             </form> 
             <ul class="dropdown-menu" id="menu-ingredients"></ul>
           </div>
-          <!-- recherche par appareils -->
-          <div class="dropdown dropdown--appareil">
+          <!-- filtre : recherche par appareils -->
+          <div class="dropdown dropdown-appareil">
             <button type="button" class="dropdown-button dropdown-button-appareil" id="iconDown-appareil" tabindex="0">Appareils
               <i class="dropdown-button-icon fas fa-chevron-down"></i>
             </button>
-            <form method="GET" id="searchAppareil" class="dropdown-form">
+            <form method="GET" id="searchAppareil" class="dropdown-form" onsubmit="return false">
               <label for="appareil" class="dropdown-form-label hidden">Appareils</label>
               <input type="search" name="appareil" id="appareil" class="dropdown-form-input dropdown-form-input-appareil" placeholder="Rechercher un appareil" />
               <button class="dropdown-form-icon dropdown-form-icon-appareil iconUp" id="iconUp-appareil" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
             <ul class="dropdown-menu" id="menu-appareil"></ul>
           </div>
-          <!-- recherche par ustensiles -->
+          <!-- filtre : recherche par ustensiles -->
           <div class="dropdown dropdown-ustensiles">
             <button type="button" class="dropdown-button dropdown-button-ustensiles" id="iconDown-ustensiles" tabindex="0">Ustensiles
               <i class="dropdown-button-icon fas fa-chevron-down"></i>
             </button>
-            <form method="GET" id="searchUstensiles" class="dropdown-form">
+            <form method="GET" id="searchUstensiles" class="dropdown-form" onsubmit="return false">
               <label for="ustensiles" class="dropdown-form-label hidden">Ustensiles</label>
               <input type="search" name="ustensiles" id="ustensiles" class="dropdown-form-input dropdown-form-input-ustensiles" placeholder="Rechercher un ustensile" />
               <button class="dropdown-form-icon dropdown-form-icon-ustensiles iconUp" id="iconUp-ustensiles" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
@@ -76,16 +77,18 @@
             <ul class="dropdown-menu" id="menu-ustensiles"></ul>
           </div>
         </div>      
-      </section>
-      <!-- cards recettes de cuisine-->
+      </header>
+      <!-- section : affichage dynamique des recettes -->
       <section class="recipes-section">
         <h2 class="hidden">Recettes</h2>
       </section>
     </main>
-    <script src="data/recipes.js"></script>
-    <script src="scripts/factories/recipesCardsFactory.js"></script>
-    <script src="scripts/utils/dropDownMenu.js"></script>
-    <script src="scripts/utils/dropDown.js"></script>
-    <script src="scripts/index.js"></script>
+    <script src="./data/recipes.js"></script>
+    <script src="./script/factory/recipesCardFactory.js"></script>
+    <script src="./script/utils/dropDownsElements.js"></script>
+    <script src="./script/utils/dropDownsOpenClose.js"></script>
+    <script src="./script/utils/element.js"></script>
+    <script src="./script/index.js"></script>
   </body>
 </html>
+  
