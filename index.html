@@ -31,6 +31,12 @@
             placeholder="Rechercher une recette"/>
           <span class="search-icon"><i class="fas fa-search"></i></span>
         </form>
+         <!-- tags selectionnés -->
+         <div class="header2__selected">
+          <ul class="elements elements-ingredients"></ul>
+          <ul class="elements elements-appareil" ></ul>
+          <ul class="elements elements-ustensiles" ></ul>
+        </div>
         <!-- filtres -->
         <div class="recipes-header-filters">
           <!-- recherche par ingrédients -->
@@ -38,12 +44,12 @@
             <button type="button" class="dropdown-button dropdown-button-ingredients" id="iconDown-ingredients" tabindex="0">Ingrédients
               <i class="dropdown-button-icon fas fa-chevron-down"></i>
             </button>
-            <form method="GET" id="searchIngredients" class="dropdown-form">
+            <form method="GET" id="searchIngredients" class="dropdown-form" onsubmit="return false">
               <label for="ingredients" class="dropdown-form-label hidden">Ingredients</label>
               <input type="search" name="ingredients" id="ingredients" class="dropdown-form-input dropdown-form-input-ingredients" placeholder="Rechercher un ingrédient" />
               <button class="dropdown-form-icon dropdown-form-icon-ingredients iconUp" id="iconUp-ingredients" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
-            <ul class="dropdown-menu" id="menuIngredients"></ul>
+            <ul class="dropdown-menu" id="menu-ingredients"></ul>
           </div>
           <!-- recherche par appareils -->
           <div class="dropdown dropdown--appareil">
@@ -55,7 +61,7 @@
               <input type="search" name="appareil" id="appareil" class="dropdown-form-input dropdown-form-input-appareil" placeholder="Rechercher un appareil" />
               <button class="dropdown-form-icon dropdown-form-icon-appareil iconUp" id="iconUp-appareil" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
-            <ul class="dropdown-menu" id="menuAppareil"></ul>
+            <ul class="dropdown-menu" id="menu-appareil"></ul>
           </div>
           <!-- recherche par ustensiles -->
           <div class="dropdown dropdown-ustensiles">
@@ -67,7 +73,7 @@
               <input type="search" name="ustensiles" id="ustensiles" class="dropdown-form-input dropdown-form-input-ustensiles" placeholder="Rechercher un ustensile" />
               <button class="dropdown-form-icon dropdown-form-icon-ustensiles iconUp" id="iconUp-ustensiles" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
-            <ul class="dropdown-menu" id="menuUstensiles"></ul>
+            <ul class="dropdown-menu" id="menu-ustensiles"></ul>
           </div>
         </div>      
       </section>
