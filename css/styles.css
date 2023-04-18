@@ -359,6 +359,9 @@ body {
     .recipes-card {
       max-width: 100%;
     }
+    .dropdown-menu{
+      grid-template-columns: 1fr 1fr;
+    }
   }
   
   @media only screen and (max-width: 800px){
@@ -371,6 +374,9 @@ body {
       align-items: flex-start;
       margin: 0;
     }
+    .dropdown-menu{
+      grid-template-columns: 1fr;
+    }
     .dropdown-button {
       width: 100%;
       margin-right: 0px;
@@ -381,7 +387,6 @@ body {
       top: 5px;
       width: 100%;
    }
-  
    .recipes-header-form-input{
     margin-bottom: 32px;
    }
