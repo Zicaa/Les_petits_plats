@@ -95,7 +95,7 @@ function columnSize(elements, ul) {
 // Fonction qui créé chaque li pour chaque element
 function createItem(elements, ul) {
   for (let t = 0; t < elements.length; t++) {
-    const li = new Element('li', 'li', 'dropdown__menu__item').elem
+    const li = new Element('li', 'li', 'dropdown-menu-item').elem
     ul.appendChild(li)
     li.textContent = `${elements[t]}`
     li.tabIndex = '0'

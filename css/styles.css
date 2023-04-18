@@ -2,7 +2,7 @@ body {
     font-family: "Lato","Trebuchet MS",Arial,Helvetica,sans-serif;
     max-width: 1440px;
     margin: auto;
-    padding: 2.5rem 7vw 2.5rem;
+    padding: 40px 7vw 40px;
   }
   
   .recipes-header-form {
@@ -17,11 +17,11 @@ body {
     width: 100%;
     background-color: #e7e7e7;
     border: none;
-    padding: 1.4rem 4.5rem 1.5rem 1.3rem;
-    border-radius: .3rem;
-    font-size: 1.12rem;
+    padding: 22px 72px 24px 21px;
+    border-radius: 10px;
+    font-size: 18px;
     font-family: "Lato","Trebuchet MS",Arial,Helvetica,sans-serif;
-    margin-bottom: 1.2rem;
+    margin-bottom: 18px;
     appearance: none;
   }
   
@@ -53,7 +53,7 @@ body {
   .recipes-card-description-content{
     display: grid;
     grid-template-columns: 50% 50%;
-    column-gap: 1rem;
+    column-gap: 16px;
     justify-content: space-between;
     box-sizing: border-box;
   }
@@ -71,23 +71,23 @@ body {
   
   .recipes-card-description-txt {
     font-family: "Roboto","Trebuchet MS",Arial,Helvetica,sans-serif;
-    font-size: 0.75rem;
-    line-height: 1rem;
+    font-size: 12px;
+    line-height: 16px;
     height: 110px;
     box-sizing: border-box;
-    padding-right: 0.7rem;
+    padding-right: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     hyphens: auto;
     display: block;
-    max-height: 48.3rem;
+    max-height: 773px;
     text-overflow: ellipsis;
     overflow: hidden;
   }
   
   
   h1 {
-    font-size: 2.5rem;
+    font-size: 40px;
     color: #d04f4f;
     font-weight: 700;
     margin: 0;
@@ -100,21 +100,22 @@ body {
   
   .search-icon {
     position: absolute;
-    right: 1rem;
-    top: 1rem;
-    font-size: 2rem;
+    right: 16px;
+    top: 16px;
+    font-size: 32px;
     margin: 0;
   }
   
   .recipes-section{
     display: grid;
     justify-content: space-between;
-    top: 16rem;
+    top: 400px;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 4%;
-    row-gap: 3rem;
-    width: 100%;
-    padding-bottom: 3rem;
+    row-gap: 48px;
+    width: 86%;
+    padding-bottom: 48px;
+    position: absolute;
   }
   
   .recipes-header-filters {
@@ -125,7 +126,7 @@ body {
   .recipes-card-description {
     display: flex;
     flex-direction: column;
-    padding: 1.25rem;
+    padding: 18px;
     background-color: #e7e7e7;
     height: 195px;
     box-sizing: border-box;
@@ -137,10 +138,24 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    margin-right: 1.25rem;
-    border-radius: .5rem;
-    margin-bottom: 1.2rem;
+    margin-right: 18px;
+    border-radius: 10px;
+    margin-bottom: 19px;
     z-index: 3;
+  }
+
+  .dropdown-menu{
+    grid-template-columns: 1fr;
+    column-gap: 24px;
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 56px;
+    color: white;
+    font-size: 18px;
+    line-height: 36px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 24px 24px;
   }
   
   .dropdown-button {
@@ -148,23 +163,14 @@ body {
     justify-content: space-between;
     align-items: center;
     border: none;
-    border-radius: .5rem;
-    padding: 1.5rem;
+    border-radius: 10px;
+    padding: 24px;
     color: white;
     font-family: "Lato","Trebuchet MS",Arial,Helvetica,sans-serif;
-    font-size: 1.2rem;
-    min-width: 11.5rem;
+    font-size: 18px;
+    min-width: 184px;
   }
-  
-  .dropdown-form {
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-  }
-  
+
   .dropdown-button-ingredients {
     background-color: #3282f7;
   }
@@ -177,10 +183,93 @@ body {
     background-color: #ed6454;
   }
   
-  .dropdown-menu{
-      grid-template-columns: 1fr;
-      column-gap: 1.5rem;
-      display: none;
+  .dropdown-form {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dropdown-form-label {
+    color: white;
+    font-size: 18px;
+    cursor: text;
+    padding: 16px 16px 16px 0;
+  }
+
+  .dropdown-form-input-ustensiles {
+    background-color: #ed6454;
+    color: #fff;
+  }
+
+  .dropdown-ingredients {
+    background-color: #3282f7;
+  }
+  
+  .dropdown-appareil {
+    background-color: #68d9a4;
+  }
+  
+  .dropdown-ustensiles {
+    background-color: #ed6454;
+  }
+  
+  .dropdown-form-input {
+    font-family: "Lato", "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 0 0 0 24px;
+  }
+  .dropdown-form-input-ingredients {
+    background-color: #3282f7;
+  }
+  .dropdown-form-input-appareil {
+    background-color: #68d9a4;
+  }
+  .dropdown-form-input-ustensiles {
+    background-color: #ed6454;
+  }
+  .dropdown-form-input::placeholder {
+    font-family: "Lato", "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 18px;
+    opacity: 0.5;
+  }
+
+  .dropdown-form-icon {
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    padding: 24px;
+    border-radius: 8px;
+  }
+  .dropdown-form-icon-ingredients {
+    background-color: #3282f7;
+  }
+  
+  .dropdown-form-icon-appareil {
+    background-color: #68d9a4;
+  }
+  
+  .dropdown-form-icon-ustensiles {
+    background-color: #ed6454;
+  }
+
+  .dropdown-menu-item {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .dropdown-menu-item:hover {
+    outline: none;
+    color: #000;
+    font-weight: 500;
   }
   
   .hidden {
@@ -198,17 +287,17 @@ body {
   article {
     display: flex;
     flex-direction: column;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     overflow: hidden;
-    max-width: 24rem;
+    max-width: 484px;
   }
   
   .recipes-card-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.15rem;
-    line-height: 1.5rem;
+    font-size: 18px;
+    line-height: 18px;
     box-sizing: border-box;
     white-space: nowrap;
   }
@@ -216,8 +305,8 @@ body {
   .recipes-card-title-h3 {
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.3rem;
-    font-size: 1.3rem;
+    line-height: 21px;
+    font-size: 21px;
     margin: 0;
   }
   
@@ -227,19 +316,19 @@ body {
     align-items: center;
     font-weight: 700;
     align-self: center;
-    padding-left: 1rem;
+    padding-left: 16px;
     margin: 0;
   }
   
   .recipes-card-title-time-txt {
     margin: 0;
-    padding-left: 0.5rem;
-    font-size: 1.3rem;
+    padding-left: 8px;
+    font-size: 21px;
   }
   
   .recipes-card-description-content {
     display: grid;
-    column-gap: 1rem;
+    column-gap: 16px;
     justify-content: space-between;
     box-sizing: border-box;
   }
@@ -251,10 +340,10 @@ body {
   
   .recipes-card-ingredient {
     display: flex;
-    line-height: 1rem;
+    line-height: 16px;
     overflow: hidden;
     white-space: nowrap;
-    font-size: 0.75rem;
+    font-size: 12px;
     padding: 0;
     margin: 0;
   }
@@ -265,7 +354,7 @@ body {
     .recipes-section {
      grid-template-columns: 1fr 1fr;
      justify-content: space-between;
-     row-gap: 2rem;
+     row-gap: 32px;
     }
     .recipes-card {
       max-width: 100%;
@@ -278,21 +367,24 @@ body {
     }
     .dropdown {
       width: 100%;
-      margin-right: 0rem;
+      margin-right: 0px;
       align-items: flex-start;
       margin: 0;
     }
     .dropdown-button {
       width: 100%;
-      margin-right: 0rem;
+      margin-right: 0px;
     }
     .recipes-section {
       grid-template-columns: 1fr;
       position: relative;
-      top: 0.3rem;
+      top: 5px;
+      width: 100%;
    }
   
    .recipes-header-form-input{
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
    }
   }
+  
+  
