@@ -372,6 +372,7 @@ body {
       width: 100%;
       margin-right: 0px;
       align-items: flex-start;
+      margin: 0;
     }
     .dropdown-menu{
       grid-template-columns: 1fr;
