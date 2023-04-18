@@ -221,6 +221,7 @@ body {
     font-size: 18px;
     color: white;
     border: none;
+    outline: none;
     width: 100%;
     padding: 0 0 0 24px;
   }
@@ -376,6 +377,15 @@ body {
     }
     .dropdown-menu{
       grid-template-columns: 1fr;
+    }
+    .dropdown-ingredients {
+      margin-bottom: 20px;
+    }
+    .dropdown-appareil {
+      margin-bottom: 20px;
+    }
+    .dropdown-ustensiles {
+      margin-bottom: 20px;
     }
     .dropdown-button {
       width: 100%;
