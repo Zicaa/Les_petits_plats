@@ -21,7 +21,7 @@ function noDuplicateDropdownsElements(param) {
   sortAndDisplayItems(allUstensils, ulMenuUstensils)
 }
 
-// Fonction qui liste les ingrédients sans doublons
+// Fonction qui liste les ingrédients
 function noDuplicateIngredients(param) {
   let ALLelements = []
   for (let i = 0; i < param.length; i++) {
@@ -37,7 +37,7 @@ function noDuplicateIngredients(param) {
   return allElementsUnique
 }
 
-// Fonction qui liste les appareils sans doublons
+// Fonction qui liste les appareils
 function noDuplicateAppliances(param) {
   let ALLelements = []
   for (let i = 0; i < param.length; i++) {
@@ -48,7 +48,7 @@ function noDuplicateAppliances(param) {
   return allElementsUnique
 }
 
-// Fonction qui liste les ustensiles sans doublons
+// Fonction qui liste les ustensiles
 function noDuplicateUstensils(param) {
   let ALLelements = []
   for (let i = 0; i < param.length; i++) {
