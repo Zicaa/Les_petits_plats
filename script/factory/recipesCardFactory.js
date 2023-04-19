@@ -43,12 +43,7 @@ function recipesCardFactory(param) {
   }
 }
 
-//_________________________________________________________________
-/**
- * @function displayIngredients
- * affichage des ingrédients, quantités et unités dans les cartes recettes
- */
-
+// Affichage des ingrédients, quantités et unités dans les cartes recettes
 function displayIngredients(ingredients, ulIngredients) {
   for (let ingredient of ingredients) {
     const liIngredient = new Element('liIngredient', 'li', 'recipes-card-ingredient').elem
