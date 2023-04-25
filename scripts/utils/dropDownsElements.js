@@ -1,9 +1,8 @@
-// Je crée les éléments dont j'ai besoin
 let allIngredients
 let allAppliance
 let allUstensils
 
-// Fonction qui empêche la duplication des éléments dans chaque dropdown
+// fonction de non duplication des éléments dans chaque dropdown
 function noDuplicateDropdownsElements(param) {
   allIngredients = noDuplicateIngredients(param)
   const ulMenuIngredients = document.getElementById('menu-ingredients')
@@ -21,7 +20,7 @@ function noDuplicateDropdownsElements(param) {
   sortAndDisplayItems(allUstensils, ulMenuUstensils)
 }
 
-// Fonction qui liste les ingrédients
+// fonction liste des ingrédients sans doublons
 function noDuplicateIngredients(param) {
   let ALLelements = []
   for (let i = 0; i < param.length; i++) {
@@ -37,7 +36,7 @@ function noDuplicateIngredients(param) {
   return allElementsUnique
 }
 
-// Fonction qui liste les appareils
+// fonction liste des appareils sans doublons
 function noDuplicateAppliances(param) {
   let ALLelements = []
   for (let i = 0; i < param.length; i++) {
@@ -48,7 +47,7 @@ function noDuplicateAppliances(param) {
   return allElementsUnique
 }
 
-// Fonction qui liste les ustensiles
+// fonction liste des ustensiles sans doublons
 function noDuplicateUstensils(param) {
   let ALLelements = []
   for (let i = 0; i < param.length; i++) {
@@ -64,14 +63,14 @@ function noDuplicateUstensils(param) {
   return allElementsUnique
 }
 
-// Fonction qui tri par ordre alphabétique + affichage les éléments en colonne
+// fonction tri par ordre alphabétique et affichage en colonnes des éléments
 function sortAndDisplayItems(elements, ul) {
   titleSort(elements)
   columnSize(elements, ul)
   createItem(elements, ul)
 }
 
-//Fonction de tri par ordre alphabétique 
+// fonction de tri par ordre alphabétique 
 function titleSort(elements) {
   function tri(a,b) {
     const titleA = a.split(' ').join('')
@@ -85,14 +84,14 @@ function titleSort(elements) {
   elements.sort(tri)
 }
 
-// Fonction qui détermine le nombre de lignes à afficher sur 3 colonne
+// fonction pour déterminer le nombre de lignes à afficher sur 3 colonne
 function columnSize(elements, ul) {
   const lenghtList = elements.length
   const columnSize = Math.ceil(lenghtList / 3)
   ul.style.gridTemplateRows = `repeat(${columnSize}, 1fr)`
 }
 
-// Fonction qui créé chaque li pour chaque element
+// fonction création de chaque li pour chaque element
 function createItem(elements, ul) {
   for (let t = 0; t < elements.length; t++) {
     const li = new Element('li', 'li', 'dropdown-menu-item').elem

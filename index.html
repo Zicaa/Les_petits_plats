@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">      
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-
   <body>
     <!-- header -->
     <header class="header">
@@ -23,23 +22,23 @@
     <!-- main -->
     <main class="main">
       <!-- header du main -->
-      <header class="header2">
-        <p class="header2__result"><span class="header2__result__bold"></span></p>
+      <header class="tags">
+        <p class="tags-result"><span class="tags-result-bold"></span></p>
         <!-- form : recherche principale -->
-        <form method="GET" action="URL" id="recherche" class="recipes-header-form" onsubmit="return false">
-          <label for="search" class="recipes-header-form-label hidden">Rechercher un ingrédient, appareil, ustensile ou une recette</label>
-          <input type="search" name="recherche" id="search" class="recipes-header-form-input" minlength="3" maxlength="70"
+        <form method="GET" action="URL" id="recherche" class="tags-form" onsubmit="return false">
+          <label for="search" class="tags-form-label hidden">Rechercher un ingrédient, appareil, ustensile ou une recette</label>
+          <input type="search" name="recherche" id="search" class="tags-form-input" minlength="3" maxlength="70"
             placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette" />
-          <span class="search-icon"><i class="fas fa-search"></i></span>
+          <span class="iconrechercher"><i class="fas fa-search"></i></span>
         </form>
         <!-- tags selectionnés -->
-        <div class="header2__selected">
+        <div class="tags-selected">
           <ul class="elements elements-ingredients"></ul>
           <ul class="elements elements-appareil" ></ul>
           <ul class="elements elements-ustensiles" ></ul>
         </div>
         <!-- filtres : recherche avancée -->
-        <div class="recipes-header-filters">
+        <div class="tags-filters">
           <!-- filtre : recherche par ingrédients -->
           <div class="dropdown dropdown-ingredients">
             <button type="button" class="dropdown-button dropdown-button-ingredients" id="iconDown-ingredients" tabindex="0">Ingrédients
@@ -47,7 +46,7 @@
             </button>
             <form method="GET" id="searchIngredients" class="dropdown-form" onsubmit="return false">
               <label for="ingredients" class="dropdown-form-label hidden">Ingredients</label>
-              <input type="search" name="ingredients" id="ingredients" class="dropdown-form-input dropdown-form-input-ingredients" placeholder="Rechercher un ingrédient" />
+              <input type="search" name="ingredients" id="ingredients" class="dropdown-form-input dropdown-form-input-ingredients" placeholder="Rechercher un ingrédient"/>
               <button class="dropdown-form-icon dropdown-form-icon-ingredients iconUp" id="iconUp-ingredients" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
             <ul class="dropdown-menu" id="menu-ingredients"></ul>
@@ -59,7 +58,7 @@
             </button>
             <form method="GET" id="searchAppareil" class="dropdown-form" onsubmit="return false">
               <label for="appareil" class="dropdown-form-label hidden">Appareils</label>
-              <input type="search" name="appareil" id="appareil" class="dropdown-form-input dropdown-form-input-appareil" placeholder="Rechercher un appareil" />
+              <input type="search" name="appareil" id="appareil" class="dropdown-form-input dropdown-form-input-appareil" placeholder="Rechercher un appareil"/>
               <button class="dropdown-form-icon dropdown-form-icon-appareil iconUp" id="iconUp-appareil" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
             <ul class="dropdown-menu" id="menu-appareil"></ul>
@@ -71,7 +70,7 @@
             </button>
             <form method="GET" id="searchUstensiles" class="dropdown-form" onsubmit="return false">
               <label for="ustensiles" class="dropdown-form-label hidden">Ustensiles</label>
-              <input type="search" name="ustensiles" id="ustensiles" class="dropdown-form-input dropdown-form-input-ustensiles" placeholder="Rechercher un ustensile" />
+              <input type="search" name="ustensiles" id="ustensiles" class="dropdown-form-input dropdown-form-input-ustensiles" placeholder="Rechercher un ustensile"/>
               <button class="dropdown-form-icon dropdown-form-icon-ustensiles iconUp" id="iconUp-ustensiles" tabindex="0" aria-label="fermeture de la dropdown"><i class="fas fa-chevron-up"></i></button>
             </form> 
             <ul class="dropdown-menu" id="menu-ustensiles"></ul>
@@ -79,16 +78,15 @@
         </div>      
       </header>
       <!-- section : affichage dynamique des recettes -->
-      <section class="recipes-section">
+      <section class="section">
         <h2 class="hidden">Recettes</h2>
       </section>
     </main>
-    <script src="./data/recipes.js"></script>
-    <script src="./script/factory/recipesCardFactory.js"></script>
-    <script src="./script/utils/dropDownsElements.js"></script>
-    <script src="./script/utils/dropDownsOpenClose.js"></script>
-    <script src="./script/utils/element.js"></script>
-    <script src="./script/index.js"></script>
+    <script src="data/recipes.js"></script>
+    <script src="scripts/factory/recipesCardFactory.js"></script>
+    <script src="scripts/utils/dropDownsElements.js"></script>
+    <script src="scripts/utils/dropDownsOpenClose.js"></script>
+    <script src="scripts/utils/element.js"></script>
+    <script src="scripts/index.js"></script>
   </body>
 </html>
-  

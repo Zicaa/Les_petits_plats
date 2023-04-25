@@ -1,57 +1,53 @@
-// Fonction qui crée chaque carte de recette
-function recipesCardFactory(param) {
-  const section = document.querySelector('.recipes-section')
+// Je crée les cartes pour chaque recette
+ function createACard(param) {
+  const section = document.querySelector('.section')
   section.style.display = 'grid'
   section.style.justifyContent = 'space-between'
 
   for (let i = 0; i < param.length; i++) {
-    const article = new Element('article', 'article', 'recipes-card').elem
+    const article = new Element('article', 'article', 'article').elem
     section.appendChild(article)
     article.id = `article-${param[i].id}`
-    const link = new Element('anchor', 'a', 'recipes-card-link').elem
-    article.appendChild(link)
-    link.href = '#'
-    const divImage = new Element('divImage', 'div', 'recipes-card-bg').elem
-    link.appendChild(divImage)
-    const image = new Element('image', 'img', 'recipes-card-img').elem
-    divImage.appendChild(image)
-    image.src = `./assets/images/${param[i].image}`
-    image.alt = `${param[i].name}`
-    const divDescription = new Element('divDescription', 'div', 'recipes-card-description').elem
-    link.appendChild(divDescription)
-    const divTitle = new Element('divTitle', 'div', 'recipes-card-title').elem
+    const anchor = new Element('anchor', 'a', 'article-anchor').elem
+    article.appendChild(anchor)
+    anchor.href = '#'
+    const divImage = new Element('divImage', 'div', 'bg').elem
+    anchor.appendChild(divImage)
+    const divDescription = new Element('divDescription', 'div', 'description').elem
+    anchor.appendChild(divDescription)
+    const divTitle = new Element('divTitle', 'div', 'description-title').elem
     divDescription.appendChild(divTitle)
-    const title = new Element('title', 'h3', 'recipes-card-title-h3').elem
+    const title = new Element('title', 'h3', 'description-title-h3').elem
     divTitle.appendChild(title)
     title.textContent = `${param[i].name}`
-    const divTime = new Element('divTime', 'div', 'recipes-card-title-time').elem
+    const divTime = new Element('divTime', 'div', 'description-title-time').elem
     divTitle.appendChild(divTime)
     const iconTime = new Element('iconTime', 'i', 'far').elem
     divTime.appendChild(iconTime)
     iconTime.classList.add('fa-clock')
-    const time = new Element('time', 'p', 'recipes-card-title-time-txt').elem
+    const time = new Element('time', 'p', 'description-title-time-txt').elem
     divTime.appendChild(time)
     time.textContent = `${param[i].time} min`
-    const divdescriptionContent = new Element('divdescriptionContent', 'div', 'recipes-card-description-content').elem
+    const divdescriptionContent = new Element('divdescriptionContent', 'div', 'description-content').elem
     divDescription.appendChild(divdescriptionContent)
-    const ulIngredients = new Element('ulIngredients', 'ul', 'recipes-card-ingredients-list').elem
+    const ulIngredients = new Element('ulIngredients', 'ul', 'ingredientsList').elem
     divdescriptionContent.appendChild(ulIngredients)
     displayIngredients(param[i].ingredients, ulIngredients)
-    const description = new Element('description', 'p', 'recipes-card-description-txt').elem
+    const description = new Element('description', 'p', 'description-description').elem
     divdescriptionContent.appendChild(description)
     description.textContent = `${param[i].description}`
   }
 }
 
-// Affichage des ingrédients, quantités et unités dans les cartes recettes
+//J'affiche les ingrédients, quantités et unités dans les cartes recettes
 function displayIngredients(ingredients, ulIngredients) {
   for (let ingredient of ingredients) {
-    const liIngredient = new Element('liIngredient', 'li', 'recipes-card-ingredient').elem
+    const liIngredient = new Element('liIngredient', 'li', 'ingredientsList-item').elem
     ulIngredients.appendChild(liIngredient)
-    const ingredientName = new Element('ingredientName', 'p', 'recipes-card-ingredient-name').elem
+    const ingredientName = new Element('ingredientName', 'p', 'ingredientsList-item-name').elem
     liIngredient.appendChild(ingredientName)
     ingredientName.innerHTML = `${ingredient.ingredient}`
-    const quantity = new Element('quantity', 'p', 'recipes-card-ingredient-quantity').elem
+    const quantity = new Element('quantity', 'p', 'ingredientsList-item-quantity').elem
     liIngredient.appendChild(quantity)
     if (ingredient.quantity != undefined) {
       quantity.innerHTML = '&nbsp' + ':' + ' ' + `${ingredient.quantity}`
@@ -63,7 +59,7 @@ function displayIngredients(ingredients, ulIngredients) {
   }
 }
 
-// Modification des unités pour respecter les accords et créer des abbréviations
+// Je modifie les unités pour respecter des abbréviations
 function displayUnit(unit, quantityNb, quantity) {
   if (quantityNb <= 1) {
     switch (unit) {

@@ -1,5 +1,5 @@
-// Je crée la fonction qui ouvre les dropdown
-function editDropdown(event) {
+// fonction d'ouverture des dropdowns
+function openDropdown(event) {
   event.preventDefault
   const target = window.event.target
   let form, buttonOpen
@@ -16,13 +16,15 @@ function editDropdown(event) {
   buttonOpen.style.display = 'none'
   form.style.display = 'flex'
   ul.style.display = 'grid'
+  ul.style.transform = 'scaleY(1)'
   const formChildren = form.children
   const input = formChildren[1]
   const buttonClose = formChildren[2]
   input.focus()
   onlyOneDropdownOpen(buttonOpen)
-  
-  // Fonction qui ferme le dropdown en appuyant sur Escape
+  //EventListener sur évènement 'keydown' des dropdowns, 
+  //si keyCode = 'Escape', alors
+  //lancement de la @function close qui ferme la dropdown
   dropdown.addEventListener('keydown', (e) => {
     const keyCode = e.code
     if (keyCode === 'Escape') {
@@ -31,7 +33,7 @@ function editDropdown(event) {
   })
 }
 
-// Fonction permettant de n'avoir qu'une seule dropdown ouverte à la fois
+// fonction permettant de n'avoir qu'une seule dropdown ouverte à la fois
 function onlyOneDropdownOpen(elem) {
   const buttonOpen = elem
   const dropdownTarget = buttonOpen.parentNode
@@ -54,13 +56,13 @@ function onlyOneDropdownOpen(elem) {
   })
 }
 
-// Fonction qui ferme les dropdowns
+// fonction de fermeture des dropdowns
 function closeDropdown() {
   const target = window.event.target
   close(target)
 }
 
-// Fonction de fermeture des dropdowns en fonction de la cible
+// fonction de fermeture des dropdowns en fonctions de target
 function close(target) {
   let buttonClose
   if (target.tagName == 'I') {
@@ -80,7 +82,7 @@ function close(target) {
   dropdown.classList.remove('open')
 }
 
-// Fonction qui récupère l'id de l'élément
+// fonction pour récupérer l'id de l'élément
 function searchNodeId(element) {
   if (element.id == 'iconUp-ingredients' || element.id == 'iconDown-ingredients') {
     let id = 'menu-ingredients'
