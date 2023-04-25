@@ -330,7 +330,7 @@ body {
 .elements:nth-child(3n) li {
   background-color: #ed6454;
   font-size: 15px;
-
+}
 
 .fa-times-circle {
   font-size: 19px;
