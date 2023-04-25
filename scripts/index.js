@@ -1,14 +1,15 @@
-// J'affiche les recettes 
-recipesCardFactory(recipes)
+// Affichage des recettes 
+createACard(recipes)
 noDuplicateDropdownsElements(recipes)
 
-// Je déclenche l'ouverture / fermeture des dropdown au click 
+// Ouverture et fermeture des dropdowns 
 const buttonDropdown = document.querySelectorAll('.dropdown-button')
 buttonDropdown.forEach(button => {
   button.addEventListener('click', (event) => {
-    editDropdown(event)
+    openDropdown(event)
   })
 })
+
 
 const iconUp = document.querySelectorAll('.iconUp')
 iconUp.forEach(icon => {
@@ -24,16 +25,22 @@ allButtonClose.forEach(button => {
   })
 })
 
-// Fonction qui affiche le nombre de recettes trouvées dans le HTML
+// @function displayResultnumber
+// fonction permettant d'afficher dans le HTML 
+// le nombre de recettes trouvées
+// @param {Array} param - recettes affichées
+
 function displayResultnumber(param) {
-  const result = document.querySelector('.header2__result')
-  result.innerHTML = `<span class="header2__result__bold">${param.length}</span> recette(s) trouvée(s)`
+  const result = document.querySelector('.tags-result')
+  result.innerHTML = `<span class="tags-result-bold">${param.length}</span> recette(s) trouvée(s)`
 }
 
 let filteredRecipes = recipesDisplayed()
 displayResultnumber(filteredRecipes)
 
-// Fonction qui récupère les recettes affichées
+// @function recipesDisplayed
+// fonction permettant de récupérer les recettes affichées
+// @returns {array} - recettes affichées
 function recipesDisplayed() {
   let displayedRecipes = []
   let articles = document.querySelectorAll('.article')
