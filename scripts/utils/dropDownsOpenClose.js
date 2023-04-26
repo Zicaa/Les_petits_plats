@@ -1,4 +1,5 @@
 // fonction d'ouverture des dropdowns
+
 function openDropdown(event) {
   event.preventDefault
   const target = window.event.target
@@ -22,9 +23,11 @@ function openDropdown(event) {
   const buttonClose = formChildren[2]
   input.focus()
   onlyOneDropdownOpen(buttonOpen)
-  //EventListener sur évènement 'keydown' des dropdowns, 
-  //si keyCode = 'Escape', alors
-  //lancement de la @function close qui ferme la dropdown
+
+  // EventListener sur évènement 'keydown' des dropdowns, 
+  // si keyCode = 'Escape', alors
+  // lancement de la @function close qui ferme la dropdown
+  
   dropdown.addEventListener('keydown', (e) => {
     const keyCode = e.code
     if (keyCode === 'Escape') {
@@ -34,6 +37,7 @@ function openDropdown(event) {
 }
 
 // fonction permettant de n'avoir qu'une seule dropdown ouverte à la fois
+
 function onlyOneDropdownOpen(elem) {
   const buttonOpen = elem
   const dropdownTarget = buttonOpen.parentNode
@@ -57,12 +61,14 @@ function onlyOneDropdownOpen(elem) {
 }
 
 // fonction de fermeture des dropdowns
+
 function closeDropdown() {
   const target = window.event.target
   close(target)
 }
 
 // fonction de fermeture des dropdowns en fonctions de target
+
 function close(target) {
   let buttonClose
   if (target.tagName == 'I') {
@@ -83,6 +89,7 @@ function close(target) {
 }
 
 // fonction pour récupérer l'id de l'élément
+
 function searchNodeId(element) {
   if (element.id == 'iconUp-ingredients' || element.id == 'iconDown-ingredients') {
     let id = 'menu-ingredients'

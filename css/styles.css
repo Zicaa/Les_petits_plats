@@ -184,7 +184,7 @@ body {
 
 /* section article */
 
-.section {
+.recipes-section {
   position: absolute;
   top: 250px;
   display: grid;
@@ -196,7 +196,7 @@ body {
   padding-bottom: 48px;
 }
 
-.article {
+.recipes-card {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -204,16 +204,16 @@ body {
   max-width: 380px;
 }
 
-.article-anchor {
+.recipes-card-link {
   cursor: pointer;
 }
 
-.bg {
+.recipes-card-bg {
   height: 178px;
   background-color: #c7bebe;
 }
   
-.description {
+.recipes-card-description {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -223,7 +223,7 @@ body {
   overflow: hidden;
 }
 
-.description-title {
+.recipes-card-description-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -235,14 +235,14 @@ body {
   white-space: nowrap;
 }
 
-.description-title-h3 {
+.recipes-card-description-title-h3 {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 21px;
   font-weight: 700;
 }
 
-.description-title-time {
+.recipes-card-description-title-time {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -251,11 +251,11 @@ body {
   padding-left: 16px;
 }
 
-.description-title-time-txt {
+.recipes-card-description-title-time-txt {
   padding-left: 8px;
 }
 
-.description-content {
+.recipes-card-description-content {
   display: grid;
   grid-template-columns: 50% 50%;
   column-gap: 16px;
@@ -263,7 +263,7 @@ body {
   box-sizing: border-box;
 }
 
-.description-description {
+.recipes-card-description-todo {
   font-family: "Roboto", "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-size: 12px;
   line-height: 16px;
@@ -277,7 +277,7 @@ body {
   max-height: 773px;
 }
   
-.ingredientsList-item {
+.recipes-card-ingredients-list-item {
   display: flex;
   line-height: 16px;
   overflow: hidden;
@@ -285,11 +285,11 @@ body {
   font-size: 12px;
 }
  
-.ingredientsList-item-name {
+.recipes-card-ingredients-list-item-name {
   font-weight: 700;
 }
 
-.ingredientsList-item-quantity {
+.recipes-card-ingredients-list-item-quantity {
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -458,13 +458,13 @@ menu, ol, ul {
     grid-template-columns: 1fr;
     column-gap: 24px;
   }
-  .article {
-    max-width: 100%;
-  }
-  .section {
+  .recipes-section {
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     row-gap: 32px;
+  }
+  .recipes-card {
+    max-width: 100%;
   }
 }
 
@@ -481,7 +481,7 @@ menu, ol, ul {
   .dropdown-form-input::placeholder {
     content: "Rechercher";
   }
-  .section {
+  .recipes-section {
     display: grid;
     grid-template-columns: 1fr;
     position: relative;
@@ -521,7 +521,7 @@ menu, ol, ul {
   .dropdown-menu {
     grid-template-columns: 1fr;
   }
-  .article {
+  .recipes-card {
     width: 100%;
   }
   .description-content {
