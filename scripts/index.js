@@ -1,10 +1,8 @@
-// affichage des recettes
-
-createACard(datas)
+// J'affiche les recettes
+recipesCardFactory(datas)
 noDuplicateDropdownsElements(datas)
 
-// ouverture et fermeture des dropdowns
-
+// Je déclenche l'ouverture des dropdowns avec addEventlistener
 const buttonDropdown = document.querySelectorAll('.dropdown-button')
 buttonDropdown.forEach(button => {
   button.addEventListener('click', (event) => {
@@ -12,6 +10,7 @@ buttonDropdown.forEach(button => {
   })
 })
 
+// Je déclenche la fermeture des dropdowns avec addEventlistener
 const iconUp = document.querySelectorAll('.iconUp')
 iconUp.forEach(icon => {
   icon.addEventListener('click', () => {
@@ -19,6 +18,7 @@ iconUp.forEach(icon => {
   })
 })
 
+// Je déclenche la fermeture des boutons avec addEventlistener
 const allButtonClose = document.querySelectorAll('.dropdown-form-icon')
 allButtonClose.forEach(button => {
   button.addEventListener('click', () => {
@@ -26,20 +26,22 @@ allButtonClose.forEach(button => {
   })
 })
 
-// fonction permettant d'afficher dans le HTML 
-
-function displayResultnumber(param) {
+// Je crée une fonction permettant d'afficher le nombre de recettes dans le HTML 
+function numberOfRecipes(param) {
   const result = document.querySelector('.tags-result')
   result.innerHTML = `<span class="tags-result-bold">${param.length}</span> recette(s) trouvée(s)`
 }
 
-let filteredRecipes = recipesDisplayed()
-displayResultnumber(filteredRecipes)
+// J'appelle la fonction qui affiche les recettes filtrées dans le HTML
+let filteredRecipes = showRecipes()
 
-// fonction permettant de récupérer les recettes affichées
+// Je crée une fonction permettant d'afficher les recettes 
+function showRecipes() {
 
-function recipesDisplayed() {
-  let displayedRecipes = []
+  // Je crée un tableau qui contient les recettes 
+  let queryRecipes = []
+
+  // Je vérifie si chaque id d'article correspond à l'id des recettes
   let articles = document.querySelectorAll('.article')
   let allArticles = Array.from(articles)
   allArticles.forEach(article => {
@@ -47,9 +49,9 @@ function recipesDisplayed() {
     for (let i = 0; i < datas.length; i++) {
       let recipeId = `article-${datas[i].id}`
       if (articleId == recipeId) {
-        displayedRecipes.push(datas[i])
+        queryRecipes.push(datas[i])
       }
     }
   }) 
-  return displayedRecipes
+  return queryRecipes
 }
