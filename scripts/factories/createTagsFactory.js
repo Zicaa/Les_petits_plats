@@ -1,4 +1,5 @@
 //fonction d'affichage des tags
+
 function displayElementSelected() {
   const target = window.event.target
   const content = target.textContent
@@ -52,12 +53,7 @@ function displayElementSelected() {
 
 }
 
-//_________________________________________________________________
-/**
- * @function findTagsDisplayed
- * fonction permettant de récupérer un array de tous les tags affichés
- * @returns {Array} - array de tous les tags affichés
- */
+// fonction permettant de récupérer un array de tous les tags affichés
 
 function findTagsDisplayed() {
   let allTags = []
@@ -77,14 +73,8 @@ function findTagsDisplayed() {
   return allTags
 }
 
-//_________________________________________________________________
-/**
- * @function pushTag
- * fonction permettant de créer un seul array regroupant 
- * tous les ingrédients, appareil et ustensils présents en tags
- * @param {Array} elements - ingrédients, appareil ou ustensils présents en tags
- * @returns {Array} - array de chaque élément
- */
+// fonction permettant de créer un seul array regroupant 
+
 function pushTag(elements) {
   let allTags = []
   let elementsTags = Array.from(elements)
@@ -96,13 +86,7 @@ function pushTag(elements) {
   return allTags
 }
 
-//_________________________________________________________________
-/**
- * @function twinSearch
- * Fonction pour éviter les doublons de tags
- * @param {HTMLCollection} allLi - tous les li des tags ingrédients, appareils ou ustensiles
- * @param {HTMLElement} li 
- */
+// Fonction pour éviter les doublons de tags
 
 function twinSearch(allLi, li) {
   const liArray = allLi.length - 1
@@ -113,13 +97,7 @@ function twinSearch(allLi, li) {
   }
 }
 
-//_________________________________________________________________
-/**
- * @function selectUl
- * fonction pour retrouver l'ul
- * @param {String} str - id de l'ul de la dropdown
- * @returns {HTMLElement} - ul des tags
- */
+// fonction pour retrouver l'ul
 
 function selectUl(str) {
   if (str == 'menu-ingredients') {
@@ -136,11 +114,7 @@ function selectUl(str) {
   }
 }
 
-//_________________________________________________________________
-/**
- * @function closeSelectedBloc
- * fonction de fermeture des tags
- */
+// fonction de fermeture des tags
 
 function closeSelectedBloc() {
   const target = window.event.target

@@ -54,22 +54,22 @@ function noDuplicateIngredients(recipe) {
 // Je crée la fonction qui empêche les doublons d'appareil
 function noDuplicateAppliances(recipe) {
 
-   // Je crée un tableau avec tous les éléments
-  let allElements = []
+  // Je crée un tableau avec tous les éléments
+ let allElements = []
 
-  // Pour chaque élément de mon tableau de recettes
-  for (let i = 0; i < recipe.length; i++) {
+ // Pour chaque élément de mon tableau de recettes
+ for (let i = 0; i < recipe.length; i++) {
 
-    // Je récupère les appareils
-    const applianceRecipe = recipe[i].appliance
+   // Je récupère les appareils
+   const applianceRecipe = recipe[i].appliance
 
-    // J'ajoute cet appareil unique au tableau contenant tous les éléments
-    allElements.push(applianceRecipe)
-  }
+   // J'ajoute cet appareil unique au tableau contenant tous les éléments
+   allElements.push(applianceRecipe)
+ }
 
-  // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
-  let allElementsUnique = [...new Set(allElements)]
-  return allElementsUnique
+ // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
+ let allElementsUnique = [...new Set(allElements)]
+ return allElementsUnique
 }
 
 // Je crée la fonction qui empêche les doublons d'ustensiles
@@ -221,4 +221,3 @@ function previousSibling(li) {
     ul.lastChild.focus()
   }
 }
-

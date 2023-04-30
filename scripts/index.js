@@ -2,7 +2,7 @@
 recipesCardFactory(datas)
 noDuplicateDropdownsElements(datas)
 
-// Je déclenche l'ouverture des dropdowns avec addEventlistener
+// Je déclenche l'ouverture des dropdowns avec addEventlistener 
 const buttonDropdown = document.querySelectorAll('.dropdown-button')
 buttonDropdown.forEach(button => {
   button.addEventListener('click', (event) => {
@@ -41,6 +41,7 @@ function numberOfRecipes(param) {
 let filteredRecipes = showRecipes()
 numberOfRecipes(filteredRecipes)
 
+// J'appelle la fonction qui affiche les recettes filtrées dans le HTML
 function showRecipes() {
   let queryRecipes = []
   let recipesCard = document.querySelectorAll('.recipes-card')
@@ -57,3 +58,16 @@ function showRecipes() {
   return queryRecipes
 }
 
+//
+let allRecipes = simpleRecipes(datas)
+
+// les valeurs des recettes sont concaténées et stringifiées
+
+function simpleRecipes(param) {
+  let array = []
+  for (let i = 0; i < param.length; i++) {
+    let data = recipesConcateFactory(param[i])
+    array.push(data)
+  }
+  return array
+}
