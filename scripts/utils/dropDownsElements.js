@@ -136,29 +136,20 @@ function createColumns(elements, ul) {
 
 // Je crée la fonction qui génère chaque liste d'éléments des dropdowns
 function createItem(elements, ul) {
-
+  
+  // Je récupère tous les éléments et les stocke dans un tableau
   const tags = document.querySelectorAll('.elements-item')
   const arrayTags = Array.from(tags)
 
   // Pour chaque élément du tableau
   for (let t = 0; t < elements.length; t++) {
-    const li = new Element('li', 'li', 'dropdown-menu-item').elem
 
     // Je crée une nouvelle liste du menu déroulant et l'intègre
+    const li = new Element('li', 'li', 'dropdown-menu-item').elem
     ul.appendChild(li)
     li.textContent = `${elements[t]}`
     li.tabIndex = '0'
 
-    //EventListener sur évènements 'click' et 'keydown' des li, 
-    //lancement de la @function displayElementSelected qui permet
-    //l'affichage en tags des éléments li séléctionnés
-    li.addEventListener('click', () => displayElementSelected()) // affichage des tags
-    li.addEventListener('keydown', (e) => {
-      const keyCode = e.code
-      if (keyCode === 'Enter') {
-        displayElementSelected() // affichage des tags
-      }
-    })
     // Je déclenche la fonction qui applique le style souhaité aux choix
     choiceStyle(arrayTags, li) 
   }
@@ -221,4 +212,3 @@ function previousSibling(li) {
     ul.lastChild.focus()
   }
 }
-

@@ -8,6 +8,7 @@ function openDropdown(event) {
   const target = window.event.target
 
   let form, buttonOpen
+
   // Si la cible correspond à la balise icône
   if (target.tagName == 'I') {
     // Je récupère le noeud parent qui correspond au bouton
@@ -42,25 +43,16 @@ function openDropdown(event) {
   input.focus()
 
   // J'appelle la fonction autorisant le déploiement d'un seul dropdown
-  createImputChoicesFactory(buttonOpen)
-
-  // J'ajoute un eventListener sur 'input' des inputs, 
-  // La fonction dynamicChoices se lance et affiche les éléments 
-
-   input.addEventListener('input', (event) => {
-    createImputChoicesFactory(event)
-  })
   oneDropdownOnly(buttonOpen)
  
-  // J'ajoute un eventListener sur évènement 'keydown' des dropdowns
-  // Si keyCode = 'Escape' : la function close ferme la dropdowns
+  // J'ajoute un eventListener sur évènement 'keydown' des dropdowns, 
+  // Si keyCode = 'Escape' : la @function close ferme la dropdowns
   dropdown.addEventListener('keydown', (e) => {
     const keyCode = e.code
     if (keyCode === 'Escape') {
       close(buttonClose)
     }
   })
-
 }
 
 // Je crée une fonction permettant l'ouverture d'une seule dropdown
@@ -101,14 +93,12 @@ function oneDropdownOnly(btnObject) {
       }
     }
   })
-  
 }
 
 // Je crée une fonction de fermeture des dropdowns
 function closeDropdown() {
   const target = window.event.target
   closeTarget(target)
-
 }
 
 // Je crée une fonction de fermeture des dropdowns en fonctions de l'élément souhaité
@@ -123,7 +113,6 @@ function closeTarget(target) {
     // Sinon le bouton de fermeture est l'élément souhaité
   } else {
     buttonClose = target
-
   }
 
   const form = buttonClose.parentNode
@@ -157,8 +146,7 @@ function searchNodeId(element) {
   if (element.id == 'iconUp-ustensiles' || element.id == 'iconDown-ustensiles') {
     let id = 'menu-ustensiles'
     return id
-  }
-
+  } 
 }
 
 
