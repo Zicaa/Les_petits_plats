@@ -1,6 +1,5 @@
 // Je crée une carte pour chaque recette en lui passant le tableau de recettes en paramètre
- function recipesCardFactory(recipe) {
-  console.log(recipe);
+function recipesCardFactory(recipe) {
 
   // Je récupère la section contenant les recettes 
   const section = document.querySelector('.recipes-section')
@@ -81,7 +80,7 @@ function createIngredients(ingredients, ulIngredients) {
 // Je crée la fonction createUnit qui qui génère les unités et abréviations
 function createUnit(unit, quantityNb, quantity) {
 
-  // Si la quantité est inférieure ou égale à 1, alors les unités seront écrit en entier au singulier, 
+  // Si la quantité est inférieure ou égale à 1, alors les unités seront écrit en entier au singulier
   if (quantityNb <= 1) {
     switch (unit) {
     case ('verres'):

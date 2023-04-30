@@ -26,6 +26,11 @@ allButtonClose.forEach(button => {
   })
 })
 
+// Je crée une fonction de recherche dans le champ de recherche principal
+mainInput.addEventListener('input', (event) => {
+  testInput(event)
+})
+
 // Je crée une fonction permettant d'afficher le nombre de recettes dans le HTML 
 function numberOfRecipes(param) {
   const result = document.querySelector('.tags-result')
@@ -34,20 +39,16 @@ function numberOfRecipes(param) {
 
 // J'appelle la fonction qui affiche les recettes filtrées dans le HTML
 let filteredRecipes = showRecipes()
+numberOfRecipes(filteredRecipes)
 
-// Je crée une fonction permettant d'afficher les recettes 
 function showRecipes() {
-
-  // Je crée un tableau qui contient les recettes 
   let queryRecipes = []
-
-  // Je vérifie si chaque id d'article correspond à l'id des recettes
-  let articles = document.querySelectorAll('.article')
-  let allArticles = Array.from(articles)
-  allArticles.forEach(article => {
+  let recipesCard = document.querySelectorAll('.recipes-card')
+  let recipesCardArray = Array.from(recipesCard)
+  recipesCardArray.forEach(article => {
     let articleId = article.id
     for (let i = 0; i < datas.length; i++) {
-      let recipeId = `article-${datas[i].id}`
+      let recipeId = `recipe-${datas[i].id}`
       if (articleId == recipeId) {
         queryRecipes.push(datas[i])
       }
@@ -55,3 +56,4 @@ function showRecipes() {
   }) 
   return queryRecipes
 }
+
