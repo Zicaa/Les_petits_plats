@@ -89,7 +89,7 @@ function oneDropdownOnly(btnObject) {
         // Je sélectionne le premier enfant : soit l'icône chevron
         const chevronUp = divCloseChild[0]
         // Je ferme la fenêtre en appelant la fonction closeTarget
-        closeTarget(chevronUp)
+        close(chevronUp)
       }
     }
   })
@@ -98,11 +98,11 @@ function oneDropdownOnly(btnObject) {
 // Je crée une fonction de fermeture des dropdowns
 function closeDropdown() {
   const target = window.event.target
-  closeTarget(target)
+  close(target)
 }
 
 // Je crée une fonction de fermeture des dropdowns en fonctions de l'élément souhaité
-function closeTarget(target) {
+function close(target) {
 
   let buttonClose
 

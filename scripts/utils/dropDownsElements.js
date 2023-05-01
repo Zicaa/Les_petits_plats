@@ -136,10 +136,6 @@ function createColumns(elements, ul) {
 
 // Je crée la fonction qui génère chaque liste d'éléments des dropdowns
 function createItem(elements, ul) {
-  
-  // Je récupère tous les éléments et les stocke dans un tableau
-  const tags = document.querySelectorAll('.elements-item')
-  const arrayTags = Array.from(tags)
 
   // Pour chaque élément du tableau
   for (let t = 0; t < elements.length; t++) {
@@ -150,65 +146,6 @@ function createItem(elements, ul) {
     li.textContent = `${elements[t]}`
     li.tabIndex = '0'
 
-    // Je déclenche la fonction qui applique le style souhaité aux choix
-    choiceStyle(arrayTags, li) 
   }
 
-  // Je déclenche la fonction qui gère la navigation au clavier
-  keybordFunction(ul) 
-}
-
-// Je crée la fonction qui applique les différents styles et attributs des éléments taggés
-function choiceStyle(array, li) {
-  array.forEach(choice => {
-    if (choice.textContent == li.textContent) {
-      li.style.color = 'rgba(255, 255, 255, 0.4)'
-      li.style.textDecoration = 'line-through'
-      li.tabIndex = '-1'
-    }
-  })
-}
-
-// Je crée une fonction qui permet la navigation au clavier sur les élemn de liste
-function keybordFunction(ul) {
-
-  //Je séléctionne les éléments et les stocke dans un tableau
-  const children = ul.children
-  const allList = Array.from(children)
-
-  // Je parcours ce tableau, pour chaque liste
-  allList.forEach(li => {
-
-    // J'ajoute un écouteur d'évènement et déclenche les fonctions de navigation 
-    li.addEventListener('keydown', (e) => {
-      const keyCode = e.key
-      if (keyCode === 'ArrowRight') {
-        nextSibling(li)
-      } else if (keyCode === 'ArrowLeft') {
-        previousSibling(li)
-      } 
-    })
-  })
-}
-
-// Je crée la fonction élément suivant
-function nextSibling(li) {
-  const next = li.nextSibling
-  const ul = li.parentNode
-  if (next != null) {
-    next.focus()
-  } else {
-    ul.firstChild.focus()
-  }
-}
-
-// Je crée la fonction élément précédent
-function previousSibling(li) {
-  const prev = li.previousSibling
-  const ul = li.parentNode
-  if (prev != null) {
-    prev.focus()
-  } else {
-    ul.lastChild.focus()
-  }
 }
