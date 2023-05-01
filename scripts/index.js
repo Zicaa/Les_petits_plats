@@ -1,6 +1,6 @@
 // J'affiche les recettes
-recipesCardFactory(datas)
-noDuplicateDropdownsElements(datas)
+recipesCardFactory(recipes)
+noDuplicateDropdownsElements(recipes)
 
 // Je déclenche l'ouverture des dropdowns avec addEventlistener
 const buttonDropdown = document.querySelectorAll('.dropdown-button')
@@ -34,24 +34,28 @@ function numberOfRecipes(param) {
 
 // J'appelle la fonction qui affiche les recettes filtrées dans le HTML
 let filteredRecipes = showRecipes()
+numberOfRecipes(filteredRecipes)
 
 // Je crée une fonction permettant d'afficher les recettes 
 function showRecipes() {
 
-  // Je crée un tableau qui contient les recettes 
-  let queryRecipes = []
+  // Je crée un tableau qui contient les recettes
+  let newRecipes = []
+  let articles = document.querySelectorAll('.recip-card')
 
   // Je vérifie si chaque id d'article correspond à l'id des recettes
-  let articles = document.querySelectorAll('.article')
   let allArticles = Array.from(articles)
   allArticles.forEach(article => {
     let articleId = article.id
-    for (let i = 0; i < datas.length; i++) {
-      let recipeId = `article-${datas[i].id}`
+    for (let i = 0; i < recipes.length; i++) {
+      let recipeId = `article-${recipes[i].id}`
       if (articleId == recipeId) {
-        queryRecipes.push(datas[i])
+        newRecipes.push(recipes[i])
       }
     }
   }) 
-  return queryRecipes
+  return newRecipes
 }
+
+
+
