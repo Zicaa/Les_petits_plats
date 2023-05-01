@@ -21,41 +21,39 @@ function noDuplicateDropdownsElements(recipe) {
 }
 
 // Je crée la fonction qui empêche les doublons d'ingrédients
+
 function noDuplicateIngredients(recipe) {
 
-  // Je crée un tableau avec tous les éléments
-  let allElements = []
+   // Je crée un tableau avec tous les éléments
+  let ALLelements = []
 
   // Pour chaque élément de mon tableau de recettes
   for (let i = 0; i < recipe.length; i++) {
 
     // Je récupère les ingrédients
     const ingredientsRecipe = recipe[i].ingredients
-
-    // Je crée un tableau de ces ingrédients
     let arrayIngredients = []
 
     // Pour chaque ingredient de mon tableau d'ingrédients
     for (let ingredient of ingredientsRecipe) {
-      // Je crée un ingrédient unique et l'ajoute au tableau d'ingrédients
       let oneIgredient = ingredient.ingredient
+
+      // J'ajoute chaque ingrédient unique au tableau contenant tous les éléments
       arrayIngredients.push(oneIgredient)
     }
-
-    // J'ajoute chaque ingrédient unique au tableau contenant tous les éléments
-    arrayIngredients.forEach(ingrdnt => allElements.push(ingrdnt))
+    arrayIngredients.forEach(ingr => ALLelements.push(ingr))
   }
-  
+
   // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
-  let allElementsUnique = [...new Set(allElements)]
+  let allElementsUnique = [...new Set(ALLelements)]
   return allElementsUnique
 }
 
 // Je crée la fonction qui empêche les doublons d'appareil
 function noDuplicateAppliances(recipe) {
 
-   // Je crée un tableau avec tous les éléments
-  let allElements = []
+  // Je crée un tableau avec tous les éléments
+  let ALLelements = []
 
   // Pour chaque élément de mon tableau de recettes
   for (let i = 0; i < recipe.length; i++) {
@@ -64,11 +62,11 @@ function noDuplicateAppliances(recipe) {
     const applianceRecipe = recipe[i].appliance
 
     // J'ajoute cet appareil unique au tableau contenant tous les éléments
-    allElements.push(applianceRecipe)
+    ALLelements.push(applianceRecipe)
   }
 
   // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
-  let allElementsUnique = [...new Set(allElements)]
+  let allElementsUnique = [...new Set(ALLelements)]
   return allElementsUnique
 }
 
@@ -76,7 +74,7 @@ function noDuplicateAppliances(recipe) {
 function noDuplicateUstensils(recipe) {
 
   // Je crée un tableau avec tous les éléments
-  let allElements = []
+  let ALLelements = []
 
   // Pour chaque ingredient de mon tableau d'ingrédients
   for (let i = 0; i < recipe.length; i++) {
@@ -96,31 +94,33 @@ function noDuplicateUstensils(recipe) {
     }
 
     // J'ajoute chaque ustensile unique au tableau contenant tous les éléments
-    arrayUstensils.forEach(ust => allElements.push(ust))
+    arrayUstensils.forEach(ust => ALLelements.push(ust))
   }
 
   // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
-  let allElementsUnique = [...new Set(allElements)]
+  let allElementsUnique = [...new Set(ALLelements)]
   return allElementsUnique
 }
 
 // Je crée une fonction tri par ordre alphabétique et j'affiche les éléments en colonne
 function sortAndShowElements(elements, ul) {
   titleSort(elements)
-  createColumns(elements, ul)
+  columnSize(elements, ul)
   createItem(elements, ul)
 }
 
 // Tri des titres de recette par ordre alphabétique
 function titleSort(elements) {
+
+  // J'extrait le mot avec la méthode split et colle les lettres avec la méthode join
   function tri(a,b) {
-    // J'extrait le mot avec la méthode split et colle les lettres avec la méthode join
-    const titleAremoveAccent = a.split(' ').join('')
-    a = titleAremoveAccent.toLowerCase()
-    // Je supprime les accents
+    const titleA = a.split(' ').join('')
+
+    // Je supprime les accents avec la méthode normalize
+    a = titleA.toLowerCase()
     a.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    const titleBremoveAccent = b.split(' ').join('')
-    b = titleBremoveAccent.toLowerCase()
+    const titleB = b.split(' ').join('')
+    b = titleB.toLowerCase()
     b.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     return (a < b) ? -1 : 1
   }
@@ -128,19 +128,15 @@ function titleSort(elements) {
 }
 
 // Je crée une fonction pour afficher les listes sur 3 colonnes
-function createColumns(elements, ul) {
-  const elementsList = elements.length
-  const columnSize = Math.ceil(elementsList / 3)
+function columnSize(elements, ul) {
+  const lenghtList = elements.length
+  const columnSize = Math.ceil(lenghtList / 3)
   ul.style.gridTemplateRows = `repeat(${columnSize}, 1fr)`
 }
 
 // Je crée la fonction qui génère chaque liste d'éléments des dropdowns
 function createItem(elements, ul) {
-  
-  // Je récupère tous les éléments et les stocke dans un tableau
-  const tags = document.querySelectorAll('.elements-item')
-  const arrayTags = Array.from(tags)
-
+ 
   // Pour chaque élément du tableau
   for (let t = 0; t < elements.length; t++) {
 
@@ -149,66 +145,7 @@ function createItem(elements, ul) {
     ul.appendChild(li)
     li.textContent = `${elements[t]}`
     li.tabIndex = '0'
-
-    // Je déclenche la fonction qui applique le style souhaité aux choix
-    choiceStyle(arrayTags, li) 
   }
-
-  // Je déclenche la fonction qui gère la navigation au clavier
-  keybordFunction(ul) 
+  
 }
 
-// Je crée la fonction qui applique les différents styles et attributs des éléments taggés
-function choiceStyle(array, li) {
-  array.forEach(choice => {
-    if (choice.textContent == li.textContent) {
-      li.style.color = 'rgba(255, 255, 255, 0.4)'
-      li.style.textDecoration = 'line-through'
-      li.tabIndex = '-1'
-    }
-  })
-}
-
-// Je crée une fonction qui permet la navigation au clavier sur les élemn de liste
-function keybordFunction(ul) {
-
-  //Je séléctionne les éléments et les stocke dans un tableau
-  const children = ul.children
-  const allList = Array.from(children)
-
-  // Je parcours ce tableau, pour chaque liste
-  allList.forEach(li => {
-
-    // J'ajoute un écouteur d'évènement et déclenche les fonctions de navigation 
-    li.addEventListener('keydown', (e) => {
-      const keyCode = e.key
-      if (keyCode === 'ArrowRight') {
-        nextSibling(li)
-      } else if (keyCode === 'ArrowLeft') {
-        previousSibling(li)
-      } 
-    })
-  })
-}
-
-// Je crée la fonction élément suivant
-function nextSibling(li) {
-  const next = li.nextSibling
-  const ul = li.parentNode
-  if (next != null) {
-    next.focus()
-  } else {
-    ul.firstChild.focus()
-  }
-}
-
-// Je crée la fonction élément précédent
-function previousSibling(li) {
-  const prev = li.previousSibling
-  const ul = li.parentNode
-  if (prev != null) {
-    prev.focus()
-  } else {
-    ul.lastChild.focus()
-  }
-}

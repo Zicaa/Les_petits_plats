@@ -1,43 +1,45 @@
 // Je crée une carte pour chaque recette en lui passant le tableau de recettes en paramètre
 function recipesCardFactory(recipe) {
 
-  // Je récupère la section contenant les recettes 
-  const section = document.querySelector('.recipes-section')
+   // Je récupère la section contenant les recettes 
+  const section = document.querySelector('.section')
+  section.style.display = 'grid'
+  section.style.justifyContent = 'space-between'
 
-// Je crée une boucle for et lui passe le tableau de recettes en paramètre
-// Pour chaque recette, je crée et j'intègre ces nouveaux éléments grâce à la classe elem
+  // Je crée une boucle for et lui passe le tableau de recettes en paramètre
+  // Pour chaque recette, je crée et j'intègre ces nouveaux éléments grâce à la classe elem
   for (let i = 0; i < recipe.length; i++) {
-    const article = new Element('recipesCard', 'article', 'recipes-card').elem
+    const article = new Element('recipeCard', 'article', 'recip-card').elem
     section.appendChild(article)
-    article.id = `recipe-${recipe[i].id}`
-    const link = new Element('recipesCardLink', 'a', 'recipes-card-link').elem
-    article.appendChild(link)
-    link.href = '#'
-    const divBg = new Element('recipesCardBg', 'div', 'recipes-card-bg').elem
-    link.appendChild(divBg)
-    const divDescription = new Element('recipesCardDescription', 'div', 'recipes-card-description').elem
-    link.appendChild(divDescription)
-    const divTitle = new Element('recipesCardDescriptionTitle', 'div', 'recipes-card-description-title').elem
+    article.id = `article-${recipe[i].id}`
+    const anchor = new Element('recipCardLink', 'a', 'recip-card-link').elem
+    article.appendChild(anchor)
+    anchor.href = '#'
+    const divImage = new Element('recipCardImage', 'div', 'recip-card-bg').elem
+    anchor.appendChild(divImage)
+    const divDescription = new Element('recipCardDescription', 'div', 'recip-card-description').elem
+    anchor.appendChild(divDescription)
+    const divTitle = new Element('recipCardDescriptionTitle', 'div', 'recip-card-description-title').elem
     divDescription.appendChild(divTitle)
-    const title = new Element('recipesCardDescriptionTitleH3', 'h3', 'recipes-card-description-title-h3').elem
+    const title = new Element('recipCardDescriptionH3', 'h3', 'recip-card-description-title-h3').elem
     divTitle.appendChild(title)
     title.textContent = `${recipe[i].name}`
-    const divTime = new Element('recipesCardDescriptionTitleTime', 'div', 'recipes-card-description-title-time').elem
+    const divTime = new Element('recipCardDescriptionTitleTime', 'div', 'recip-card-description-title-time').elem
     divTitle.appendChild(divTime)
     const iconTime = new Element('iconTime', 'i', 'far').elem
     divTime.appendChild(iconTime)
     iconTime.classList.add('fa-clock')
-    const time = new Element('recipesCardDescriptionTitleTimeTxt', 'p', 'recipes-card-description-title-time-txt').elem
+    const time = new Element('recipCardDescriptionTitletimeTxt', 'p', 'recip-card-description-title-time-txt').elem
     divTime.appendChild(time)
     time.textContent = `${recipe[i].time} min`
-    const divdescriptionContent = new Element('recipesCardDescriptionContent', 'div', 'recipes-card-description-content').elem
+    const divdescriptionContent = new Element('recipCardDescriptionContent', 'div', 'recip-card-description-content').elem
     divDescription.appendChild(divdescriptionContent)
-    const ulIngredients = new Element('recipesCardIngredientList', 'ul', 'recipes-card-ingredients-list').elem
+    const ulIngredients = new Element('ulIngredients', 'ul', 'ingredientsList').elem
     divdescriptionContent.appendChild(ulIngredients)
 
     // J'appelle la fonction createIngredients pour générer les ingrédients
     createIngredients(recipe[i].ingredients, ulIngredients)
-    const description = new Element('recipesCardDescriptionTodo', 'p', 'recipes-card-description-todo').elem
+    const description = new Element('recipCardDescriptionDescription', 'p', 'recip-card-description-description').elem
     divdescriptionContent.appendChild(description)
     description.textContent = `${recipe[i].description}`
   }
@@ -50,16 +52,16 @@ function createIngredients(ingredients, ulIngredients) {
   for (let ingredient of ingredients) {
 
     // Je crée une liste et l'intègre à la liste d'ingrédients totale
-    const liIngredient = new Element('recipesCardIngredientListItem', 'li', 'recipes-card-ingredients-list-item').elem
+    const liIngredient = new Element('liIngredient', 'li', 'ingredientsList-item').elem
     ulIngredients.appendChild(liIngredient)
 
     // Je crée un paragraphe pour le nom de l'ingrédient et l'intègre à sa liste
-    const ingredientName = new Element('recipesCardIngredientListItemName', 'p', 'recipes-card-ingredients-list-item-name').elem
+    const ingredientName = new Element('ingredientName', 'p', 'ingredientsList-item-name').elem
     liIngredient.appendChild(ingredientName)
     ingredientName.innerHTML = `${ingredient.ingredient}`
 
     // Je crée un paragraphe pour la quantité de l'ingrédient et l'intègre à sa liste
-    const quantity = new Element('recipesCardIngredientListItemQuantity', 'p', 'recipes-card-ingredients-list-item-quantity').elem
+    const quantity = new Element('quantity', 'p', 'ingredientsList-item-quantity').elem
     liIngredient.appendChild(quantity)
 
     // Si la quantité de l'ingrédient n'est pas reconnue, l'intégrer avec innerHTML
@@ -68,11 +70,11 @@ function createIngredients(ingredients, ulIngredients) {
     }
 
     // Je récupère le nombre d'ingrédient en chiffre avec parseInt
-    const quantityString = `${ingredient.quantity}`
-    const quantityNb = parseInt(quantityString)
+    const quantityStr = `${ingredient.quantity}`
+    const quantityNb = parseInt(quantityStr)
     const unit = `${ingredient.unit}`
 
-    // J'appelle la fonction createUnit 
+    // J'appelle la fonction createUnit
     createUnit(unit, quantityNb, quantity)
   }
 }

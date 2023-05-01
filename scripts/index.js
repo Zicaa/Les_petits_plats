@@ -1,6 +1,6 @@
 // J'affiche les recettes
-recipesCardFactory(datas)
-noDuplicateDropdownsElements(datas)
+recipesCardFactory(recipes)
+noDuplicateDropdownsElements(recipes)
 
 // Je déclenche l'ouverture des dropdowns avec addEventlistener
 const buttonDropdown = document.querySelectorAll('.dropdown-button')
@@ -26,11 +26,6 @@ allButtonClose.forEach(button => {
   })
 })
 
-// Je crée une fonction de recherche dans le champ de recherche principal
-mainInput.addEventListener('input', (event) => {
-  testInput(event)
-})
-
 // Je crée une fonction permettant d'afficher le nombre de recettes dans le HTML 
 function numberOfRecipes(param) {
   const result = document.querySelector('.tags-result')
@@ -41,19 +36,26 @@ function numberOfRecipes(param) {
 let filteredRecipes = showRecipes()
 numberOfRecipes(filteredRecipes)
 
+// Je crée une fonction permettant d'afficher les recettes 
 function showRecipes() {
-  let queryRecipes = []
-  let recipesCard = document.querySelectorAll('.recipes-card')
-  let recipesCardArray = Array.from(recipesCard)
-  recipesCardArray.forEach(article => {
+
+  // Je crée un tableau qui contient les recettes
+  let newRecipes = []
+  let articles = document.querySelectorAll('.recip-card')
+
+  // Je vérifie si chaque id d'article correspond à l'id des recettes
+  let allArticles = Array.from(articles)
+  allArticles.forEach(article => {
     let articleId = article.id
-    for (let i = 0; i < datas.length; i++) {
-      let recipeId = `recipe-${datas[i].id}`
+    for (let i = 0; i < recipes.length; i++) {
+      let recipeId = `article-${recipes[i].id}`
       if (articleId == recipeId) {
-        queryRecipes.push(datas[i])
+        newRecipes.push(recipes[i])
       }
     }
   }) 
-  return queryRecipes
+  return newRecipes
 }
+
+
 
