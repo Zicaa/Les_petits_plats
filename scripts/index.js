@@ -10,7 +10,7 @@ buttonDropdown.forEach(button => {
   })
 })
 
-// Je déclenche la fermeture des dropdowns avec addEventlistener
+// Je déclenche la fermeture des dropdowns avec addEventlistener au clic sur l'icône
 const iconUp = document.querySelectorAll('.iconUp')
 iconUp.forEach(icon => {
   icon.addEventListener('click', () => {
@@ -18,7 +18,7 @@ iconUp.forEach(icon => {
   })
 })
 
-// Je déclenche la fermeture des boutons avec addEventlistener
+// Je déclenche la fermeture des dropdowns avec addEventlistener au clic sur le bouton
 const allButtonClose = document.querySelectorAll('.dropdown-form-icon')
 allButtonClose.forEach(button => {
   button.addEventListener('click', () => {
