@@ -352,7 +352,6 @@ menu, ol, ul {
     flex-direction: column;
     border-radius: .3rem;
     overflow: hidden;
-    max-width: 23.75rem;
 }
 
 .recip-card-link {
