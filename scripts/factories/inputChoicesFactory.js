@@ -1,86 +1,156 @@
 
+/** La @function dropdownInput affiche les éléments en fonction de la saisie dans les inputs des dropdowns */ 
+
 // Fonction d'affichage des éléments en fonction de la saisie dans les inputs des dropdowns
 
-function dynamicChoices() {
+function dropdownInput() {
+
+  // Je récupère les éléments dont j'ai besoin : je cible l'élément
   const input = window.event.target
+  // Je récupère la valeur rentrée dans l'input par l'utilisateur
   const entry = input.value
+
+  // Si l'id de l'input est égal à ingrédient
   if (input.id == 'ingredients') {
+    // Je récupère l'id de l'ul correspondante
     const ul = document.getElementById('menu-ingredients')
-    adjustDropdownDisplay(allIngredients, ul, entry)
+    dropdownNewDisplay(allIngredients, ul, entry)
   }
+
+  // Si l'id de l'input est égal à appareil
   if (input.id == 'appareil') {
+    // Je récupère l'id de l'ul correspondante
     const ul = document.getElementById('menu-appareil')
-    adjustDropdownDisplay(allAppliances, ul, entry)
+    dropdownNewDisplay(allAppliances, ul, entry)
   }
+
+  // Si l'id de l'input est égal à ustensiles
   if (input.id == 'ustensiles') {
+    // Je récupère l'id de l'ul correspondante
     const ul = document.getElementById('menu-ustensiles')
-    adjustDropdownDisplay(allUstensils, ul, entry)
+    dropdownNewDisplay(allUstensils, ul, entry)
   }
+  
 }
 
-// affichage dans la liste des éléments contenant la saisie de l'input
-function adjustDropdownDisplay(elements, ul, entry) {
+/** La @function dropdownNewDisplay affiche dans les nouveaux dropdowns ajustés la liste des éléments saisis dans l'input */ 
+
+// Je crée la fonction
+function dropdownNewDisplay(elements, ul, entry) {
+
+  // Si la valeur de l'input est égale ou supérieur à 1 caractère
   if (entry.length >= 1) {
+
+    // J'appelle la fonction normalizeInputEntries
     let inputText = normalizeInputEntries(entry)
-    let relatedItems = compareElementsAndEntry(inputText, elements)
+    // J'appelle la fonction compareElementsAndEntries
+    let relatedItems = compareElementsAndEntries(inputText, elements)
+    // Je vide les ul
     ul.innerHTML = ''
+    // J'appelle la fonction sortAndShowElements
     sortAndShowElements(relatedItems, ul)
+
+  //Sinon
   } else {
+    // Je vide les ul
     ul.innerHTML = ''
+     // J'appelle la fonction sortAndShowElements
     sortAndShowElements(elements, ul)
+
   }
+
 }
 
-// fonction permettant de n'afficher que les éléments correspondants à la saisie
-function compareElementsAndEntry(entry, elements) {
+/** La @function compareElementsAndEntries n'affiche que les éléments des listes correspondants à la saisie */ 
+
+// Je crée la fonction
+function compareElementsAndEntries(entry, elements) {
+
+  // Je crée un tableau comparatif
   let relatedItems = []
+
+  // Pour chaque élément
   for (let i = 0; i < elements.length; i++) {
-    let ingredient = normalizeInputEntries(elements[i])
-    if (ingredient.search(entry) != -1) {
+
+    // J'appelle la fonction normalizeInputEntries qui compare les données
+    let queryElement = normalizeInputEntries(elements[i])
+
+    // Si il y'a correspondance entre l'élément demandé et la saisie
+    if (queryElement.search(entry) != -1) {
+
+      // J'intègre l'élément à mon nouveau tableau
       relatedItems.push(elements[i])
     }
+
   }
+  // Je retourne le nouveau tableau
   return relatedItems
+  
 }
 
-// fonction permettant de vérifier la saisie de l'utilisateur dans le champ de recherche principale
+/** La @function testInput vérifie la saisie de l'utilisateur dans le champ de recherche principale */ 
+
+// Je crée la fonction
 function testInput(event) {
+
+  // Je désactive le comportement par défaut
   event.preventDefault
+  // Je récupère le champ de recherche
   const mainInput = document.getElementById('search')
+  // Je récupère la valeur du champ
   const entry = mainInput.value
+
+  // Je crée un tableau de tous les tags affichés
   let allTags = allTagsDisplayedArray()
   let filterdRecipes
-  // EventListener sur évènement 'keyup' de l'input principal (touches de suppression),
-  // lancement de la @function findRecipes avec une recherche sur l'ensemble des recettes 
-  // et pas seulement les recettes affichées
 
+  // J'ajoute un addEventListener sur évènement 'keyup' des touches de suppression
+  // pour lancer la fonction findRecipes avec une recherche sur l'ensemble des recettes 
+  // et pas seulement les recettes affichées
   mainInput.addEventListener('keyup', (e) => {
     const keyCode = e.code
     if (keyCode === 'Backspace' || keyCode === 'Delete') {
       result(allTags, recipes)
     }    
   })
-  // si la saisie est supérieure ou égale à 3 caractères alors allTags (mots à chercher)
-  // est modifié et la @function findRecipes effectue la recherche de correspondances 
-  // uniquement sur les recettes affichées
+
+  // Si la saisie est supérieure ou égale à 3 caractères, findRecipes effectue la recherche sur les recettes affichées
   if (entry.length >= 3) {
+
+    // J'appelle la fonction normalizeInputEntries
     let inputText = normalizeInputEntries(entry)
+
+    // Je crée un tableau contenant les saisies de l'input
     let array = inputText.split(' ')
+
+    // J'appelle la fonction litleWords
     let arrayEntry = litleWords(array)
+
+    // Pour chaque élément 
     arrayEntry.forEach(elem => {
+      // J'ajoute les tags sélectionnés au tableau de tous les tags
       allTags.push(elem)
     })
+
+    // Je crée un nouvel objet contenant ces éléments avec set et le retourne
     allTags = [...new Set(allTags)]
+
+    // J'affiche les recettes filtrées
     filterdRecipes = showRecipes()
+
+    // J'affiche les tags relatives aux recherches et les recettes correspondantes
     result(allTags, filterdRecipes)
+
+  // Sinon
   } else {
+
+    // J'affiche les tags relatives aux recherches et les recettes correspondantes
     result(allTags, recipes)
   }
+
 }
 
-// EventListener sur évènement 'keyup' de l'input principal (touche Escape),
-// lancement de la @function findRecipes avec une recherche sur l'ensemble des recettes 
-// et pas seulement les recettes affichées
+// J'ajoute un addEventListener sur évènement 'keyup' pour relancer la recherche sur toutes les recettes
 const mainInput = document.getElementById('search')
 mainInput.addEventListener('keyup', (e) => {
   const keyCode = e.code
@@ -90,7 +160,7 @@ mainInput.addEventListener('keyup', (e) => {
   }
 })
 
-/** La @function result trouve les correspondance entre les sélections/recettes puis affiche le résultat */ 
+/** La @function result trouve les correspondances entre les sélections/recettes puis affiche le résultat dans le header*/ 
 
 // Je crée la fonction
 function result(tags, someRecipes) {
