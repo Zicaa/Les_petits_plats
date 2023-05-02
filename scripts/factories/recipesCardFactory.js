@@ -45,6 +45,7 @@ function recipesCardFactory(recipe) {
    divdescriptionContent.appendChild(description)
    description.textContent = `${recipe[i].description}`
  }
+ 
 }
 
 /** La @function createIngredients intégre les ingrédients dans les cartes recettes*/ 
@@ -81,6 +82,7 @@ function createIngredients(ingredients, ulIngredients) {
    // J'appelle la fonction createUnit
    createUnit(unit, quantityNb, quantity)
  }
+
 }
 
 /** La @function createUnit génère les unités et abréviations*/ 
@@ -154,4 +156,5 @@ function createUnit(unit, quantityNb, quantity) {
      quantity.innerHTML += ' ' + ` ${unit}`
    }
  }
+
 }

@@ -15,6 +15,7 @@ function normalizeInputEntries(param) {
 
   // Je retourne la nouvelle chaîne de caractère à comparer
   return outputData
+  
 }
 
 /** La @function removeAccent supprime les accents et certains caractères spéciaux comme œ*/ 
@@ -25,6 +26,7 @@ function removeAccent(str) {
   let b = a.replace(/[œ]/g , 'oe')
   let c = b.replace(/[ÈÉÊË]/g,'E')
   return c
+
 }
 
 /** La @function litleWords exclue de la recherche les mots inutiles*/
@@ -157,6 +159,7 @@ function allTagsDisplayedArray() {
    // J'ajoute les ustensiles tagués à tous les éléments dans un nouveau tableau croisé
   allTags = tempArray.concat(ustensilsTags)
   return allTags
+
 }
 
 /** la @function pushTag crée un seul tableau de données de tous les ingrédients, appareil et ustensils présents en tags*/
@@ -199,6 +202,7 @@ function sameTag(allLi, li) {
       li.remove()
     }
   }
+
 }
 
 /** la @function selectUl retourne l'id de l'ul*/
@@ -224,6 +228,7 @@ function selectUl(str) {
     const ul = document.querySelector('.elements-ustensiles')
     return ul
   }
+
 }
 
 /** La @function closeTags ferme les tags */
@@ -243,7 +248,7 @@ function closeTags() {
   const mainInput = document.getElementById('search')
   const entry = mainInput.value
 
-  // Si la valeur est égale ou supérieur à 3 caractères
+  // Si la valeur de l'input est égale ou supérieur à 3 caractères
   if (entry.length >= 3) {
     // J'appelle la fonction normalizeInputEntries
     let inputText = normalizeInputEntries(entry)
@@ -256,6 +261,7 @@ function closeTags() {
   }
   // Je retourne tous les tags et toutes les recettes pour les afficher
   result(allTags, recipes)
+  
 }
 
 

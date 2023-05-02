@@ -56,7 +56,6 @@ function dropdownNewDisplay(elements, ul, entry) {
     ul.innerHTML = ''
      // J'appelle la fonction sortAndShowElements
     sortAndShowElements(elements, ul)
-
   }
 
 }
@@ -81,11 +80,10 @@ function compareElementsAndEntries(entry, elements) {
       // J'intègre l'élément à mon nouveau tableau
       relatedItems.push(elements[i])
     }
-
   }
   // Je retourne le nouveau tableau
   return relatedItems
-  
+
 }
 
 /** La @function testInput vérifie la saisie de l'utilisateur dans le champ de recherche principale */ 
@@ -158,6 +156,7 @@ mainInput.addEventListener('keyup', (e) => {
     let allTags = allTagsDisplayedArray()
     result(allTags, recipes)
   }
+  
 })
 
 /** La @function result trouve les correspondances entre les sélections/recettes puis affiche le résultat dans le header*/ 
@@ -167,5 +166,6 @@ function result(tags, someRecipes) {
   findRecipes(tags, someRecipes)
   let filterdRecipes = showRecipes()
   numberOfRecipes(filterdRecipes)
+
 }
 

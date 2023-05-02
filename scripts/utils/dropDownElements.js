@@ -3,7 +3,7 @@ let allIngredients
 let allAppliances
 let allUstensils
 
-/** La @function noDuplicateDropdownsElements afficher les éléments sans doublon dans chaque dropdown */ 
+/** La @function noDuplicateDropdownsElements affiche les éléments sans doublon dans chaque dropdown */ 
 
 // Je crée la fonction
 function noDuplicateDropdownsElements(recipe) {
@@ -21,6 +21,7 @@ function noDuplicateDropdownsElements(recipe) {
   const ulMenuUstensils = document.getElementById('menu-ustensiles')
   ulMenuUstensils.innerHTML = ''
   sortAndShowElements(allUstensils, ulMenuUstensils)
+
 }
 
 /** La @function noDuplicateIngredients empêche les doublons d'ingrédients dans les dropdowns*/ 
@@ -107,15 +108,17 @@ function noDuplicateUstensils(recipe) {
   }
   let allElementsUnique = [...new Set(allElements)]
   return allElementsUnique
+
 }
 
-/** La @function sortAndShowElements trie par ordre alphabétique et j'affiche les éléments des dropdowns en colonne */ 
+/** La @function sortAndShowElements trie par ordre alphabétique et affiche les éléments des dropdowns en colonne */ 
 
 // Je crée la fonction
 function sortAndShowElements(elements, ul) {
   titleSort(elements)
   createColumns(elements, ul)
   createItem(elements, ul)
+
 }
 
 /** La @function titleSort trie les titres de recette par ordre alphabétique */ 
@@ -134,6 +137,7 @@ function titleSort(elements) {
     return (a < b) ? -1 : 1
   }
   elements.sort(tri)
+
 }
 
 /** La @function createColumns afficher les listes sur 3 colonnes */ 
@@ -143,6 +147,7 @@ function createColumns(elements, ul) {
   const elementsList = elements.length
   const columnSize = Math.ceil(elementsList / 3)
   ul.style.gridTemplateRows = `repeat(${columnSize}, 1fr)`
+
 }
 
 /** La @function createItem génère chaque liste d'éléments des dropdowns */ 
@@ -195,6 +200,7 @@ function tagedStyle(array, li) {
       li.tabIndex = '-1'
     }
   })
+
 }
 
 /** La @function keybordFunction permet la navigation au clavier */ 
@@ -213,6 +219,7 @@ function keybordFunction(ul) {
       } 
     })
   })
+
 }
 
 /** La @function nextSibling affiche l'élément suivant */ 
@@ -226,6 +233,7 @@ function nextSibling(li) {
   } else {
     ul.firstChild.focus()
   }
+
 }
 
 /** La @function previousSibling affiche l'élément précédent */ 
@@ -240,4 +248,5 @@ function previousSibling(li) {
     console.log(ul.lastChild)
     ul.lastChild.focus()
   }
+
 }
