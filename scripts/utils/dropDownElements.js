@@ -3,7 +3,9 @@ let allIngredients
 let allAppliances
 let allUstensils
 
-// Je crée une fonction qui va afficher les éléments sans doublon dans chaque dropdown
+/** La @function noDuplicateDropdownsElements afficher les éléments sans doublon dans chaque dropdown */ 
+
+// Je crée la fonction
 function noDuplicateDropdownsElements(recipe) {
   allIngredients = noDuplicateIngredients(recipe)
   const ulMenuIngredients = document.getElementById('menu-ingredients')
@@ -21,7 +23,9 @@ function noDuplicateDropdownsElements(recipe) {
   sortAndShowElements(allUstensils, ulMenuUstensils)
 }
 
-// Je crée la fonction qui empêche les doublons d'ingrédients
+/** La @function noDuplicateIngredients empêche les doublons d'ingrédients dans les dropdowns*/ 
+
+// Je crée la fonction
 function noDuplicateIngredients(recipe) {
 
  // Je crée un tableau avec tous les éléments
@@ -51,7 +55,9 @@ function noDuplicateIngredients(recipe) {
 
 }
 
-// Je crée la fonction qui empêche les doublons d'appareil
+/** La @function noDuplicateAppliances empêche les doublons d'appareils dans les dropdowns */ 
+
+// Je crée la fonction
 function noDuplicateAppliances(recipe) {
 
    // Je crée un tableau avec tous les éléments
@@ -73,7 +79,9 @@ function noDuplicateAppliances(recipe) {
 
 }
 
-// Je crée la fonction qui empêche les doublons d'ustensiles
+/** La @function noDuplicateUstensils empêche les doublons d'ustensiles dans les dropdowns */ 
+
+// Je crée la fonction
 function noDuplicateUstensils(recipe) {
 
   // Je crée un tableau avec tous les éléments
@@ -101,14 +109,18 @@ function noDuplicateUstensils(recipe) {
   return allElementsUnique
 }
 
-// Je crée une fonction tri par ordre alphabétique et j'affiche les éléments en colonne
+/** La @function sortAndShowElements trie par ordre alphabétique et j'affiche les éléments des dropdowns en colonne */ 
+
+// Je crée la fonction
 function sortAndShowElements(elements, ul) {
   titleSort(elements)
   createColumns(elements, ul)
   createItem(elements, ul)
 }
 
-// Tri des titres de recette par ordre alphabétique
+/** La @function titleSort trie les titres de recette par ordre alphabétique */ 
+
+// Je crée la fonction
 function titleSort(elements) {
   function tri(a,b) {
     // J'extrait le mot avec la méthode split et colle les lettres avec la méthode join
@@ -124,14 +136,18 @@ function titleSort(elements) {
   elements.sort(tri)
 }
 
-// Je crée une fonction pour afficher les listes sur 3 colonnes
+/** La @function createColumns afficher les listes sur 3 colonnes */ 
+
+// Je crée la fonction
 function createColumns(elements, ul) {
   const elementsList = elements.length
   const columnSize = Math.ceil(elementsList / 3)
   ul.style.gridTemplateRows = `repeat(${columnSize}, 1fr)`
 }
 
-// Je crée la fonction qui génère chaque liste d'éléments des dropdowns
+/** La @function createItem génère chaque liste d'éléments des dropdowns */ 
+
+// Je crée la fonction
 function createItem(elements, ul) {
 
   // Je récupère les éléments dont j'ai besoin
@@ -159,16 +175,18 @@ function createItem(elements, ul) {
       }
     })
 
-    // J'ajoute le style des éléments taggés
+    // J'appelle la fonction tagedStyle
     tagedStyle(arrayTags, li) 
   }
 
-  // Je déclenche la fonction qui permet de naviguer au clavier
+  // J'appelle la fonction keybordFunction
   keybordFunction(ul) 
 
 }
 
-// Je crée une fonction qui change les styles des éléments taggés
+/** La @function tagedStyle change les styles des éléments taggés */ 
+
+// Je crée la fonction 
 function tagedStyle(array, li) {
   array.forEach(tag => {
     if (tag.textContent == li.textContent) {
@@ -179,7 +197,9 @@ function tagedStyle(array, li) {
   })
 }
 
-// Je crée une fonction permettant la navigation au clavier 
+/** La @function keybordFunction permet la navigation au clavier */ 
+
+// Je crée la fonction  
 function keybordFunction(ul) {
   const children = ul.children
   const allLi = Array.from(children)
@@ -195,7 +215,9 @@ function keybordFunction(ul) {
   })
 }
 
-// Je crée une fonction élément suivant
+/** La @function nextSibling affiche l'élément suivant */ 
+
+// Je crée la fonction 
 function nextSibling(li) {
   const next = li.nextSibling
   const ul = li.parentNode
@@ -206,7 +228,9 @@ function nextSibling(li) {
   }
 }
 
-// Je crée une fonction élément précédent
+/** La @function previousSibling affiche l'élément précédent */ 
+
+// Je crée la fonction 
 function previousSibling(li) {
   const prev = li.previousSibling
   const ul = li.parentNode

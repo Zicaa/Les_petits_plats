@@ -1,3 +1,4 @@
+
 // J'affiche les recettes
 recipesCardFactory(recipes)
 noDuplicateDropdownsElements(recipes)
@@ -10,7 +11,7 @@ buttonDropdown.forEach(button => {
   })
 })
 
-// Je déclenche la fermeture des dropdowns avec addEventlistener
+// Je déclenche la fermeture des dropdowns avec addEventlistener au clic sur l'icône
 const iconUp = document.querySelectorAll('.iconUp')
 iconUp.forEach(icon => {
   icon.addEventListener('click', () => {
@@ -18,7 +19,7 @@ iconUp.forEach(icon => {
   })
 })
 
-// Je déclenche la fermeture des boutons avec addEventlistener
+// Je déclenche la fermeture des dropdowns avec addEventlistener au clic sur le bouton
 const allButtonClose = document.querySelectorAll('.dropdown-form-icon')
 allButtonClose.forEach(button => {
   button.addEventListener('click', () => {
@@ -26,7 +27,14 @@ allButtonClose.forEach(button => {
   })
 })
 
-// Je crée une fonction permettant d'afficher le nombre de recettes dans le HTML 
+// Je lance la fonction testInput 
+mainInput.addEventListener('input', (event) => {
+  testInput(event)
+})
+
+/** La @function numberOfRecipes permet d'afficher le nombre de recettes dans le HTML */ 
+
+// Je crée la fonction 
 function numberOfRecipes(param) {
   const result = document.querySelector('.tags-result')
   result.innerHTML = `<span class="tags-result-bold">${param.length}</span> recette(s) trouvée(s)`
@@ -36,7 +44,9 @@ function numberOfRecipes(param) {
 let filteredRecipes = showRecipes()
 numberOfRecipes(filteredRecipes)
 
-// Je crée une fonction permettant d'afficher les recettes 
+/** La @function showRecipes permet d'afficher les recettes */ 
+
+// Je crée la fonction 
 function showRecipes() {
 
   // Je crée un tableau qui contient les recettes
@@ -56,6 +66,5 @@ function showRecipes() {
   }) 
   return newRecipes
 }
-
 
 
