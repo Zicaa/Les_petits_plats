@@ -1,81 +1,89 @@
+/** La @function dropdownInput affiche les éléments en fonction de la saisie dans les inputs des dropdowns */ 
 
-//_________________________________________________________________
-//_________________________________________________________________
-/**
- * @function dynamicChoices
- * fonction d'affichage des éléments en fonction de la saisie dans les inputs des dropdowns
- */
-
-function dynamicChoices() {
+// Je crée la fonction
+function dropdownInput() {
+  // Je récupère les éléments dont j'ai besoin : je cible l'élément
   const input = window.event.target
+  // Je récupère la valeur rentrée dans l'input par l'utilisateur
   const entry = input.value
+
+  // Si l'id de l'input est égal à ingrédient
   if (input.id == 'ingredients') {
     const ul = document.getElementById('menu-ingredients')
-    adjustDropdownDisplay(allIngredients, ul, entry)
+    // Je récupère l'id de l'ul correspondante
+    dropdownNewDisplay(allIngredients, ul, entry)
   }
+
+  // Si l'id de l'input est égal à appareil
   if (input.id == 'appareil') {
+    // Je récupère l'id de l'ul correspondante
     const ul = document.getElementById('menu-appareil')
-    adjustDropdownDisplay(allAppliance, ul, entry)
+    dropdownNewDisplay(allAppliance, ul, entry)
   }
+  // Si l'id de l'input est égal à ustensiles
   if (input.id == 'ustensiles') {
+    // Je récupère l'id de l'ul correspondante
     const ul = document.getElementById('menu-ustensiles')
-    adjustDropdownDisplay(allUstensils, ul, entry)
+    dropdownNewDisplay(allUstensils, ul, entry)
   }
+
 }
 
-//_________________________________________________________________
-/**
- * @function adjustDropdownDisplay
- * affichage dans la liste des éléments contenant la saisie de l'input
- * @param {Array} elements - allIngredients ou allAppliance ou allUstensils   
- * @param {HTMLElement} ul - ul conteneur de la liste  
- * @param {String} entry - saisie dans les inputs dropdown
- */
+/** La @function dropdownNewDisplay affiche dans les nouveaux dropdowns ajustés la liste des éléments saisis dans l'input */
 
-function adjustDropdownDisplay(elements, ul, entry) {
+// Je crée la fonction
+function dropdownNewDisplay(elements, ul, entry) {
+
+  // Si la valeur de l'input est égale ou supérieur à 1 caractère
   if (entry.length >= 1) {
-    let inputText = normalizeAndLowerCase(entry)
-    let relatedItems = compareElementsAndEntry(inputText, elements)
+    // J'appelle la fonction normalizeInputEntries
+    let inputText = normalizeInputEntries(entry)
+    // J'appelle la fonction compareElementsAndEntries
+    let relatedItems = compareElementsAndEntries(inputText, elements)
+    // Je vide les ul
     ul.innerHTML = ''
-    sortAndDisplayItems(relatedItems, ul)
+    // J'appelle la fonction sortAndShowElements
+    sortAndShowElements(relatedItems, ul)
+
+  // Sinon
   } else {
+    // Je vide les ul
     ul.innerHTML = ''
-    sortAndDisplayItems(elements, ul)
+    // J'appelle la fonction sortAndShowElements
+    sortAndShowElements(elements, ul)
   }
+
 }
 
-//_________________________________________________________________
-/**
- * @function compareElementsAndEntry
- * fonction permettant de n'afficher que les éléments correspondants à la saisie
- * @param {String} entry - saisie dans les inputs dropdown
- * @param {Array} elements - allIngredients ou allAppliance ou allUstensils   
- * @returns {Array} - array des éléments correspondants à la saisie
- */
+/** La @function compareElementsAndEntries n'affiche que les éléments des listes correspondants à la saisie */ 
 
-function compareElementsAndEntry(entry, elements) {
+// Je crée la fonction
+function compareElementsAndEntries(entry, elements) {
+
+  // Je crée un tableau comparatif
   let relatedItems = []
+
+  // Pour chaque élément
   for (let i = 0; i < elements.length; i++) {
-    let ingredient = normalizeAndLowerCase(elements[i])
-    if (ingredient.search(entry) != -1) {
+
+    // J'intègre l'élément à mon nouveau tableau
+    let queryElement = normalizeInputEntries(elements[i])
+    if (queryElement.search(entry) != -1) {
       relatedItems.push(elements[i])
     }
   }
+  // Je retourne le nouveau tableau
   return relatedItems
+
 }
 
-//_________________________________________________________________
+/** La @function testInput vérifie la saisie de l'utilisateur dans le champ de recherche principale */ 
 
-/**
- * @function testInput
- * fonction permettant de vérifier la saisie de l'utilisateur dans le champ de recherche principal
- * et d'afficher les recettes, ingrédients, appareils et ustensiles correspondants
- * @param {MouseEvent} event 
- */
-
-
+// Je crée la fonction
 function testInput(event) {
+  // Je désactive le comportement par défaut
   event.preventDefault
+  // Je récupère le champ de recherche
   const mainInput = document.getElementById('search')
   const entry = mainInput.value
   let allTags = findTagsDisplayed()
@@ -96,7 +104,7 @@ function testInput(event) {
    * uniquement sur les recettes affichées
    */ 
   if (entry.length >= 3) {
-    let inputText = normalizeAndLowerCase(entry)
+    let inputText = normalizeInputEntries(entry)
     let array = inputText.split(' ')
     let arrayEntry = clean(array)
     arrayEntry.forEach(elem => {
@@ -131,7 +139,7 @@ mainInput.addEventListener('keyup', (e) => {
  */
 function result(tags, someRecipes) {
   findRecipes(tags, someRecipes)
-  let filterdRecipes = recipesDisplayed()
-  displayResultnumber(filterdRecipes)
+  let filterdRecipes = showRecipes()
+  numberOfRecipes(filterdRecipes)
 }
 

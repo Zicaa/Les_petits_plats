@@ -8,9 +8,9 @@
  */
 
 function concatenationOfRecipes(recipe) {
-  let name = normalizeAndLowerCase(recipe.name)
-  let appliance = normalizeAndLowerCase(recipe.appliance)
-  let description = normalizeAndLowerCase(recipe.description)
+  let name = normalizeInputEntries(recipe.name)
+  let appliance = normalizeInputEntries(recipe.appliance)
+  let description = normalizeInputEntries(recipe.description)
   let arrayIngredients = recoveryIngredients(recipe)
   let ingredients = arrayIngredients.toString()
   let arrayUstensils = recoveryUstensils(recipe)
@@ -32,7 +32,7 @@ function recoveryIngredients(recipe) {
   const ingredientsList = recipe.ingredients
   for (let j = 0; j < ingredientsList.length; j++) {
     let ingredient = ingredientsList[j].ingredient
-    let ingredients = normalizeAndLowerCase(ingredient)
+    let ingredients = normalizeInputEntries(ingredient)
     allIngredients.push(ingredients)
   }
   return allIngredients
@@ -51,7 +51,7 @@ function recoveryUstensils(recipe) {
   const ustensilsList = recipe.ustensils
   for (let k = 0; k < ustensilsList.length; k++) {
     let ustensil = ustensilsList[k]
-    let ustensils = normalizeAndLowerCase(ustensil)
+    let ustensils = normalizeInputEntries(ustensil)
     allUstensils.push(ustensils)
   }
   return allUstensils

@@ -1,11 +1,8 @@
-//_________________________________________________________________
-
-
-// Affichage des recettes _________________________________________
+// J'affiche les recettes
 recipesCardFactory(recipes)
 noDuplicateDropdownsElements(recipes)
 
-// Ouverture et fermeture des dropdowns ___________________________
+// Je déclenche l'ouverture des dropdowns avec addEventlistener
 const buttonDropdown = document.querySelectorAll('.dropdown-button')
 buttonDropdown.forEach(button => {
   button.addEventListener('click', (event) => {
@@ -13,7 +10,7 @@ buttonDropdown.forEach(button => {
   })
 })
 
-
+// Je déclenche la fermeture des dropdowns avec addEventlistener au clic sur l'icône
 const iconUp = document.querySelectorAll('.iconUp')
 iconUp.forEach(icon => {
   icon.addEventListener('click', () => {
@@ -21,6 +18,7 @@ iconUp.forEach(icon => {
   })
 })
 
+// Je déclenche la fermeture des dropdowns avec addEventlistener au clic sur le bouton
 const allButtonClose = document.querySelectorAll('.dropdown-form-icon')
 allButtonClose.forEach(button => {
   button.addEventListener('click', () => {
@@ -29,66 +27,66 @@ allButtonClose.forEach(button => {
 })
 
 
-// recherche dans le champ de recherche principal _________________
+// Je lance la fonction testInput 
 mainInput.addEventListener('input', (event) => {
   testInput(event)
 })
 
-//_________________________________________________________________
-/**
- * @function displayResultnumber
- * fonction permettant d'afficher dans le HTML 
- * le nombre de recettes trouvées
- * @param {Array} param - recettes affichées
- */
+/** La @function numberOfRecipes permet d'afficher le nombre de recettes dans le HTML */ 
 
-function displayResultnumber(param) {
+// Je crée la fonction
+function numberOfRecipes(param) {
   console.log(param)
   const result = document.querySelector('.tags-result')
   result.innerHTML = `<span class="tags-result-bold">${param.length}</span> recette(s) trouvée(s)`
 }
 
-let filteredRecipes = recipesDisplayed()
-displayResultnumber(filteredRecipes)
+let filteredRecipes = showRecipes()
+numberOfRecipes(filteredRecipes)
 
-//_________________________________________________________________
-/**
- * @function recipesDisplayed
- * fonction permettant de récupérer les recettes affichées
- * @returns {array} - recettes affichées
- */
+/** La @function showRecipes permet d'afficher les recettes */ 
 
-function recipesDisplayed() {
-  let displayedRecipes = []
+// Je crée la fonction 
+function showRecipes() {
+
+  // Je crée un tableau qui contient les recettes
+  let newRecipes = []
   let articles = document.querySelectorAll('.recip-card')
+
+  // Je vérifie si chaque id d'article correspond à l'id des recettes
   let allArticles = Array.from(articles)
   allArticles.forEach(article => {
     let articleId = article.id
     for (let i = 0; i < recipes.length; i++) {
       let recipeId = `article-${recipes[i].id}`
       if (articleId == recipeId) {
-        displayedRecipes.push(recipes[i])
+        newRecipes.push(recipes[i])
       }
     }
   })
-  displayedRecipes = simpleRecipes(displayedRecipes) 
-  return displayedRecipes
+  newRecipes = stringifyRecipes(newRecipes) 
+  return newRecipes
 }
 
-//_________________________________________________________________
-let allRecipes = simpleRecipes(recipes)
+/** La @function showRecipes permet d'afficher les recettes */ 
 
-/**
- * @function simpleRecipes
- * les valeurs des recettes sont concaténées et stringifiées
- * @param {Array} param 
- * @returns {Array}
- */
-function simpleRecipes(param) {
+let allRecipes = stringifyRecipes(recipes)
+
+/** @function stringifyRecipes concatène et transforme en chaîne de caractères la valeur des recettes */
+
+// Je crée la fonction
+function stringifyRecipes(param) {
+
+  // Je crée un nouveau tableau qui reçoit les recettes
   let array = []
+  // Pour chaque recette
   for (let i = 0; i < param.length; i++) {
+    // Je concatène l'ensemble des données de la recette
     let recipe = concatenationOfRecipes(param[i])
+    // J'ajoute la recette concaténée au tableau de recettes
     array.push(recipe)
   }
+  // Je retourne le tableau de recettes
   return array
+  
 }

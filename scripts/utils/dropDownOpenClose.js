@@ -28,14 +28,9 @@ function openDropdown(event) {
   const input = formChildren[1]
   const buttonClose = formChildren[2]
   input.focus()
-  dynamicChoices()
-  /**
-   * EventListener sur évènement 'input' des inputs, 
-   * lancement de la @function dynamicChoices qui permet
-   * l'affichage des éléments en fonction des la saisie
-   */ 
+  dropdownInput()
   input.addEventListener('input', (event) => {
-    dynamicChoices(event)
+    dropdownInput(event)
   })
   onlyOneDropdownOpen(buttonOpen)
   /**

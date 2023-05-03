@@ -1,12 +1,12 @@
 //_________________________________________________________________
 
 /**
- * @function normalizeAndLowerCase
+ * @function normalizeInputEntries
  * transforme la string : minuscules, sans accents
  * @param {String} param 
  * @returns {String}
  */
-function normalizeAndLowerCase(param) {
+function normalizeInputEntries(param) {
   let a = param.normalize('NFD')
   a = replacements(a)
   let b = a.toLowerCase()
@@ -136,7 +136,7 @@ function pushTag(elements) {
   let elementsTags = Array.from(elements)
   elementsTags.forEach(li => {
     let licontent = li.textContent
-    let liNormalized = normalizeAndLowerCase(licontent)
+    let liNormalized = normalizeInputEntries(licontent)
     allTags.push(liNormalized)
   })
   return allTags
@@ -196,7 +196,7 @@ function closeSelectedBloc() {
   const mainInput = document.getElementById('search')
   const entry = mainInput.value
   if (entry.length >= 3) {
-    let inputText = normalizeAndLowerCase(entry)
+    let inputText = normalizeInputEntries(entry)
     let arrayEntry = inputText.split(' ')
     arrayEntry.forEach(elem => {
       allTags.push(elem)

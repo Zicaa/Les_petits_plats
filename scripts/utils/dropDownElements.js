@@ -15,17 +15,17 @@ function noDuplicateDropdownsElements(param) {
   allIngredients = noDuplicateIngredients(param)
   const ulMenuIngredients = document.getElementById('menu-ingredients')
   ulMenuIngredients.innerHTML = ''
-  sortAndDisplayItems(allIngredients, ulMenuIngredients)
+  sortAndShowElements(allIngredients, ulMenuIngredients)
 
   allAppliance = noDuplicateAppliances(param) 
   const ulMenuAppliances = document.getElementById('menu-appareil')
   ulMenuAppliances.innerHTML = ''
-  sortAndDisplayItems(allAppliance, ulMenuAppliances)
+  sortAndShowElements(allAppliance, ulMenuAppliances)
 
   allUstensils = noDuplicateUstensils(param) 
   const ulMenuUstensils = document.getElementById('menu-ustensiles')
   ulMenuUstensils.innerHTML = ''
-  sortAndDisplayItems(allUstensils, ulMenuUstensils)
+  sortAndShowElements(allUstensils, ulMenuUstensils)
 }
 
 //_________________________________________________________________
@@ -92,13 +92,13 @@ function noDuplicateUstensils(param) {
 //_________________________________________________________________
 //_________________________________________________________________
 /**
- * @function sortAndDisplayItems
+ * @function sortAndShowElements
  * fonction tri par ordre alphabétique et affichage en colonnes des éléments
  * @param {Array} elements - allIngredients ou allAppliance ou allUstensils
  * @param {HTMLElement} ul - ul conteneur de la liste
  */
 
-function sortAndDisplayItems(elements, ul) {
+function sortAndShowElements(elements, ul) {
   titleSort(elements)
   columnSize(elements, ul)
   createItem(elements, ul)

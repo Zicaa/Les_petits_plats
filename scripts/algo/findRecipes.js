@@ -21,7 +21,6 @@ function findRecipes(array, array2) {
 
     // Si le compteur est strictement égal au nombre de mots stockés dans les inputs
     if (counter === array.length) {
-      console.log(array)
       // J'intègre les recettes contenant ces mots dans le tableau de recettes dynamiques
       recipesSelected.push(recipes[i])
       // J'incrémente le tableau
