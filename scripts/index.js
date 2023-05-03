@@ -60,7 +60,7 @@ displayResultnumber(filteredRecipes)
 
 function recipesDisplayed() {
   let displayedRecipes = []
-  let articles = document.querySelectorAll('.article')
+  let articles = document.querySelectorAll('.recip-card')
   let allArticles = Array.from(articles)
   allArticles.forEach(article => {
     let articleId = article.id
