@@ -2,7 +2,7 @@
 recipesCardFactory(datas)
 noDuplicateDropdownsElements(datas)
 
-// Je déclenche l'ouverture des dropdowns avec addEventlistener 
+// Je déclenche l'ouverture des dropdowns avec addEventlistener
 const buttonDropdown = document.querySelectorAll('.dropdown-button')
 buttonDropdown.forEach(button => {
   button.addEventListener('click', (event) => {
@@ -26,11 +26,6 @@ allButtonClose.forEach(button => {
   })
 })
 
-// Je crée une fonction de recherche dans le champ de recherche principal
-mainInput.addEventListener('input', (event) => {
-  testInput(event)
-})
-
 // Je crée une fonction permettant d'afficher le nombre de recettes dans le HTML 
 function numberOfRecipes(param) {
   const result = document.querySelector('.tags-result')
@@ -39,35 +34,24 @@ function numberOfRecipes(param) {
 
 // J'appelle la fonction qui affiche les recettes filtrées dans le HTML
 let filteredRecipes = showRecipes()
-numberOfRecipes(filteredRecipes)
 
-// J'appelle la fonction qui affiche les recettes filtrées dans le HTML
+// Je crée une fonction permettant d'afficher les recettes 
 function showRecipes() {
+
+  // Je crée un tableau qui contient les recettes 
   let queryRecipes = []
-  let recipesCard = document.querySelectorAll('.recipes-card')
-  let recipesCardArray = Array.from(recipesCard)
-  recipesCardArray.forEach(article => {
+
+  // Je vérifie si chaque id d'article correspond à l'id des recettes
+  let articles = document.querySelectorAll('.article')
+  let allArticles = Array.from(articles)
+  allArticles.forEach(article => {
     let articleId = article.id
     for (let i = 0; i < datas.length; i++) {
-      let recipeId = `recipe-${datas[i].id}`
+      let recipeId = `article-${datas[i].id}`
       if (articleId == recipeId) {
         queryRecipes.push(datas[i])
       }
     }
   }) 
   return queryRecipes
-}
-
-//
-let allRecipes = simpleRecipes(datas)
-
-// les valeurs des recettes sont concaténées et stringifiées
-
-function simpleRecipes(param) {
-  let array = []
-  for (let i = 0; i < param.length; i++) {
-    let data = recipesConcateFactory(param[i])
-    array.push(data)
-  }
-  return array
 }

@@ -1,5 +1,6 @@
 // Je crée une carte pour chaque recette en lui passant le tableau de recettes en paramètre
-function recipesCardFactory(recipe) {
+ function recipesCardFactory(recipe) {
+  console.log(recipe);
 
   // Je récupère la section contenant les recettes 
   const section = document.querySelector('.recipes-section')
@@ -10,13 +11,13 @@ function recipesCardFactory(recipe) {
     const article = new Element('recipesCard', 'article', 'recipes-card').elem
     section.appendChild(article)
     article.id = `recipe-${recipe[i].id}`
-    const anchor = new Element('recipesCardLink', 'a', 'recipes-card-link').elem
-    article.appendChild(anchor)
-    anchor.href = '#'
-    const divImage = new Element('recipesCardBg', 'div', 'recipes-card-bg').elem
-    anchor.appendChild(divImage)
+    const link = new Element('recipesCardLink', 'a', 'recipes-card-link').elem
+    article.appendChild(link)
+    link.href = '#'
+    const divBg = new Element('recipesCardBg', 'div', 'recipes-card-bg').elem
+    link.appendChild(divBg)
     const divDescription = new Element('recipesCardDescription', 'div', 'recipes-card-description').elem
-    anchor.appendChild(divDescription)
+    link.appendChild(divDescription)
     const divTitle = new Element('recipesCardDescriptionTitle', 'div', 'recipes-card-description-title').elem
     divDescription.appendChild(divTitle)
     const title = new Element('recipesCardDescriptionTitleH3', 'h3', 'recipes-card-description-title-h3').elem
@@ -68,8 +69,8 @@ function createIngredients(ingredients, ulIngredients) {
     }
 
     // Je récupère le nombre d'ingrédient en chiffre avec parseInt
-    const quantityStr = `${ingredient.quantity}`
-    const quantityNb = parseInt(quantityStr)
+    const quantityString = `${ingredient.quantity}`
+    const quantityNb = parseInt(quantityString)
     const unit = `${ingredient.unit}`
 
     // J'appelle la fonction createUnit 
@@ -78,9 +79,9 @@ function createIngredients(ingredients, ulIngredients) {
 }
 
 // Je crée la fonction createUnit qui qui génère les unités et abréviations
-function createUnit (unit, quantityNb, quantity) {
+function createUnit(unit, quantityNb, quantity) {
 
-  // Si la quantité est inférieure ou égale à 1, alors les unités seront écrit en entier au singulier
+  // Si la quantité est inférieure ou égale à 1, alors les unités seront écrit en entier au singulier, 
   if (quantityNb <= 1) {
     switch (unit) {
     case ('verres'):

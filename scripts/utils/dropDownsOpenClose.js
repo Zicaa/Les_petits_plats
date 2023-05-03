@@ -44,18 +44,9 @@ function openDropdown(event) {
 
   // J'appelle la fonction autorisant le déploiement d'un seul dropdown
   oneDropdownOnly(buttonOpen)
-  inputChoicesFactory()
-  /**
-   * EventListener sur évènement 'input' des inputs, 
-   * lancement de la @function inputChoicesFactory qui permet
-   * l'affichage des éléments en fonction des la saisie
-   */ 
-  input.addEventListener('input', (event) => {
-    inputChoicesFactory(event)
-  })
  
   // J'ajoute un eventListener sur évènement 'keydown' des dropdowns, 
-  // Si keyCode = 'Escape' : la function close ferme la dropdowns
+  // Si keyCode = 'Escape' : la @function close ferme la dropdowns
   dropdown.addEventListener('keydown', (e) => {
     const keyCode = e.code
     if (keyCode === 'Escape') {
@@ -157,3 +148,5 @@ function searchNodeId(element) {
     return id
   } 
 }
+
+
