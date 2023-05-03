@@ -85,61 +85,67 @@ function testInput(event) {
   event.preventDefault
   // Je récupère le champ de recherche
   const mainInput = document.getElementById('search')
+  // Je récupère la valeur du champ
   const entry = mainInput.value
-  let allTags = findTagsDisplayed()
-  /**
-   * EventListener sur évènement 'keyup' de l'input principal touches de suppression),
-   * lancement de la @function findRecipes avec une recherche sur l'ensemble des recettes 
-   * et pas seulement les recettes affichées
-   */ 
+
+  // Je crée un tableau de tous les tags affichés
+  let allTags = allTagsDisplayedArray()
+
+  // J'ajoute un addEventListener sur évènement 'keyup' des touches de suppression
+  // pour lancer la fonction findRecipes avec une recherche sur l'ensemble des recettes 
+  // et pas seulement les recettes affichées
   mainInput.addEventListener('keyup', (e) => {
     const keyCode = e.code
     if (keyCode === 'Backspace' || keyCode === 'Delete') {
       result(allTags, allRecipes)
     }
   })
-  /**
-   * si la saisie est supérieure ou égale à 3 caractères alors allTags (mots à chercher)
-   * est modifié et la @function findRecipes effectue la recherche de correspondances 
-   * uniquement sur les recettes affichées
-   */ 
+
+  // Si la saisie est supérieure ou égale à 3 caractères, findRecipes effectue la recherche sur les recettes affichées 
   if (entry.length >= 3) {
+
+    // J'appelle la fonction normalizeInputEntries
     let inputText = normalizeInputEntries(entry)
+
+    // Je crée un tableau contenant les saisies de l'input
     let array = inputText.split(' ')
-    let arrayEntry = clean(array)
+
+    // J'appelle la fonction litleWords
+    let arrayEntry = litleWords(array)
+
+    // Pour chaque élément 
     arrayEntry.forEach(elem => {
+      // J'ajoute les tags sélectionnés au tableau de tous les tags
       allTags.push(elem)
     })
+
+    // Je crée un nouvel objet contenant ces éléments avec set et le retourne
     allTags = [...new Set(allTags)]
+
+    // J'affiche les tags relatives aux recherches et les recettes correspondantes
     result(allTags, allRecipes)
-  } 
+
+  }
+
 }
 
-//_________________________________________________________________
-/**
- * EventListener sur évènement 'keyup' de l'input principal (touche Escape),
- * lancement de la @function findRecipes avec une recherche sur l'ensemble des recettes 
- * et pas seulement les recettes affichées
- */ 
+// J'ajoute un addEventListener sur évènement 'keyup' pour relancer la recherche sur toutes les recettes
 const mainInput = document.getElementById('search')
 mainInput.addEventListener('keyup', (e) => {
   const keyCode = e.code
   if (keyCode === 'Escape') {
-    let allTags = findTagsDisplayed()
+    let allTags = allTagsDisplayedArray()
     result(allTags, allRecipes)
   }
 })
 
-//_________________________________________________________________
-/**
- * @function result
- * trouve les correspondance entre tags/saisie et recettes et affiche le résultat
- * @param {Array} tags 
- * @param {Array} someRecipes 
- */
+/** La @function result trouve les correspondances entre les sélections/recettes puis affiche le résultat dans le header*/
+
+// Je crée la fonction
 function result(tags, someRecipes) {
   findRecipes(tags, someRecipes)
   let filterdRecipes = showRecipes()
   numberOfRecipes(filterdRecipes)
+
 }
 

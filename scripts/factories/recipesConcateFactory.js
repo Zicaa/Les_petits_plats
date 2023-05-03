@@ -1,13 +1,13 @@
 //_________________________________________________________________
 
 /**
- * @function concatenationOfRecipes
+ * @function concateRecipes
  * fonction permettant de concaténer les recettes
  * @param {Object} recipe 
  * @returns {String} - recette concaténée
  */
 
-function concatenationOfRecipes(recipe) {
+function concateRecipes(recipe) {
   let name = normalizeInputEntries(recipe.name)
   let appliance = normalizeInputEntries(recipe.appliance)
   let description = normalizeInputEntries(recipe.description)

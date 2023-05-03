@@ -21,12 +21,12 @@ function replacements(str) {
 
 //_________________________________________________________________
 /**
- * @function clean
+ * @function litleWords
  * exclue certains 'petits' mots inutiles pour la recherche dans le tableau des mots-clés/tags
  * @param {Array} array 
  * @returns {Array}
  */
-function clean(array) {
+function litleWords(array) {
   const wordsToExclude = ['et', 'd\'', 'au', 'de', 'la', 'le', 'du', 'en', 'ou', 'l\'', 'a', 'un', 'une', 'avec']
   let arrayEntry = array.filter(x => !wordsToExclude.includes(x))
   return arrayEntry
@@ -67,7 +67,7 @@ function displayElementSelected() {
   li.appendChild(icon)
   let allLi = ul.children
   twinSearch(allLi, li)
-  let allTags = findTagsDisplayed()
+  let allTags = allTagsDisplayedArray()
   const mainInput = document.getElementById('search')
   const entry = mainInput.value
   const arrayEntry = entry.split(' ')
@@ -78,7 +78,7 @@ function displayElementSelected() {
   if (section.style.display === 'grid') {
     result(allTags, allRecipes)
   } else {
-    allTags = findTagsDisplayed()
+    allTags = allTagsDisplayedArray()
     result(allTags, allRecipes)
     const mainInput = document.getElementById('search')
     mainInput.value = ''
@@ -100,12 +100,12 @@ function displayElementSelected() {
 
 //_________________________________________________________________
 /**
- * @function findTagsDisplayed
+ * @function allTagsDisplayedArray
  * fonction permettant de récupérer un array de tous les tags affichés
  * @returns {Array} - array de tous les tags affichés
  */
 
-function findTagsDisplayed() {
+function allTagsDisplayedArray() {
   let allTags = []
   const divTags = document.querySelector('.tags-selected')
   const allUl = divTags.children
@@ -192,7 +192,7 @@ function closeSelectedBloc() {
   const target = window.event.target
   const parentTarget = target.parentNode
   parentTarget.remove()
-  let allTags = findTagsDisplayed()
+  let allTags = allTagsDisplayedArray()
   const mainInput = document.getElementById('search')
   const entry = mainInput.value
   if (entry.length >= 3) {

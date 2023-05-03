@@ -82,7 +82,7 @@ function stringifyRecipes(param) {
   // Pour chaque recette
   for (let i = 0; i < param.length; i++) {
     // Je concatène l'ensemble des données de la recette
-    let recipe = concatenationOfRecipes(param[i])
+    let recipe = concateRecipes(param[i])
     // J'ajoute la recette concaténée au tableau de recettes
     array.push(recipe)
   }
