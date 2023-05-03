@@ -35,11 +35,11 @@ function litleWords(array) {
 //_________________________________________________________________
 
 /**
- * @function displayElementSelected
+ * @function showTagsSelected
  * fonction d'affichage des tags
  */
 
-function displayElementSelected() {
+function showTagsSelected() {
   const target = window.event.target
   const content = target.textContent
   const ulTarget = target.parentNode

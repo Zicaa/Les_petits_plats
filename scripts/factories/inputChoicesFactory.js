@@ -18,7 +18,7 @@ function dropdownInput() {
   if (input.id == 'appareil') {
     // Je récupère l'id de l'ul correspondante
     const ul = document.getElementById('menu-appareil')
-    dropdownNewDisplay(allAppliance, ul, entry)
+    dropdownNewDisplay(allAppliances, ul, entry)
   }
   // Si l'id de l'input est égal à ustensiles
   if (input.id == 'ustensiles') {

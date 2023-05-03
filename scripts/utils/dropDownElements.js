@@ -1,186 +1,189 @@
-//_________________________________________________________________
-
-let allIngredients
-let allAppliance
-let allUstensils
-
-//_________________________________________________________________
-/**
- * @function noDuplicateDropdownsElements
- * fonction de non duplication des éléments dans chaque dropdown
- * @param {Array} param - recettes
- */
-
-function noDuplicateDropdownsElements(param) {
-  allIngredients = noDuplicateIngredients(param)
+// Je crée la fonction
+function noDuplicateDropdownsElements(recipe) {
+  allIngredients = noDuplicateIngredients(recipe)
   const ulMenuIngredients = document.getElementById('menu-ingredients')
   ulMenuIngredients.innerHTML = ''
   sortAndShowElements(allIngredients, ulMenuIngredients)
 
-  allAppliance = noDuplicateAppliances(param) 
+  allAppliances = noDuplicateAppliances(recipe) 
   const ulMenuAppliances = document.getElementById('menu-appareil')
   ulMenuAppliances.innerHTML = ''
-  sortAndShowElements(allAppliance, ulMenuAppliances)
+  sortAndShowElements(allAppliances, ulMenuAppliances)
 
-  allUstensils = noDuplicateUstensils(param) 
+  allUstensils = noDuplicateUstensils(recipe) 
   const ulMenuUstensils = document.getElementById('menu-ustensiles')
   ulMenuUstensils.innerHTML = ''
   sortAndShowElements(allUstensils, ulMenuUstensils)
+
 }
 
-//_________________________________________________________________
-/**
- * @function noDuplicateIngredients
- * fonction liste des ingrédients sans doublons
- * @param {Array} param - recettes
- */
+/** La @function noDuplicateIngredients empêche les doublons d'ingrédients dans les dropdowns*/ 
 
-function noDuplicateIngredients(param) {
-  let ALLelements = []
-  for (let i = 0; i < param.length; i++) {
-    const ingredientsRecipe = param[i].ingredients
+// Je crée la fonction
+function noDuplicateIngredients(recipe) {
+
+ // Je crée un tableau avec tous les éléments
+ let allElements = []
+
+  // Pour chaque élément de mon tableau de recettes
+  for (let i = 0; i < recipe.length; i++) {
+
+    // Je récupère les ingrédients
+    const ingredientsRecipe = recipe[i].ingredients
+
+    // Je crée un tableau de ces ingrédients
     let arrayIngredients = []
     for (let ingredient of ingredientsRecipe) {
+      // Je crée un ingrédient unique et l'ajoute au tableau d'ingrédients
       let oneIgredient = ingredient.ingredient
       arrayIngredients.push(oneIgredient)
     }
-    arrayIngredients.forEach(ingr => ALLelements.push(ingr))
+
+    // J'ajoute chaque ingrédient unique au tableau contenant tous les éléments
+    arrayIngredients.forEach(ingr => allElements.push(ingr))
   }
-  let allElementsUnique = [...new Set(ALLelements)]
+
+  // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
+  let allElementsUnique = [...new Set(allElements)]
   return allElementsUnique
+
 }
 
-//_________________________________________________________________
-/**
- * @function noDuplicateAppliances
- * fonction liste des appareils sans doublons
- * @param {Array} param - recettes
- */
+/** La @function noDuplicateAppliances empêche les doublons d'appareils dans les dropdowns */ 
 
-function noDuplicateAppliances(param) {
-  let ALLelements = []
-  for (let i = 0; i < param.length; i++) {
-    const applianceRecipe = param[i].appliance
-    ALLelements.push(applianceRecipe)
+// Je crée la fonction
+function noDuplicateAppliances(recipe) {
+
+   // Je crée un tableau avec tous les éléments
+   let allElements = []
+
+   // Pour chaque élément de mon tableau de recettes
+   for (let i = 0; i < recipe.length; i++) {
+
+    // Je récupère les appareils
+    const applianceRecipe = recipe[i].appliance
+
+    // J'ajoute cet appareil unique au tableau contenant tous les éléments
+    allElements.push(applianceRecipe)
   }
-  let allElementsUnique = [...new Set(ALLelements)]
+
+  // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
+  let allElementsUnique = [...new Set(allElements)]
   return allElementsUnique
+
 }
 
-//_________________________________________________________________
-/**
- * @function noDuplicateUstensils
- * fonction liste des ustensiles sans doublons
- * @param {Array} param - recettes
- */
+/** La @function noDuplicateUstensils empêche les doublons d'ustensiles dans les dropdowns */ 
 
-function noDuplicateUstensils(param) {
-  let ALLelements = []
-  for (let i = 0; i < param.length; i++) {
-    const ustensilsRecipe = param[i].ustensils
+// Je crée la fonction
+function noDuplicateUstensils(recipe) {
+
+  // Je crée un tableau avec tous les éléments
+  let allElements = []
+
+  // Pour chaque ingredient de mon tableau d'ingrédients
+  for (let i = 0; i < recipe.length; i++) {
+
+    // Je récupère les ustensiles
+    const ustensilsRecipe = recipe[i].ustensils
+
+    // Je crée un tableau de ces ustensiles
     let arrayUstensils = []
+
+    // Pour chaque ustensile de mon tableau d'ustensiles
     for (let ustensil of ustensilsRecipe) {
       let oneUstensil = ustensil
       arrayUstensils.push(oneUstensil)
     }
-    arrayUstensils.forEach(ust => ALLelements.push(ust))
+
+    // Je crée un ustensile unique et l'ajoute au tableau d'ustensiles
+    arrayUstensils.forEach(ust => allElements.push(ust))
   }
-  let allElementsUnique = [...new Set(ALLelements)]
+  let allElementsUnique = [...new Set(allElements)]
   return allElementsUnique
+
 }
 
-//_________________________________________________________________
-//_________________________________________________________________
-/**
- * @function sortAndShowElements
- * fonction tri par ordre alphabétique et affichage en colonnes des éléments
- * @param {Array} elements - allIngredients ou allAppliance ou allUstensils
- * @param {HTMLElement} ul - ul conteneur de la liste
- */
+/** La @function sortAndShowElements trie par ordre alphabétique et affiche les éléments des dropdowns en colonne */ 
 
+// Je crée la fonction
 function sortAndShowElements(elements, ul) {
   titleSort(elements)
-  columnSize(elements, ul)
+  createColumns(elements, ul)
   createItem(elements, ul)
+
 }
 
-//_________________________________________________________________
-/**
- * @function titleSort
- * fonction de tri par ordre alphabétique 
- * @param {Array} elements - allIngredients ou allAppliance ou allUstensils 
- */
+/** La @function titleSort trie les titres de recette par ordre alphabétique */ 
 
+// Je crée la fonction
 function titleSort(elements) {
   function tri(a,b) {
-    const titleA = a.split(' ').join('')
-    a = titleA.toLowerCase()
+    // J'extrait le mot avec la méthode split et colle les lettres avec la méthode join
+    const titleAremoveAccent = a.split(' ').join('')
+    a = titleAremoveAccent.toLowerCase()
+    // Je supprime les accents
     a.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    const titleB = b.split(' ').join('')
-    b = titleB.toLowerCase()
+    const titleBremoveAccent = b.split(' ').join('')
+    b = titleBremoveAccent.toLowerCase()
     b.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     return (a < b) ? -1 : 1
   }
   elements.sort(tri)
+
 }
 
-//_________________________________________________________________
-/**
- * @function columnSize
- * fonction pour déterminer le nombre de lignes à afficher sur 3 colonne
- * @param {Array} elements - allIngredients ou allAppliance ou allUstensils 
- * @param {HTMLElement} ul - ul conteneur de la liste 
- */
+/** La @function createColumns afficher les listes sur 3 colonnes */ 
 
-function columnSize(elements, ul) {
-  const lenghtList = elements.length
-  const columnSize = Math.ceil(lenghtList / 3)
+// Je crée la fonction
+function createColumns(elements, ul) {
+  const elementsList = elements.length
+  const columnSize = Math.ceil(elementsList / 3)
   ul.style.gridTemplateRows = `repeat(${columnSize}, 1fr)`
+
 }
 
-//_________________________________________________________________
-/**
- * @function createItem
- * fonction création de chaque li pour chaque element
- * @param {Array} elements - allIngredients ou allAppliance ou allUstensils  
- * @param {HTMLElement} ul - ul conteneur de la liste 
- */
+/** La @function createItem génère chaque liste d'éléments des dropdowns */ 
 
+// Je crée la fonction
 function createItem(elements, ul) {
+
+  // Je récupère les éléments dont j'ai besoin
   const tags = document.querySelectorAll('.elements-item')
   const arrayTags = Array.from(tags)
+
+  // Pour chaque élément du tableau
   for (let t = 0; t < elements.length; t++) {
+
+    // Je crée une nouvelle liste du menu déroulant et l'intègre
     const li = new Element('li', 'li', 'dropdown-menu-item').elem
     ul.appendChild(li)
     li.textContent = `${elements[t]}`
     li.tabIndex = '0'
-    /**
-     * EventListener sur évènements 'click' et 'keydown' des li, 
-     * lancement de la @function displayElementSelected qui permet
-     * l'affichage en tags des éléments li séléctionnés
-     */ 
-    li.addEventListener('click', () => displayElementSelected()) // affichage des tags
+   
+    // Pour afficher les tags, j'ajoute un addEventListener sur les évènements 
+    // qui déclenche la function showTagsSelected au click
+    li.addEventListener('click', () => showTagsSelected())
+
+    // J'ajoute un addEventListener sur la touche entrée pour afficher les tags
     li.addEventListener('keydown', (e) => {
       const keyCode = e.code
       if (keyCode === 'Enter') {
-        displayElementSelected() // affichage des tags
+        showTagsSelected()
       }
     })
-    styleLiTaged(arrayTags, li) // style des éléments taggés
+    tagedStyle(arrayTags, li) // style des éléments taggés
   }
-  navigationWithArrows(ul) // navigation au clavier (flèches)
+
+  // J'appelle la fonction keybordFunction
+  keybordFunction(ul) // navigation au clavier (flèches)
+
 }
 
-//_________________________________________________________________
-//_________________________________________________________________
-/**
- * @function styleLiTaged
- * changement des styles et attributs des éléments taggés
- * @param {Array} array - Array de tous les tags
- * @param {HTMLElement} li - élément de la liste
- */
+/** La @function tagedStyle change les styles des éléments taggés */ 
 
-function styleLiTaged(array, li) {
+// Je crée la fonction 
+function tagedStyle(array, li) {
   array.forEach(tag => {
     if (tag.textContent == li.textContent) {
       li.style.color = 'rgba(255, 255, 255, 0.4)'
@@ -190,15 +193,10 @@ function styleLiTaged(array, li) {
   })
 }
 
-//_________________________________________________________________
-//_________________________________________________________________
-/**
- * @function navigationWithArrows
- * fonction permettant la navigation au clavier 
- * (avec les flèches gauche et droite) au niveau des listes
- * @param {HTMLElement} ul - ul conteneur de la liste  
- */
-function navigationWithArrows(ul) {
+/** La @function keybordFunction permet la navigation au clavier */ 
+
+// Je crée la fonction  
+function keybordFunction(ul) {
   const children = ul.children
   const allLi = Array.from(children)
   allLi.forEach(li => {
@@ -211,12 +209,12 @@ function navigationWithArrows(ul) {
       } 
     })
   })
+
 }
-/**
- * @function nextSibling
- * déplacement vers élément (li) suivant
- * @param {HTMLElement} li - élément de la liste 
- */
+
+/** La @function nextSibling affiche l'élément suivant */ 
+
+// Je crée la fonction 
 function nextSibling(li) {
   const next = li.nextSibling
   const ul = li.parentNode
@@ -225,12 +223,12 @@ function nextSibling(li) {
   } else {
     ul.firstChild.focus()
   }
+
 }
-/**
- * @function previousSibling
- * déplacement vers élément (li) précédent
- * @param {HTMLElement} li - élément de la liste  
- */
+
+/** La @function previousSibling affiche l'élément précédent */ 
+
+// Je crée la fonction 
 function previousSibling(li) {
   const prev = li.previousSibling
   const ul = li.parentNode
@@ -240,4 +238,5 @@ function previousSibling(li) {
     console.log(ul.lastChild)
     ul.lastChild.focus()
   }
+
 }
