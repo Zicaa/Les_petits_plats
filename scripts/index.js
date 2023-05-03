@@ -1,8 +1,11 @@
-// J'affiche les recettes
-recipesCardFactory(datas)
-noDuplicateDropdownsElements(datas)
+//_________________________________________________________________
 
-// Je déclenche l'ouverture des dropdowns avec addEventlistener
+
+// Affichage des recettes _________________________________________
+recipesCardFactory(recipes)
+noDuplicateDropdownsElements(recipes)
+
+// Ouverture et fermeture des dropdowns ___________________________
 const buttonDropdown = document.querySelectorAll('.dropdown-button')
 buttonDropdown.forEach(button => {
   button.addEventListener('click', (event) => {
@@ -10,7 +13,7 @@ buttonDropdown.forEach(button => {
   })
 })
 
-// Je déclenche la fermeture des dropdowns avec addEventlistener
+
 const iconUp = document.querySelectorAll('.iconUp')
 iconUp.forEach(icon => {
   icon.addEventListener('click', () => {
@@ -18,7 +21,6 @@ iconUp.forEach(icon => {
   })
 })
 
-// Je déclenche la fermeture des boutons avec addEventlistener
 const allButtonClose = document.querySelectorAll('.dropdown-form-icon')
 allButtonClose.forEach(button => {
   button.addEventListener('click', () => {
@@ -26,32 +28,67 @@ allButtonClose.forEach(button => {
   })
 })
 
-// Je crée une fonction permettant d'afficher le nombre de recettes dans le HTML 
-function numberOfRecipes(param) {
+
+// recherche dans le champ de recherche principal _________________
+mainInput.addEventListener('input', (event) => {
+  testInput(event)
+})
+
+//_________________________________________________________________
+/**
+ * @function displayResultnumber
+ * fonction permettant d'afficher dans le HTML 
+ * le nombre de recettes trouvées
+ * @param {Array} param - recettes affichées
+ */
+
+function displayResultnumber(param) {
+  console.log(param)
   const result = document.querySelector('.tags-result')
   result.innerHTML = `<span class="tags-result-bold">${param.length}</span> recette(s) trouvée(s)`
 }
 
-// J'appelle la fonction qui affiche les recettes filtrées dans le HTML
-let filteredRecipes = showRecipes()
+let filteredRecipes = recipesDisplayed()
+displayResultnumber(filteredRecipes)
 
-// Je crée une fonction permettant d'afficher les recettes 
-function showRecipes() {
+//_________________________________________________________________
+/**
+ * @function recipesDisplayed
+ * fonction permettant de récupérer les recettes affichées
+ * @returns {array} - recettes affichées
+ */
 
-  // Je crée un tableau qui contient les recettes 
-  let queryRecipes = []
-
-  // Je vérifie si chaque id d'article correspond à l'id des recettes
+function recipesDisplayed() {
+  let displayedRecipes = []
   let articles = document.querySelectorAll('.article')
   let allArticles = Array.from(articles)
   allArticles.forEach(article => {
     let articleId = article.id
-    for (let i = 0; i < datas.length; i++) {
-      let recipeId = `article-${datas[i].id}`
+    for (let i = 0; i < recipes.length; i++) {
+      let recipeId = `article-${recipes[i].id}`
       if (articleId == recipeId) {
-        queryRecipes.push(datas[i])
+        displayedRecipes.push(recipes[i])
       }
     }
-  }) 
-  return queryRecipes
+  })
+  displayedRecipes = simpleRecipes(displayedRecipes) 
+  return displayedRecipes
+}
+
+//_________________________________________________________________
+let allRecipes = simpleRecipes(recipes)
+
+/**
+ * @function simpleRecipes
+ * les valeurs des recettes sont concaténées et stringifiées
+ * @param {Array} param 
+ * @returns {Array}
+ */
+function simpleRecipes(param) {
+  let array = []
+  for (let i = 0; i < param.length; i++) {
+    let recipe = concatenationOfRecipes(param[i])
+    array.push(recipe)
+  }
+  return array
 }
