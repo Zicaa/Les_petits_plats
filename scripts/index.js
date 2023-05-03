@@ -1,4 +1,3 @@
-
 // J'affiche les recettes
 recipesCardFactory(recipes)
 noDuplicateDropdownsElements(recipes)
@@ -36,6 +35,7 @@ mainInput.addEventListener('input', (event) => {
 
 // Je crée la fonction 
 function numberOfRecipes(param) {
+  console.log(param)
   const result = document.querySelector('.tags-result')
   result.innerHTML = `<span class="tags-result-bold">${param.length}</span> recette(s) trouvée(s)`
 }

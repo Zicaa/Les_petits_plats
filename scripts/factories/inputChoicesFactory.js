@@ -1,8 +1,6 @@
-
 /** La @function dropdownInput affiche les éléments en fonction de la saisie dans les inputs des dropdowns */ 
 
-// Fonction d'affichage des éléments en fonction de la saisie dans les inputs des dropdowns
-
+// Je crée la fonction
 function dropdownInput() {
 
   // Je récupère les éléments dont j'ai besoin : je cible l'élément

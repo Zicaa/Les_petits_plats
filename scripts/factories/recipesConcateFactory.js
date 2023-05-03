@@ -1,4 +1,3 @@
-
 /** La @function concateRecipes permet de concaténer les recettes*/
 
 // Je crée la fonction
