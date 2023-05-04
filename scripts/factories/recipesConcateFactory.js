@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /** La @function concateRecipes permet de concaténer les recettes*/
 
 // Je crée la fonction

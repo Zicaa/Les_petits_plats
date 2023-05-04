@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // J'affiche les recettes
 recipesCardFactory(recipes)
 noDuplicateDropdownsElements(recipes)

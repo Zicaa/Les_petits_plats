@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /** La @function dropdownInput affiche les éléments en fonction de la saisie dans les inputs des dropdowns */ 
 
 // Je crée la fonction

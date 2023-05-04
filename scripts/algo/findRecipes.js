@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /** La @function findRecipes trouve les recettes contenant les mots saisis et les tags dans les recettes affichées et globales*/ 
 
 // Je crée la fonction

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Je crée une classe pour générer de nouveaux element du DOM avec nom, type et classe
 class Element {
 

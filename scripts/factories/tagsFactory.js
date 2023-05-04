@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /** La @function normalizeInputEntries permet une recherche de mots-clés peu importe la casse ou les accents */ 
 
 // Je crée la fonction

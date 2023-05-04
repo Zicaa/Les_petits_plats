@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /** La @function recipesCardFactory crée une carte pour chaque recette en lui passant le tableau de recettes en paramètre*/ 
 
 // Je crée la fonction
