@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 let allIngredients
 let allAppliances
 let allUstensils
