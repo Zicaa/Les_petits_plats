@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 // Je crée la fonction
 function noDuplicateDropdownsElements(recipe) {
   allIngredients = noDuplicateIngredients(recipe)
