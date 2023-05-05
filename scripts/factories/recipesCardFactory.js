@@ -1,4 +1,8 @@
-/** La @function recipesCardFactory crée une carte pour chaque recette en lui passant le tableau de recettes en paramètre*/ 
+/* eslint-disable no-unused-vars */
+
+/** La @function recipesCardFactory crée une carte pour chaque recette en lui passant le tableau de recettes en paramètre
+ * @param {Array} recipe - tableau de recettes
+*/ 
 
 // Je crée la fonction
 function recipesCardFactory(recipe) {
@@ -48,7 +52,9 @@ function recipesCardFactory(recipe) {
  
 }
 
-/** La @function createIngredients intégre les ingrédients dans les cartes recettes*/ 
+/** La @function createIngredients intégre les ingrédients dans les cartes recettes
+ * @param {Array} ingredients - tous les ingrédients
+ * @returns {HTMLElement} ul des ingrédients*/ 
 
 // Je crée la fonction 
 function createIngredients(ingredients, ulIngredients) {
@@ -85,7 +91,11 @@ function createIngredients(ingredients, ulIngredients) {
 
 }
 
-/** La @function createUnit génère les unités et abréviations*/ 
+/** La @function createUnit génère les unités et abréviations
+ * @param {String} unit - élément unique
+ * @param {Number} quantityNb - quantité au pluriel
+ * @param {HTMLElement} quantity  - quantité au singulier
+*/ 
 
 // Je crée la fonction 
 function createUnit(unit, quantityNb, quantity) {

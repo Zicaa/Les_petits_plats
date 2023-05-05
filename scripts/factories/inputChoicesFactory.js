@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+
 /** La @function dropdownInput affiche les éléments en fonction de la saisie dans les inputs des dropdowns */ 
 
 // Je crée la fonction
@@ -29,7 +32,11 @@ function dropdownInput() {
 
 }
 
-/** La @function dropdownNewDisplay affiche dans les nouveaux dropdowns ajustés la liste des éléments saisis dans l'input */
+/** La @function dropdownNewDisplay affiche dans les nouveaux dropdowns ajustés la liste des éléments saisis dans l'input 
+ * @param {Array} elements - allIngredients ou allAppliances ou allUstensils   
+ * @param {HTMLElement} ul - ul conteneur de la liste  
+ * @param {String} entry - données saisies dans les inputs dropdown
+ */
 
 // Je crée la fonction
 function dropdownNewDisplay(elements, ul, entry) {
@@ -55,7 +62,11 @@ function dropdownNewDisplay(elements, ul, entry) {
 
 }
 
-/** La @function compareElementsAndEntries n'affiche que les éléments des listes correspondants à la saisie */ 
+/** La @function compareElementsAndEntries n'affiche que les éléments des listes correspondants à la saisie 
+ * @param {Array} elements - allIngredients ou allAppliances ou allUstensils   
+ * @param {String} entry - données saisies dans les inputs dropdown
+ * @returns {Array} - array des éléments correspondants à la saisie
+*/ 
 
 // Je crée la fonction
 function compareElementsAndEntries(entry, elements) {
@@ -77,7 +88,9 @@ function compareElementsAndEntries(entry, elements) {
 
 }
 
-/** La @function testInput vérifie la saisie de l'utilisateur dans le champ de recherche principale */ 
+/** La @function testInput vérifie la saisie de l'utilisateur dans le champ de recherche principale 
+  * @param {MouseEvent} event 
+  */ 
 
 // Je crée la fonction
 function testInput(event) {
@@ -92,8 +105,8 @@ function testInput(event) {
   let allTags = allTagsDisplayedArray()
 
   // J'ajoute un addEventListener sur évènement 'keyup' des touches de suppression
-  // pour lancer la fonction findRecipes avec une recherche sur l'ensemble des recettes 
-  // et pas seulement les recettes affichées
+  // pour relancer la fonction findRecipes avec une recherche sur l'ensemble des recettes 
+  // et non celles seulement affichées
   mainInput.addEventListener('keyup', (e) => {
     const keyCode = e.code
     if (keyCode === 'Backspace' || keyCode === 'Delete') {
@@ -139,11 +152,14 @@ mainInput.addEventListener('keyup', (e) => {
   }
 })
 
-/** La @function result trouve les correspondances entre les sélections/recettes puis affiche le résultat dans le header*/
+/** La @function result trouve les correspondance entre tags/saisie et recettes et affiche le résultat
+ * @param {Array} arrayOfWords - tableau des mots saisis et des tags
+ * @param {Array} arrayOfRecipes - tableau des recettes affichées ou de toutes les recettes
+*/
 
 // Je crée la fonction
-function result(tags, someRecipes) {
-  findRecipes(tags, someRecipes)
+function result(arrayOfWords, arrayOfRecipes) {
+  findRecipes(arrayOfWords, arrayOfRecipes)
   let filterdRecipes = showRecipes()
   numberOfRecipes(filterdRecipes)
 

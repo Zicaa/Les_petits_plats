@@ -1,6 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-/** La @function normalizeInputEntries permet une recherche de mots-clés peu importe la casse ou les accents */ 
+
+/** La @function normalizeInputEntries permet une recherche de mots-clés peu importe la casse ou les accents 
+ * @param {String} param - données saisies par l'utilisateur dans l'input
+ * @returns {String}
+*/ 
 
 // Je crée la fonction
 function normalizeInputEntries(param) {
@@ -31,7 +35,10 @@ function removeAccent(str) {
 
 }
 
-/** La @function litleWords exclue de la recherche les mots inutiles*/
+/** La @function litleWords exclue de la recherche les mots inutiles
+ * @param {Array} array - tableau de tous les mots
+ * @returns {Array} - tableau ne contenant pas les mots exclus
+*/
 
 // Je crée la fonction
 function litleWords(array) {
@@ -134,7 +141,9 @@ function showTagsSelected() {
 
 }
 
-/** la @function allTagsDisplayedArray récupère un array de tous les tags affichés*/
+/** la @function allTagsDisplayedArray récupère un array de tous les tags affichés
+ * @returns {Array} - tableau de tous les tags affichés
+*/
 
 // Je crée la fonction
 function allTagsDisplayedArray() {
@@ -167,7 +176,10 @@ function allTagsDisplayedArray() {
 
 }
 
-/** la @function pushTag crée un seul tableau de données de tous les ingrédients, appareil et ustensils présents en tags*/
+/** la @function pushTag crée un seul tableau de données de tous les ingrédients, appareils et ustensiles présents en tags
+ * @param {Array} elements - ingrédients, appareil ou ustensils tagués
+ * @returns {Array} - tableau de chaque élément
+*/
 
 // Je crée la fonction
 function pushTag(elements) {
@@ -191,12 +203,16 @@ function pushTag(elements) {
 
 }
 
-/** la @function sameTag évite les doublons de tags*/
+/** la @function sameTag évite les doublons de tags
+ * @param {HTMLCollection} allLi - toutes les listes des tags ingrédients, appareils ou ustensiles
+ * @param {HTMLElement} li - élément de la liste
+*/
 
 // Je crée la fonction
 function sameTag(allLi, li) {
 
   // Je crée un tableau de tous les éléments listés et l'indexe à -1
+  // pour éviter les erreurs de clôture
   const liArray = allLi.length - 1
 
   // Pour chaque élément
@@ -210,26 +226,29 @@ function sameTag(allLi, li) {
 
 }
 
-/** la @function selectUl retourne l'id de l'ul*/
+/** la @function selectUl retourne l'id de l'ul
+ * @param {String} str - id de l'ul de la dropdown
+ * @returns {HTMLElement} - ul des tags
+*/
 
 // Je crée la fonction
 function selectUl(str) {
 
-  // Si l'id de l'ol sélectionnée est menu-ingrédients
+  // Si l'id de l'ul sélectionnée est menu-ingrédients
   if (str == 'menu-ingredients') {
-    // Je sélectionne la div élements-ingredients et la retourne
+    // Je sélectionne l'ul élements-ingredients et la retourne
     const ul = document.querySelector('.elements-ingredients')
     return ul
   }
-  // Si l'id de l'ol sélectionnée est menu-appareil
+  // Si l'id de l'ul sélectionnée est menu-appareil
   if (str == 'menu-appareil') {
-    // Je sélectionne la div élements-appareil et la retourne
+    // Je sélectionne l'ul élements-appareil et la retourne
     const ul = document.querySelector('.elements-appareil')
     return ul
   }
-  // Si l'id de l'ol sélectionnée est menu-ustensiles
+  // Si l'id de l'ul sélectionnée est menu-ustensiles
   if (str == 'menu-ustensiles') {
-    // Je sélectionne la div élements-ustensiles et la retourne
+    // Je sélectionne l'ul élements-ustensiles et la retourne
     const ul = document.querySelector('.elements-ustensiles')
     return ul
   }
@@ -266,4 +285,5 @@ function closeTags() {
   }
   // Je retourne tous les tags et toutes les recettes pour les afficher
   result(allTags, allRecipes)
+
 }

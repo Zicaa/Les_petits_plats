@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+
 // J'affiche les recettes
 recipesCardFactory(recipes)
 noDuplicateDropdownsElements(recipes)
@@ -32,7 +35,9 @@ mainInput.addEventListener('input', (event) => {
   testInput(event)
 })
 
-/** La @function numberOfRecipes permet d'afficher le nombre de recettes dans le HTML */ 
+/** La @function numberOfRecipes permet d'afficher le nombre de recettes dans le HTML 
+ * @param {Array} param - recettes affichées
+*/ 
 
 // Je crée la fonction
 function numberOfRecipes(param) {
@@ -44,7 +49,9 @@ function numberOfRecipes(param) {
 let filteredRecipes = showRecipes()
 numberOfRecipes(filteredRecipes)
 
-/** La @function showRecipes permet d'afficher les recettes */ 
+/** La @function showRecipes permet d'afficher les recettes 
+ * @returns {array} - recettes affichées
+*/ 
 
 // Je crée la fonction 
 function showRecipes() {
@@ -72,13 +79,17 @@ function showRecipes() {
 
 let allRecipes = stringifyRecipes(recipes)
 
-/** @function stringifyRecipes concatène et transforme en chaîne de caractères la valeur des recettes */
+/** @function stringifyRecipes concatène et transforme en chaîne de caractères la valeur des recettes
+ * @param {Array} param - tableau de recettes avec instances
+ * @returns {Array}
+*/
 
 // Je crée la fonction
 function stringifyRecipes(param) {
 
   // Je crée un nouveau tableau qui reçoit les recettes
   let array = []
+  
   // Pour chaque recette
   for (let i = 0; i < param.length; i++) {
     // Je concatène l'ensemble des données de la recette
