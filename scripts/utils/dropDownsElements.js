@@ -1,37 +1,49 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+
 let allIngredients
 let allAppliances
 let allUstensils
 
-// Je crée une fonction qui va afficher les éléments sans doublon dans chaque dropdown
-function noDuplicateDropdownsElements(recipe) {
-  allIngredients = noDuplicateIngredients(recipe)
+/** La @function noDuplicateDropdownsElements empêche la duplication des éléments dans chaque dropdown
+ * @param {Array} allRecipe - toutes les recettes
+*/
+
+// Je crée la fonction
+function noDuplicateDropdownsElements(allRecipe) {
+  allIngredients = noDuplicateIngredients(allRecipe)
   const ulMenuIngredients = document.getElementById('menu-ingredients')
   ulMenuIngredients.innerHTML = ''
   sortAndShowElements(allIngredients, ulMenuIngredients)
 
-  allAppliances = noDuplicateAppliances(recipe) 
+  allAppliances = noDuplicateAppliances(allRecipe) 
   const ulMenuAppliances = document.getElementById('menu-appareil')
   ulMenuAppliances.innerHTML = ''
   sortAndShowElements(allAppliances, ulMenuAppliances)
 
-  allUstensils = noDuplicateUstensils(recipe) 
+  allUstensils = noDuplicateUstensils(allRecipe) 
   const ulMenuUstensils = document.getElementById('menu-ustensiles')
   ulMenuUstensils.innerHTML = ''
   sortAndShowElements(allUstensils, ulMenuUstensils)
+
 }
 
-// Je crée la fonction qui empêche les doublons d'ingrédients
-function noDuplicateIngredients(recipe) {
+
+/** La @function noDuplicateIngredients empêche les doublons d'ingrédients dans les dropdowns
+ * @param {Array} allRecipe - toutes les recettes
+*/
+
+// Je crée la fonction
+function noDuplicateIngredients(allRecipe) {
 
   // Je crée un tableau avec tous les éléments
   let allElements = []
 
   // Pour chaque élément de mon tableau de recettes
-  for (let i = 0; i < recipe.length; i++) {
+  for (let i = 0; i < allRecipe.length; i++) {
 
     // Je récupère les ingrédients
-    const ingredientsRecipe = recipe[i].ingredients
+    const ingredientsRecipe = allRecipe[i].ingredients
 
     // Je crée un tableau de ces ingrédients
     let arrayIngredients = []
@@ -52,17 +64,21 @@ function noDuplicateIngredients(recipe) {
   return allElementsUnique
 }
 
-// Je crée la fonction qui empêche les doublons d'appareil
-function noDuplicateAppliances(recipe) {
+/** La @function noDuplicateAppliances empêche les doublons d'appareils dans les dropdowns
+ * @param {Array} allRecipe - toutes les recettes
+*/
+
+// Je crée la fonction 
+function noDuplicateAppliances(allRecipe) {
 
    // Je crée un tableau avec tous les éléments
   let allElements = []
 
   // Pour chaque élément de mon tableau de recettes
-  for (let i = 0; i < recipe.length; i++) {
+  for (let i = 0; i < allRecipe.length; i++) {
 
     // Je récupère les appareils
-    const applianceRecipe = recipe[i].appliance
+    const applianceRecipe = allRecipe[i].appliance
 
     // J'ajoute cet appareil unique au tableau contenant tous les éléments
     allElements.push(applianceRecipe)
@@ -73,17 +89,21 @@ function noDuplicateAppliances(recipe) {
   return allElementsUnique
 }
 
-// Je crée la fonction qui empêche les doublons d'ustensiles
-function noDuplicateUstensils(recipe) {
+/** La @function noDuplicateUstensils empêche les doublons d'ustensiles dans les dropdowns
+ * @param {Array} allRecipe - toutes les recettes
+*/
+
+// Je crée la fonction 
+function noDuplicateUstensils(allRecipe) {
 
   // Je crée un tableau avec tous les éléments
   let allElements = []
 
   // Pour chaque ingredient de mon tableau d'ingrédients
-  for (let i = 0; i < recipe.length; i++) {
+  for (let i = 0; i < allRecipe.length; i++) {
 
     // Je récupère les ustensiles
-    const ustensilsRecipe = recipe[i].ustensils
+    const ustensilsRecipe = allRecipe[i].ustensils
 
     // Je crée un tableau de ces ustensiles
     let arrayUstensils = []
@@ -105,14 +125,23 @@ function noDuplicateUstensils(recipe) {
   return allElementsUnique
 }
 
-// Je crée une fonction tri par ordre alphabétique et j'affiche les éléments en colonne
+/** La @function sortAndShowElements trie par ordre alphabétique et affiche les éléments des dropdowns en colonne 
+ * @param {Array} elements - allIngredients ou allAppliance ou allUstensils
+ * @param {HTMLElement} ul - ul conteneur de la liste
+*/ 
+
+// Je crée la fonction
 function sortAndShowElements(elements, ul) {
   titleSort(elements)
   createColumns(elements, ul)
   createItem(elements, ul)
 }
 
-// Tri des titres de recette par ordre alphabétique
+/** La @function titleSort trie les titres de recette par ordre alphabétique 
+ * @param {Array} elements - allIngredients ou allAppliance ou allUstensils 
+*/ 
+
+// Je crée la fonction
 function titleSort(elements) {
   function tri(a,b) {
     // J'extrait le mot avec la méthode split et colle les lettres avec la méthode join
@@ -128,14 +157,24 @@ function titleSort(elements) {
   elements.sort(tri)
 }
 
-// Je crée une fonction pour afficher les listes sur 3 colonnes
+/** La @function createColumns affiche les listes sur 3 colonnes 
+ * @param {Array} elements - allIngredients ou allAppliance ou allUstensils 
+ * @param {HTMLElement} ul - ul conteneur de la liste 
+*/
+
+// Je crée la fonction
 function createColumns(elements, ul) {
   const elementsList = elements.length
   const columnSize = Math.ceil(elementsList / 3)
   ul.style.gridTemplateRows = `repeat(${columnSize}, 1fr)`
 }
 
-// Je crée la fonction qui génère chaque liste d'éléments des dropdowns
+/** La @function createItem génère chaque liste d'éléments des dropdowns
+ * @param {Array} elements - allIngredients ou allAppliance ou allUstensils  
+ * @param {HTMLElement} ul - ul conteneur de la liste
+*/ 
+
+// Je crée la fonction
 function createItem(elements, ul) {
 
   // Pour chaque élément du tableau

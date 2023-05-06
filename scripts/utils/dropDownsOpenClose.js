@@ -1,4 +1,10 @@
-// Je crée une fonction d'ouverture des dropdowns
+/* eslint-disable no-unused-vars */
+
+/** La @function openDropdown ouvre les dropdowns
+ * @param {MouseEvent} event 
+*/
+
+// Je crée la fonction 
 function openDropdown(event) {
 
   // Je désactive le comportement par défaut
@@ -55,7 +61,11 @@ function openDropdown(event) {
   })
 }
 
-// Je crée une fonction permettant l'ouverture d'une seule dropdown
+/** La @function openDropdown permet l'ouverture d'une seule dropdown
+  * @param {HTMLElement} elem 
+*/
+
+// Je crée la fonction 
 function oneDropdownOnly(btnObject) {
   const buttonOpen = btnObject
   const dropdownTarget = buttonOpen.parentNode
@@ -95,13 +105,19 @@ function oneDropdownOnly(btnObject) {
   })
 }
 
-// Je crée une fonction de fermeture des dropdowns
+/** La @function closeDropdown ferme les dropdowns*/
+
+// Je crée la fonction
 function closeDropdown() {
   const target = window.event.target
   close(target)
 }
 
-// Je crée une fonction de fermeture des dropdowns en fonctions de l'élément souhaité
+/** La @function close ferme les dropdowns en fonction de l'élément souhaité
+  * @param {HTMLElement} target 
+*/
+
+// Je crée la fonction
 function close(target) {
 
   let buttonClose
@@ -133,7 +149,12 @@ function close(target) {
 
 }
 
-// Je crée une fonction pour récupérer l'id de l'élément
+/** La @function searchNodeId récupère l'id de l'élément
+ * @param {HTMLElement} element 
+ * @returns 
+*/
+
+// Je crée la fonction
 function searchNodeId(element) {
   if (element.id == 'iconUp-ingredients' || element.id == 'iconDown-ingredients') {
     let id = 'menu-ingredients'
