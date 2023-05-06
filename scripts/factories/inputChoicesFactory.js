@@ -140,6 +140,12 @@ function testInput(event) {
     // J'affiche les tags relatives aux recherches et les recettes correspondantes
     result(allTags, allRecipes)
 
+  // Sinon
+  } else {
+
+  // J'affiche les tags relatifs aux recherches et les recettes correspondantes
+  result(allTags, recipes)
+
   }
 
 }
