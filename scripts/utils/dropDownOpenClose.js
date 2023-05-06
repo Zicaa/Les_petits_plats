@@ -1,4 +1,9 @@
-/** La @function openDropdown ouvre les dropdowns*/
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+
+/** La @function openDropdown ouvre les dropdowns
+ * @param {MouseEvent} event 
+*/
 
 // Je crée la fonction 
 function openDropdown(event) {
@@ -65,7 +70,9 @@ function openDropdown(event) {
 
 }
 
-/** La @function openDropdown permet l'ouverture d'une seule dropdown*/
+/** La @function openDropdown permet l'ouverture d'une seule dropdown
+  * @param {HTMLElement} elem 
+*/
 
 // Je crée la fonction
 function onlyOneDropdownOpen(elem) {
@@ -115,7 +122,9 @@ function closeDropdown() {
   close(target)
 }
 
-/** La @function close ferme les dropdowns en fonction de l'élément souhaité*/
+/** La @function close ferme les dropdowns en fonction de l'élément souhaité
+  * @param {HTMLElement} target 
+*/
 
 // Je crée la fonction
 
@@ -150,7 +159,10 @@ function close(target) {
   
 }
 
-/** La @function searchNodeId récupère l'id de l'élément*/
+/** La @function searchNodeId récupère l'id de l'élément
+ * @param {HTMLElement} element 
+ * @returns 
+*/
 
 // Je crée la fonction
 function searchNodeId(element) {

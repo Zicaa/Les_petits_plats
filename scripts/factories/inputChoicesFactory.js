@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+
 /** La @function dropdownInput affiche les éléments en fonction de la saisie dans les inputs des dropdowns */ 
 
 // Je crée la fonction
@@ -33,7 +34,11 @@ function dropdownInput() {
   
 }
 
-/** La @function dropdownNewDisplay affiche dans les nouveaux dropdowns ajustés la liste des éléments saisis dans l'input */ 
+/** La @function dropdownNewDisplay affiche dans les nouveaux dropdowns ajustés la liste des éléments saisis dans l'input 
+ * @param {Array} elements - allIngredients ou allAppliances ou allUstensils   
+ * @param {HTMLElement} ul - ul conteneur de la liste  
+ * @param {String} entry - données saisies dans les inputs dropdown
+*/ 
 
 // Je crée la fonction
 function dropdownNewDisplay(elements, ul, entry) {
@@ -60,7 +65,11 @@ function dropdownNewDisplay(elements, ul, entry) {
 
 }
 
-/** La @function compareElementsAndEntries n'affiche que les éléments des listes correspondants à la saisie */ 
+/** La @function compareElementsAndEntries n'affiche que les éléments des listes correspondants à la saisie 
+ * @param {Array} elements - allIngredients ou allAppliances ou allUstensils   
+ * @param {String} entry - données saisies dans les inputs dropdown
+ * @returns {Array} - array des éléments correspondants à la saisie
+*/ 
 
 // Je crée la fonction
 function compareElementsAndEntries(entry, elements) {
@@ -86,7 +95,9 @@ function compareElementsAndEntries(entry, elements) {
 
 }
 
-/** La @function testInput vérifie la saisie de l'utilisateur dans le champ de recherche principale */ 
+/** La @function testInput vérifie la saisie de l'utilisateur dans le champ de recherche principale 
+ * @param {MouseEvent} event 
+*/ 
 
 // Je crée la fonction
 function testInput(event) {
@@ -100,17 +111,9 @@ function testInput(event) {
 
   // Je crée un tableau de tous les tags affichés
   let allTags = allTagsDisplayedArray()
-  let filterdRecipes
 
-  // J'ajoute un addEventListener sur évènement 'keyup' des touches de suppression
-  // pour lancer la fonction findRecipes avec une recherche sur l'ensemble des recettes 
-  // et pas seulement les recettes affichées
-  mainInput.addEventListener('keyup', (e) => {
-    const keyCode = e.code
-    if (keyCode === 'Backspace' || keyCode === 'Delete') {
-      result(allTags, recipes)
-    }    
-  })
+  // Je crée une variable contenant les recettes affichées
+  let filterdRecipes
 
   // Si la saisie est supérieure ou égale à 3 caractères, findRecipes effectue la recherche sur les recettes affichées
   if (entry.length >= 3) {
@@ -133,8 +136,8 @@ function testInput(event) {
     // Je crée un nouvel objet contenant ces éléments avec set et le retourne
     allTags = [...new Set(allTags)]
 
-    // J'affiche les recettes filtrées
-    filterdRecipes = showRecipes()
+    // Je récupère les recettes filtrées
+    filterdRecipes = recoveredRecipes()
 
     // J'affiche les tags relatives aux recherches et les recettes correspondantes
     result(allTags, filterdRecipes)
@@ -142,7 +145,7 @@ function testInput(event) {
   // Sinon
   } else {
 
-    // J'affiche les tags relatives aux recherches et les recettes correspondantes
+    // J'affiche les tags relatifs aux recherches et les recettes correspondantes
     result(allTags, recipes)
   }
 
@@ -159,12 +162,15 @@ mainInput.addEventListener('keyup', (e) => {
   
 })
 
-/** La @function result trouve les correspondances entre les sélections/recettes puis affiche le résultat dans le header*/ 
+/** La @function result trouve les correspondances entre les sélections/recettes puis affiche le résultat dans le header
+ * @param {Array} arrayOfWords - tableau des mots saisis et des tags
+ * @param {Array} arrayOfRecipes - tableau des recettes affichées ou de toutes les recettes
+*/ 
 
 // Je crée la fonction
-function result(tags, someRecipes) {
-  findRecipes(tags, someRecipes)
-  let filterdRecipes = showRecipes()
+function result(arrayOfWords, arrayOfRecipes) {
+  findRecipes(arrayOfWords, arrayOfRecipes)
+  let filterdRecipes = recoveredRecipes()
   numberOfRecipes(filterdRecipes)
 
 }

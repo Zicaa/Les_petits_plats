@@ -1,9 +1,13 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-/** La @function findRecipes trouve les recettes contenant les mots saisis et les tags dans les recettes affichées et globales*/ 
+
+/** La @function findRecipes trouve les recettes contenant les mots saisis et les tags dans les recettes affichées et globales
+ * @param {Array} arrayOfWords - tableau des mots saisis et des tags
+ * @param {Array} arrayOfRecipes - tableau des recettes affichées ou de toutes les recettes
+*/ 
 
 // Je crée la fonction
-function findRecipes(array, someRecipes) {
+function findRecipes(arrayOfWords, arrayOfRecipes) {
 
   // Je récupère la section
   const section = document.querySelector('.section')
@@ -13,18 +17,18 @@ function findRecipes(array, someRecipes) {
   let index = 0
 
   // Pour chaque recette
-  for (let i = 0; i < someRecipes.length; i++) {
+  for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je crée chaque recette concaténée
-    let recipe = concateRecipes(someRecipes[i])
+    let recipe = concateRecipes(arrayOfRecipes[i])
 
     // J'initialise un compteur correspondant au nombre de recettes trouvées
-    let counter = matchingWords(array, recipe)
+    let counter = matchingWords(arrayOfWords, recipe)
 
     // Si le compteur est strictement égal au nombre de mots stockés dans les inputs
-    if (counter === array.length) {
+    if (counter === arrayOfWords.length) {
       // J'intègre les recettes contenant ces mots dans le tableau de recettes dynamiques
-      recipesSelected.push(someRecipes[i])
+      recipesSelected.push(arrayOfRecipes[i])
       // J'incrémente le tableau
       index++
     }
@@ -49,19 +53,23 @@ function findRecipes(array, someRecipes) {
 
 }
 
-/** La @function matchingWords vérifie la présence de chaque mot de l'array 'input' et incrémente le compteur si il y'a correspondance dans les recettes concaténées*/ 
+/** La @function matchingWords vérifie la présence de chaque mot de l'array 'input' et incrémente le compteur si il y'a correspondance dans les recettes concaténées
+ * @param {Array} arrayOfWords - tableau des mots saisis et des tags
+ * @param {string} concatenedRecipe - recette concaténée
+ * @returns {Number} counter - compteur de correspondances entre tags/mots saisis et recettes trouvées
+*/ 
 
 // Je crée la fonction
-function matchingWords(array, recipe) {
+function matchingWords(arrayOfWords, concatenedRecipe) {
 
   // J'initialise un compteur à 0
   let counter = 0
 
   // Pour chaque élément du tableau d'input
-  for (let j = 0; j < array.length; j++) {
+  for (let j = 0; j < arrayOfWords.length; j++) {
 
     // Si le compteur est indexé en positif alors je l'incrémente pour affichage des recettes correspondantes
-    if (recipe.indexOf(array[j]) != -1) {
+    if (concatenedRecipe.indexOf(arrayOfWords[j]) != -1) {
       counter++
     } 
   }

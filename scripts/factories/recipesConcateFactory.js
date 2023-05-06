@@ -1,6 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-/** La @function concateRecipes permet de concaténer les recettes*/
+
+/** La @function concateRecipes permet de concaténer les recettes
+ * @param {Object} recipe - instance recette
+ * @returns {String} - recette concaténée
+*/
 
 // Je crée la fonction
 function concateRecipes(recipe) {
@@ -24,7 +28,10 @@ function concateRecipes(recipe) {
 
 }
 
-/** La @function recoveryIngredients récupére les ingrédients de l'objet recette et génère un tableau*/
+/** La @function recoveryIngredients récupére les ingrédients de l'objet recette et génère un tableau
+ * @param {Object} recipe - instance recette
+ * @returns {Array} - tableau de chaque ingrédient de la recette
+*/
 
 // Je crée la fonction
 function recoveryIngredients(recipe) {
@@ -53,7 +60,10 @@ function recoveryIngredients(recipe) {
 
 }
 
-/** La @function recoveryUstensils récupére les ustensiles de l'objet recette et génère un tableau*/
+/** La @function recoveryUstensils récupére les ustensiles de l'objet recette et génère un tableau
+ * @param {Object} recipe - instance recette
+ * @returns {Array} - tableau de chaque ingrédient de la recette
+*/
 
 // Je crée la fonction
 function recoveryUstensils(recipe) {

@@ -5,40 +5,44 @@ let allIngredients
 let allAppliances
 let allUstensils
 
-/** La @function noDuplicateDropdownsElements affiche les éléments sans doublon dans chaque dropdown */ 
+/** La @function noDuplicateDropdownsElements empêche la duplication des éléments dans chaque dropdown
+ * @param {Array} allRecipe - toutes les recettes
+*/
 
 // Je crée la fonction
-function noDuplicateDropdownsElements(recipe) {
-  allIngredients = noDuplicateIngredients(recipe)
+function noDuplicateDropdownsElements(allRecipe) {
+  allIngredients = noDuplicateIngredients(allRecipe)
   const ulMenuIngredients = document.getElementById('menu-ingredients')
   ulMenuIngredients.innerHTML = ''
   sortAndShowElements(allIngredients, ulMenuIngredients)
 
-  allAppliances = noDuplicateAppliances(recipe) 
+  allAppliances = noDuplicateAppliances(allRecipe) 
   const ulMenuAppliances = document.getElementById('menu-appareil')
   ulMenuAppliances.innerHTML = ''
   sortAndShowElements(allAppliances, ulMenuAppliances)
 
-  allUstensils = noDuplicateUstensils(recipe) 
+  allUstensils = noDuplicateUstensils(allRecipe) 
   const ulMenuUstensils = document.getElementById('menu-ustensiles')
   ulMenuUstensils.innerHTML = ''
   sortAndShowElements(allUstensils, ulMenuUstensils)
 
 }
 
-/** La @function noDuplicateIngredients empêche les doublons d'ingrédients dans les dropdowns*/ 
+/** La @function noDuplicateIngredients empêche les doublons d'ingrédients dans les dropdowns
+ * @param {Array} allRecipe - toutes les recettes
+*/
 
 // Je crée la fonction
-function noDuplicateIngredients(recipe) {
+function noDuplicateIngredients(allRecipe) {
 
  // Je crée un tableau avec tous les éléments
  let allElements = []
 
   // Pour chaque élément de mon tableau de recettes
-  for (let i = 0; i < recipe.length; i++) {
+  for (let i = 0; i < allRecipe.length; i++) {
 
     // Je récupère les ingrédients
-    const ingredientsRecipe = recipe[i].ingredients
+    const ingredientsRecipe = allRecipe[i].ingredients
 
     // Je crée un tableau de ces ingrédients
     let arrayIngredients = []
@@ -58,19 +62,21 @@ function noDuplicateIngredients(recipe) {
 
 }
 
-/** La @function noDuplicateAppliances empêche les doublons d'appareils dans les dropdowns */ 
+/** La @function noDuplicateAppliances empêche les doublons d'appareils dans les dropdowns
+ * @param {Array} allRecipe - toutes les recettes
+*/
 
 // Je crée la fonction
-function noDuplicateAppliances(recipe) {
+function noDuplicateAppliances(allRecipe) {
 
    // Je crée un tableau avec tous les éléments
    let allElements = []
 
    // Pour chaque élément de mon tableau de recettes
-   for (let i = 0; i < recipe.length; i++) {
+   for (let i = 0; i < allRecipe.length; i++) {
 
     // Je récupère les appareils
-    const applianceRecipe = recipe[i].appliance
+    const applianceRecipe = allRecipe[i].appliance
 
     // J'ajoute cet appareil unique au tableau contenant tous les éléments
     allElements.push(applianceRecipe)
@@ -82,19 +88,21 @@ function noDuplicateAppliances(recipe) {
 
 }
 
-/** La @function noDuplicateUstensils empêche les doublons d'ustensiles dans les dropdowns */ 
+/** La @function noDuplicateUstensils empêche les doublons d'ustensiles dans les dropdowns
+ * @param {Array} allRecipe - toutes les recettes
+*/
 
 // Je crée la fonction
-function noDuplicateUstensils(recipe) {
+function noDuplicateUstensils(allRecipe) {
 
   // Je crée un tableau avec tous les éléments
   let allElements = []
 
   // Pour chaque ingredient de mon tableau d'ingrédients
-  for (let i = 0; i < recipe.length; i++) {
+  for (let i = 0; i < allRecipe.length; i++) {
 
     // Je récupère les ustensiles
-    const ustensilsRecipe = recipe[i].ustensils
+    const ustensilsRecipe = allRecipe[i].ustensils
 
     // Je crée un tableau de ces ustensiles
     let arrayUstensils = []
@@ -113,7 +121,10 @@ function noDuplicateUstensils(recipe) {
 
 }
 
-/** La @function sortAndShowElements trie par ordre alphabétique et affiche les éléments des dropdowns en colonne */ 
+/** La @function sortAndShowElements trie par ordre alphabétique et affiche les éléments des dropdowns en colonne 
+ * @param {Array} elements - allIngredients ou allAppliance ou allUstensils
+ * @param {HTMLElement} ul - ul conteneur de la liste
+*/ 
 
 // Je crée la fonction
 function sortAndShowElements(elements, ul) {
@@ -123,7 +134,9 @@ function sortAndShowElements(elements, ul) {
 
 }
 
-/** La @function titleSort trie les titres de recette par ordre alphabétique */ 
+/** La @function titleSort trie les titres de recette par ordre alphabétique 
+ * @param {Array} elements - allIngredients ou allAppliance ou allUstensils 
+*/ 
 
 // Je crée la fonction
 function titleSort(elements) {
@@ -142,7 +155,10 @@ function titleSort(elements) {
 
 }
 
-/** La @function createColumns afficher les listes sur 3 colonnes */ 
+/** La @function createColumns affiche les listes sur 3 colonnes 
+ * @param {Array} elements - allIngredients ou allAppliance ou allUstensils 
+ * @param {HTMLElement} ul - ul conteneur de la liste 
+*/
 
 // Je crée la fonction
 function createColumns(elements, ul) {
@@ -152,7 +168,10 @@ function createColumns(elements, ul) {
 
 }
 
-/** La @function createItem génère chaque liste d'éléments des dropdowns */ 
+/** La @function createItem génère chaque liste d'éléments des dropdowns
+ * @param {Array} elements - allIngredients ou allAppliance ou allUstensils  
+ * @param {HTMLElement} ul - ul conteneur de la liste
+*/ 
 
 // Je crée la fonction
 function createItem(elements, ul) {
@@ -191,7 +210,10 @@ function createItem(elements, ul) {
 
 }
 
-/** La @function tagedStyle change les styles des éléments taggés */ 
+/** La @function tagedStyle change les styles des éléments taggés
+ * @param {Array} array - tableau de tous les tags
+ * @param {HTMLElement} li - élément de la liste
+*/
 
 // Je crée la fonction 
 function tagedStyle(array, li) {
@@ -205,7 +227,9 @@ function tagedStyle(array, li) {
 
 }
 
-/** La @function keybordFunction permet la navigation au clavier */ 
+/** La @function keybordFunction permet la navigation au clavier
+ * @param {HTMLElement} ul - ul conteneur de la liste  
+*/
 
 // Je crée la fonction  
 function keybordFunction(ul) {
@@ -224,7 +248,9 @@ function keybordFunction(ul) {
 
 }
 
-/** La @function nextSibling affiche l'élément suivant */ 
+/** La @function nextSibling affiche l'élément suivant
+ * @param {HTMLElement} li - élément de la liste 
+*/  
 
 // Je crée la fonction 
 function nextSibling(li) {
@@ -238,7 +264,9 @@ function nextSibling(li) {
 
 }
 
-/** La @function previousSibling affiche l'élément précédent */ 
+/** La @function previousSibling affiche l'élément précédent 
+ * @param {HTMLElement} li - élément de la liste 
+*/ 
 
 // Je crée la fonction 
 function previousSibling(li) {

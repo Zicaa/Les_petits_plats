@@ -1,13 +1,17 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-/** La @function normalizeInputEntries permet une recherche de mots-clés peu importe la casse ou les accents */ 
+
+/** La @function normalizeInputEntries permet une recherche de mots-clés peu importe la casse ou les accents 
+ * @param {String} entries - données saisies par l'utilisateur dans l'input
+ * @returns {String}
+*/ 
 
 // Je crée la fonction
-function normalizeInputEntries(param) {
+function normalizeInputEntries(entries) {
 
   // Je normalise la chaîne de caratères avec la methode normalize unicode NFD
   // Transforme les chaînes de caractère équivalentes en données binaires afin d'être facilement comparées
-  let inputData = param.normalize('NFD')
+  let inputData = entries.normalize('NFD')
 
   // J'appelle la fonction removeAccent 
   inputData = removeAccent(inputData)
@@ -20,27 +24,32 @@ function normalizeInputEntries(param) {
   
 }
 
-/** La @function removeAccent supprime les accents et certains caractères spéciaux comme œ*/ 
+/** La @function removeAccent supprime les accents et certains caractères spéciaux comme œ
+ * @param {String} entries - données saisies par l'utilisateur dans l'input
+ */ 
 
-// Je crée la fonction 
-function removeAccent(str) {
-  let a = str.replace(/[\u0300-\u036f]/g, '')
+// Je crée la fonction - la méthode replace remplace la valeur du 1er paramètre par la seconde
+function removeAccent(entries) {
+  let a = entries.replace(/[\u0300-\u036f]/g, '')
   let b = a.replace(/[œ]/g , 'oe')
   let c = b.replace(/[ÈÉÊË]/g,'E')
   return c
 
 }
 
-/** La @function litleWords exclue de la recherche les mots inutiles*/
+/** La @function litleWords exclue de la recherche les mots inutiles
+ * @param {Array} arrayOfWords - tableau de tous les mots
+ * @returns {Array} - tableau ne contenant pas les mots exclus
+*/
 
 // Je crée la fonction
-function litleWords(array) {
+function litleWords(arrayOfWords) {
 
   // Je crée un tableau contenant les mots à exclure de la recherche
   const wordsToExclude = ['et', 'd\'', 'au', 'de', 'la', 'le', 'du', 'en', 'ou', 'l\'', 'a', 'un', 'une', 'avec']
 
   // Je crée un filtre excluant tous les mots non-répertoriés à comparer
-  let arrayEntry = array.filter(x => !wordsToExclude.includes(x))
+  let arrayEntry = arrayOfWords.filter(x => !wordsToExclude.includes(x))
 
   // Je retourne le tableau de ces mots
   return arrayEntry
@@ -109,7 +118,8 @@ function showTagsSelected() {
   // Je récupère la section, si elle est en display grid,
   const section = document.querySelector('.section')
   if (section.style.display === 'grid') {
-    let filteredRecipes = showRecipes()
+    // J'appelle la fonction recoveredRecipes pour récupérer les recettes
+    let filteredRecipes = recoveredRecipes()
     // J'affiche les tags et recettes sélectionnés
     result(allTags, filteredRecipes)
 
@@ -131,7 +141,9 @@ function showTagsSelected() {
 
 }
 
-/** la @function allTagsDisplayedArray récupère un array de tous les tags affichés*/
+/** la @function allTagsDisplayedArray récupère un array de tous les tags affichés
+ * @returns {Array} - tableau de tous les tags affichés
+*/
 
 // Je crée la fonction
 function allTagsDisplayedArray() {
@@ -164,7 +176,10 @@ function allTagsDisplayedArray() {
 
 }
 
-/** la @function pushTag crée un seul tableau de données de tous les ingrédients, appareil et ustensils présents en tags*/
+/** la @function pushTag crée un seul tableau de données de tous les ingrédients, appareils et ustensiles présents en tags
+ * @param {Array} elements - ingrédients, appareil ou ustensils tagués
+ * @returns {Array} - tableau de chaque élément
+*/
 
 // Je crée la fonction
 function pushTag(elements) {
@@ -188,7 +203,10 @@ function pushTag(elements) {
 
 }
 
-/** la @function sameTag évite les doublons de tags*/
+/** la @function sameTag évite les doublons de tags
+ * @param {HTMLCollection} allLi - toutes les listes des tags ingrédients, appareils ou ustensiles
+ * @param {HTMLElement} li - élément de la liste
+*/
 
 // Je crée la fonction
 function sameTag(allLi, li) {
@@ -207,25 +225,28 @@ function sameTag(allLi, li) {
 
 }
 
-/** la @function selectUl retourne l'id de l'ul*/
+/** la @function selectUl retourne l'id de l'ul
+ * @param {String} idOfUl - id de l'ul de la dropdown
+ * @returns {HTMLElement} - ul des tags
+*/
 
 // Je crée la fonction
-function selectUl(str) {
+function selectUl(idOfUl) {
 
   // Si l'id de l'ol sélectionnée est menu-ingrédients
-  if (str == 'menu-ingredients') {
+  if (idOfUl == 'menu-ingredients') {
     // Je sélectionne la div élements-ingredients et la retourne
     const ul = document.querySelector('.elements-ingredients')
     return ul
   }
   // Si l'id de l'ol sélectionnée est menu-appareil
-  if (str == 'menu-appareil') {
+  if (idOfUl == 'menu-appareil') {
     // Je sélectionne la div élements-appareil et la retourne
     const ul = document.querySelector('.elements-appareil')
     return ul
   }
   // Si l'id de l'ol sélectionnée est menu-ustensiles
-  if (str == 'menu-ustensiles') {
+  if (idOfUl == 'menu-ustensiles') {
     // Je sélectionne la div élements-ustensiles et la retourne
     const ul = document.querySelector('.elements-ustensiles')
     return ul

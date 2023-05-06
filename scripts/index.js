@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+
 // J'affiche les recettes
 recipesCardFactory(recipes)
 noDuplicateDropdownsElements(recipes)
@@ -32,29 +33,33 @@ mainInput.addEventListener('input', (event) => {
   testInput(event)
 })
 
-/** La @function numberOfRecipes permet d'afficher le nombre de recettes dans le HTML */ 
+/** La @function numberOfRecipes permet d'afficher le nombre de recettes dans le HTML 
+ * @param {Array} displayedRecipes - recettes affichées
+*/ 
 
 // Je crée la fonction 
-function numberOfRecipes(param) {
-  console.log(param)
+function numberOfRecipes(displayedRecipes) {
+  console.log(displayedRecipes)
   const result = document.querySelector('.tags-result')
-  result.innerHTML = `<span class="tags-result-bold">${param.length}</span> recette(s) trouvée(s)`
+  result.innerHTML = `<span class="tags-result-bold">${displayedRecipes.length}</span> recette(s) trouvée(s)`
 }
 
-// J'appelle la fonction qui affiche les recettes filtrées dans le HTML
-let filteredRecipes = showRecipes()
+// J'appelle la fonction qui récupère les recettes filtrées dans le HTML
+let filteredRecipes = recoveredRecipes()
 numberOfRecipes(filteredRecipes)
 
-/** La @function showRecipes permet d'afficher les recettes */ 
+/** La @function recoveredRecipes permet de récupérer les recettes affichées
+ * @returns {array} - recettes affichées
+*/ 
 
 // Je crée la fonction 
-function showRecipes() {
+function recoveredRecipes() {
 
   // Je crée un tableau qui contient les recettes
   let newRecipes = []
   let articles = document.querySelectorAll('.recip-card')
 
-  // Je vérifie si chaque id d'article correspond à l'id des recettes
+  // Je vérifie si chaque id d'article correspond à l'id des recettes à afficher
   let allArticles = Array.from(articles)
   allArticles.forEach(article => {
     let articleId = article.id

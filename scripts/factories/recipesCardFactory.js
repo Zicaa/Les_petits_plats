@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
-/** La @function recipesCardFactory crée une carte pour chaque recette en lui passant le tableau de recettes en paramètre*/ 
+
+/** La @function recipesCardFactory crée une carte pour chaque recette en lui passant le tableau de recettes en paramètre
+ * @param {Array} arrayOfrecipes - tableau de recettes
+*/ 
 
 // Je crée la fonction
-function recipesCardFactory(recipe) {
+function recipesCardFactory(arrayOfrecipes) {
 
   // Je récupère la section contenant les recettes 
  const section = document.querySelector('.section')
@@ -11,10 +14,10 @@ function recipesCardFactory(recipe) {
 
  // Je crée une boucle for et lui passe le tableau de recettes en paramètre
  // Pour chaque recette, je crée et j'intègre ces nouveaux éléments grâce à la classe elem
- for (let i = 0; i < recipe.length; i++) {
+ for (let i = 0; i < arrayOfrecipes.length; i++) {
    const article = new Element('recipeCard', 'article', 'recip-card').elem
    section.appendChild(article)
-   article.id = `article-${recipe[i].id}`
+   article.id = `article-${arrayOfrecipes[i].id}`
    const anchor = new Element('recipCardLink', 'a', 'recip-card-link').elem
    article.appendChild(anchor)
    anchor.href = '#'
@@ -26,7 +29,7 @@ function recipesCardFactory(recipe) {
    divDescription.appendChild(divTitle)
    const title = new Element('recipCardDescriptionH3', 'h3', 'recip-card-description-title-h3').elem
    divTitle.appendChild(title)
-   title.textContent = `${recipe[i].name}`
+   title.textContent = `${arrayOfrecipes[i].name}`
    const divTime = new Element('recipCardDescriptionTitleTime', 'div', 'recip-card-description-title-time').elem
    divTitle.appendChild(divTime)
    const iconTime = new Element('iconTime', 'i', 'far').elem
@@ -34,22 +37,24 @@ function recipesCardFactory(recipe) {
    iconTime.classList.add('fa-clock')
    const time = new Element('recipCardDescriptionTitletimeTxt', 'p', 'recip-card-description-title-time-txt').elem
    divTime.appendChild(time)
-   time.textContent = `${recipe[i].time} min`
+   time.textContent = `${arrayOfrecipes[i].time} min`
    const divdescriptionContent = new Element('recipCardDescriptionContent', 'div', 'recip-card-description-content').elem
    divDescription.appendChild(divdescriptionContent)
    const ulIngredients = new Element('ulIngredients', 'ul', 'ingredientsList').elem
    divdescriptionContent.appendChild(ulIngredients)
 
    // J'appelle la fonction createIngredients pour générer les ingrédients
-   createIngredients(recipe[i].ingredients, ulIngredients)
+   createIngredients(arrayOfrecipes[i].ingredients, ulIngredients)
    const description = new Element('recipCardDescriptionDescription', 'p', 'recip-card-description-description').elem
    divdescriptionContent.appendChild(description)
-   description.textContent = `${recipe[i].description}`
+   description.textContent = `${arrayOfrecipes[i].description}`
  }
  
 }
 
-/** La @function createIngredients intégre les ingrédients dans les cartes recettes*/ 
+/** La @function createIngredients intégre les ingrédients dans les cartes recettes
+ * @param {Array} ingredients - tous les ingrédients
+ * @returns {HTMLElement} ul des ingrédients*/ 
 
 // Je crée la fonction 
 function createIngredients(ingredients, ulIngredients) {
@@ -86,7 +91,11 @@ function createIngredients(ingredients, ulIngredients) {
 
 }
 
-/** La @function createUnit génère les unités et abréviations*/ 
+/** La @function createUnit génère les unités et abréviations
+ * @param {String} unit - élément unique
+ * @param {Number} quantityNb - quantité au pluriel
+ * @param {HTMLElement} quantity  - quantité au singulier
+*/ 
 
 // Je crée la fonction 
 function createUnit(unit, quantityNb, quantity) {
