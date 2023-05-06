@@ -5,6 +5,7 @@
 
 // Je crée la fonction
 function dropdownInput() {
+
   // Je récupère les éléments dont j'ai besoin : je cible l'élément
   const input = window.event.target
   // Je récupère la valeur rentrée dans l'input par l'utilisateur
@@ -12,8 +13,8 @@ function dropdownInput() {
 
   // Si l'id de l'input est égal à ingrédient
   if (input.id == 'ingredients') {
-    const ul = document.getElementById('menu-ingredients')
     // Je récupère l'id de l'ul correspondante
+    const ul = document.getElementById('menu-ingredients')
     dropdownNewDisplay(allIngredients, ul, entry)
   }
 
@@ -94,6 +95,7 @@ function compareElementsAndEntries(entry, elements) {
 
 // Je crée la fonction
 function testInput(event) {
+  
   // Je désactive le comportement par défaut
   event.preventDefault
   // Je récupère le champ de recherche
