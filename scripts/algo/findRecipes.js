@@ -54,12 +54,12 @@ function findRecipes(arrayOfWords, arrayOfRecipes) {
 
 /** La @function matchingWords vérifie la présence de chaque mot de l'array 'input' et incrémente le compteur si il y'a correspondance dans les recettes concaténées
  * @param {Array} arrayOfWords - tableau des mots saisis et des tags
- * @param {string} recipe - recette concaténée
+ * @param {string} concatenedRecipe - recette concaténée
  * @returns {Number} counter - compteur de correspondances entre tags/mots saisis et recettes trouvées
 */ 
 
 // Je crée la fonction
-function matchingWords(arrayOfWords, recipe) {
+function matchingWords(arrayOfWords, concatenedRecipe) {
 
   // J'initialise un compteur à 0
   let counter = 0
@@ -68,7 +68,7 @@ function matchingWords(arrayOfWords, recipe) {
   for (let j = 0; j < arrayOfWords.length; j++) {
 
     // Si le compteur est indexé en positif alors je l'incrémente pour affichage des recettes correspondantes
-    if (recipe.indexOf(arrayOfWords[j]) != -1) {
+    if (concatenedRecipe.indexOf(arrayOfWords[j]) != -1) {
       counter++
     } 
   }

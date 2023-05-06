@@ -2,16 +2,16 @@
 /* eslint-disable no-unused-vars */
 
 /** La @function normalizeInputEntries permet une recherche de mots-clés peu importe la casse ou les accents 
- * @param {String} param - données saisies par l'utilisateur dans l'input
+ * @param {String} entries - données saisies par l'utilisateur dans l'input
  * @returns {String}
 */ 
 
 // Je crée la fonction
-function normalizeInputEntries(param) {
+function normalizeInputEntries(entries) {
 
   // Je normalise la chaîne de caratères avec la methode normalize unicode NFD
   // Transforme les chaînes de caractère équivalentes en données binaires afin d'être facilement comparées
-  let inputData = param.normalize('NFD')
+  let inputData = entries.normalize('NFD')
 
   // J'appelle la fonction removeAccent 
   inputData = removeAccent(inputData)
@@ -24,11 +24,13 @@ function normalizeInputEntries(param) {
   
 }
 
-/** La @function removeAccent supprime les accents et certains caractères spéciaux comme œ*/ 
+/** La @function removeAccent supprime les accents et certains caractères spéciaux comme œ
+ * @param {String} entries - données saisies par l'utilisateur dans l'input
+ */ 
 
-// Je crée la fonction 
-function removeAccent(str) {
-  let a = str.replace(/[\u0300-\u036f]/g, '')
+// Je crée la fonction - la méthode replace remplace la valeur du 1er paramètre par la seconde
+function removeAccent(entries) {
+  let a = entries.replace(/[\u0300-\u036f]/g, '')
   let b = a.replace(/[œ]/g , 'oe')
   let c = b.replace(/[ÈÉÊË]/g,'E')
   return c
@@ -36,18 +38,18 @@ function removeAccent(str) {
 }
 
 /** La @function litleWords exclue de la recherche les mots inutiles
- * @param {Array} array - tableau de tous les mots
+ * @param {Array} arrayOfWords - tableau de tous les mots
  * @returns {Array} - tableau ne contenant pas les mots exclus
 */
 
 // Je crée la fonction
-function litleWords(array) {
+function litleWords(arrayOfWords) {
 
   // Je crée un tableau contenant les mots à exclure de la recherche
   const wordsToExclude = ['et', 'd\'', 'au', 'de', 'la', 'le', 'du', 'en', 'ou', 'l\'', 'a', 'un', 'une', 'avec']
 
   // Je crée un filtre excluant tous les mots non-répertoriés à comparer
-  let arrayEntry = array.filter(x => !wordsToExclude.includes(x))
+  let arrayEntry = arrayOfWords.filter(x => !wordsToExclude.includes(x))
 
   // Je retourne le tableau de ces mots
   return arrayEntry
@@ -227,27 +229,27 @@ function sameTag(allLi, li) {
 }
 
 /** la @function selectUl retourne l'id de l'ul
- * @param {String} str - id de l'ul de la dropdown
+ * @param {String} idOfUl - id de l'ul de la dropdown
  * @returns {HTMLElement} - ul des tags
 */
 
 // Je crée la fonction
-function selectUl(str) {
+function selectUl(idOfUl) {
 
   // Si l'id de l'ul sélectionnée est menu-ingrédients
-  if (str == 'menu-ingredients') {
+  if (idOfUl == 'menu-ingredients') {
     // Je sélectionne l'ul élements-ingredients et la retourne
     const ul = document.querySelector('.elements-ingredients')
     return ul
   }
   // Si l'id de l'ul sélectionnée est menu-appareil
-  if (str == 'menu-appareil') {
+  if (idOfUl == 'menu-appareil') {
     // Je sélectionne l'ul élements-appareil et la retourne
     const ul = document.querySelector('.elements-appareil')
     return ul
   }
   // Si l'id de l'ul sélectionnée est menu-ustensiles
-  if (str == 'menu-ustensiles') {
+  if (idOfUl == 'menu-ustensiles') {
     // Je sélectionne l'ul élements-ustensiles et la retourne
     const ul = document.querySelector('.elements-ustensiles')
     return ul

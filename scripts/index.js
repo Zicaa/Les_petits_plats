@@ -36,14 +36,14 @@ mainInput.addEventListener('input', (event) => {
 })
 
 /** La @function numberOfRecipes permet d'afficher le nombre de recettes dans le HTML 
- * @param {Array} param - recettes affichées
+ * @param {Array} displayedRecipes - recettes affichées
 */ 
 
 // Je crée la fonction
-function numberOfRecipes(param) {
-  console.log(param)
+function numberOfRecipes(displayedRecipes) {
+  console.log(displayedRecipes)
   const result = document.querySelector('.tags-result')
-  result.innerHTML = `<span class="tags-result-bold">${param.length}</span> recette(s) trouvée(s)`
+  result.innerHTML = `<span class="tags-result-bold">${displayedRecipes.length}</span> recette(s) trouvée(s)`
 }
 
 let filteredRecipes = showRecipes()
@@ -80,24 +80,24 @@ function showRecipes() {
 let allRecipes = stringifyRecipes(recipes)
 
 /** @function stringifyRecipes concatène et transforme en chaîne de caractères la valeur des recettes
- * @param {Array} param - tableau de recettes avec instances
+ * @param {Array} recipesWithInstances - tableau de recettes avec instances
  * @returns {Array}
 */
 
 // Je crée la fonction
-function stringifyRecipes(param) {
+function stringifyRecipes(recipesWithInstances) {
 
   // Je crée un nouveau tableau qui reçoit les recettes
-  let array = []
+  let arrayOfStringifyRecipes = []
   
   // Pour chaque recette
-  for (let i = 0; i < param.length; i++) {
+  for (let i = 0; i < recipesWithInstances.length; i++) {
     // Je concatène l'ensemble des données de la recette
-    let recipe = concateRecipes(param[i])
+    let stringifyRecipe = concateRecipes(recipesWithInstances[i])
     // J'ajoute la recette concaténée au tableau de recettes
-    array.push(recipe)
+    arrayOfStringifyRecipes.push(stringifyRecipe)
   }
   // Je retourne le tableau de recettes
-  return array
+  return arrayOfStringifyRecipes
   
 }
