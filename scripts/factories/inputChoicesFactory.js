@@ -168,7 +168,7 @@ mainInput.addEventListener('keyup', (e) => {
 // Je crée la fonction
 function result(arrayOfWords, arrayOfRecipes) {
   findRecipes(arrayOfWords, arrayOfRecipes)
-  let filterdRecipes = showRecipes()
+  let filterdRecipes = stringifyRecipes()
   numberOfRecipes(filterdRecipes)
 
 }

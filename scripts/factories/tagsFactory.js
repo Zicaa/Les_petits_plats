@@ -115,18 +115,25 @@ function showTagsSelected() {
   // Je crée un tableau de tous les tags affichés
   let allTags = allTagsDisplayedArray()
 
+  // Je récupère et j'extrait le contenu de mon input de recherche
   const mainInput = document.getElementById('search')
   const entry = mainInput.value
   const arrayEntry = entry.split(' ')
+  // Pour chaque mot saisi, je l'ajoute à mon tableau de mots saisis
   arrayEntry.forEach(word => {
     allTags.push(word)
   })
 
+  // Je récupère la section, si elle est en display grid,
   const section = document.querySelector('.section')
   if (section.style.display === 'grid') {
+    // J'affiche tous les tags et recettes
     result(allTags, allRecipes)
+
+  // Sinon je récupère un tableau de tous les tags affichés
   } else {
     allTags = allTagsDisplayedArray()
+    // J'affiche tous les tags et recettes
     result(allTags, allRecipes)
     const mainInput = document.getElementById('search')
     mainInput.value = ''

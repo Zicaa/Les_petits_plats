@@ -205,13 +205,13 @@ function createItem(elements, ul) {
 }
 
 /** La @function tagedStyle change les styles des éléments taggés
- * @param {Array} array - tableau de tous les tags
+ * @param {Array} arrayOfTags - tableau de tous les tags
  * @param {HTMLElement} li - élément de la liste
 */ 
 
 // Je crée la fonction 
-function tagedStyle(array, li) {
-  array.forEach(tag => {
+function tagedStyle(arrayOfTags, li) {
+  arrayOfTags.forEach(tag => {
     if (tag.textContent == li.textContent) {
       li.style.color = 'rgba(255, 255, 255, 0.4)'
       li.style.textDecoration = 'line-through'

@@ -46,15 +46,16 @@ function numberOfRecipes(displayedRecipes) {
   result.innerHTML = `<span class="tags-result-bold">${displayedRecipes.length}</span> recette(s) trouvée(s)`
 }
 
-let filteredRecipes = showRecipes()
+// J'appelle la fonction qui récupère les recettes filtrées dans le HTML
+let filteredRecipes = recoveredRecipes()
 numberOfRecipes(filteredRecipes)
 
-/** La @function showRecipes permet d'afficher les recettes 
+/** La @function recoveredRecipes permet de récupérer les recettes 
  * @returns {array} - recettes affichées
 */ 
 
 // Je crée la fonction 
-function showRecipes() {
+function recoveredRecipes() {
 
   // Je crée un tableau qui contient les recettes
   let newRecipes = []
@@ -75,7 +76,7 @@ function showRecipes() {
   return newRecipes
 }
 
-/** La @function showRecipes permet d'afficher les recettes */ 
+/** La @function stringifyRecipes permet de transformer l'ensemble des recettes en chaîne de caractère */ 
 
 let allRecipes = stringifyRecipes(recipes)
 
