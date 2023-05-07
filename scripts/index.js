@@ -94,9 +94,9 @@ function stringifyRecipes(recipesWithInstances) {
   // Pour chaque recette
   for (let i = 0; i < recipesWithInstances.length; i++) {
     // Je concatène l'ensemble des données de la recette
-    let stringifyRecipe = concateRecipes(recipesWithInstances[i])
+    let recipe = concateRecipes(recipesWithInstances[i])
     // J'ajoute la recette concaténée au tableau de recettes
-    arrayOfStringifyRecipes.push(stringifyRecipe)
+    arrayOfStringifyRecipes.push(recipe)
   }
   // Je retourne le tableau de recettes
   return arrayOfStringifyRecipes
