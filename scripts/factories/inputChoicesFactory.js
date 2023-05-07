@@ -65,7 +65,7 @@ function dropdownNewDisplay(elements, ul, entry) {
 
 }
 
-/** La @function compareElementsAndEntries n'affiche que les éléments des listes correspondants à la saisie 
+/** La fonction compareElementsAndEntries compare les éléments saisis dans la search bar aux éléments des instances
  * @param {Array} elements - allIngredients ou allAppliances ou allUstensils   
  * @param {String} entry - données saisies dans les inputs dropdown
  * @returns {Array} - array des éléments correspondants à la saisie
