@@ -6,22 +6,22 @@ let allAppliances
 let allUstensils
 
 /** La @function noDuplicateDropdownsElements empêche la duplication des éléments dans chaque dropdown
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes
 */
 
 // Je crée la fonction
-function noDuplicateDropdownsElements(allRecipe) {
-  allIngredients = noDuplicateIngredients(allRecipe)
+function noDuplicateDropdownsElements(arrayOfRecipes) {
+  allIngredients = noDuplicateIngredients(arrayOfRecipes)
   const ulMenuIngredients = document.getElementById('menu-ingredients')
   ulMenuIngredients.innerHTML = ''
   sortAndShowElements(allIngredients, ulMenuIngredients)
 
-  allAppliances = noDuplicateAppliances(allRecipe) 
+  allAppliances = noDuplicateAppliances(arrayOfRecipes) 
   const ulMenuAppliances = document.getElementById('menu-appareil')
   ulMenuAppliances.innerHTML = ''
   sortAndShowElements(allAppliances, ulMenuAppliances)
 
-  allUstensils = noDuplicateUstensils(allRecipe) 
+  allUstensils = noDuplicateUstensils(arrayOfRecipes) 
   const ulMenuUstensils = document.getElementById('menu-ustensiles')
   ulMenuUstensils.innerHTML = ''
   sortAndShowElements(allUstensils, ulMenuUstensils)
@@ -29,20 +29,20 @@ function noDuplicateDropdownsElements(allRecipe) {
 }
 
 /** La @function noDuplicateIngredients empêche les doublons d'ingrédients dans les dropdowns
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes
 */
 
 // Je crée la fonction
-function noDuplicateIngredients(allRecipe) {
+function noDuplicateIngredients(arrayOfRecipes) {
 
  // Je crée un tableau avec tous les éléments
  let allElements = []
 
   // Pour chaque élément de mon tableau de recettes
-  for (let i = 0; i < allRecipe.length; i++) {
+  for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je récupère les ingrédients
-    const ingredientsRecipe = allRecipe[i].ingredients
+    const ingredientsRecipe = arrayOfRecipes[i].ingredients
 
     // Je crée un tableau de ces ingrédients
     let arrayIngredients = []
@@ -63,20 +63,20 @@ function noDuplicateIngredients(allRecipe) {
 }
 
 /** La @function noDuplicateAppliances empêche les doublons d'appareils dans les dropdowns
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes
 */
 
 // Je crée la fonction
-function noDuplicateAppliances(allRecipe) {
+function noDuplicateAppliances(arrayOfRecipes) {
 
    // Je crée un tableau avec tous les éléments
    let allElements = []
 
    // Pour chaque élément de mon tableau de recettes
-   for (let i = 0; i < allRecipe.length; i++) {
+   for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je récupère les appareils
-    const applianceRecipe = allRecipe[i].appliance
+    const applianceRecipe = arrayOfRecipes[i].appliance
 
     // J'ajoute cet appareil unique au tableau contenant tous les éléments
     allElements.push(applianceRecipe)
@@ -89,20 +89,20 @@ function noDuplicateAppliances(allRecipe) {
 }
 
 /** La @function noDuplicateUstensils empêche les doublons d'ustensiles dans les dropdowns
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes
 */
 
 // Je crée la fonction
-function noDuplicateUstensils(allRecipe) {
+function noDuplicateUstensils(arrayOfRecipes) {
 
   // Je crée un tableau avec tous les éléments
   let allElements = []
 
   // Pour chaque ingredient de mon tableau d'ingrédients
-  for (let i = 0; i < allRecipe.length; i++) {
+  for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je récupère les ustensiles
-    const ustensilsRecipe = allRecipe[i].ustensils
+    const ustensilsRecipe = arrayOfRecipes[i].ustensils
 
     // Je crée un tableau de ces ustensiles
     let arrayUstensils = []
@@ -201,8 +201,8 @@ function createItem(elements, ul) {
       }
     })
 
-    // J'appelle la fonction tagedStyle
-    tagedStyle(arrayTags, li) 
+    // J'appelle la fonction barredStyle
+    barredStyle(arrayTags, li) 
   }
 
   // J'appelle la fonction keybordFunction
@@ -210,13 +210,13 @@ function createItem(elements, ul) {
 
 }
 
-/** La @function tagedStyle change les styles des éléments taggés
+/** La @function barredStyle change les styles des éléments déjà taggés dans le dropdown
  * @param {Array} array - tableau de tous les tags
  * @param {HTMLElement} li - élément de la liste
 */
 
 // Je crée la fonction 
-function tagedStyle(array, li) {
+function barredStyle(array, li) {
   array.forEach(tag => {
     if (tag.textContent == li.textContent) {
       li.style.color = 'rgba(255, 255, 255, 0.4)'

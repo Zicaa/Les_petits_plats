@@ -65,7 +65,7 @@ function dropdownNewDisplay(elements, ul, entry) {
 
 }
 
-/** La fonction compareElementsAndEntries compare les éléments saisis dans la search bar aux éléments des instances
+/** La fonction compareElementsAndEntries compare les éléments saisis dans l'input du dropdown aux éléments des instances pour les afficher
  * @param {Array} elements - allIngredients ou allAppliances ou allUstensils   
  * @param {String} entry - données saisies dans les inputs dropdown
  * @returns {Array} - array des éléments correspondants à la saisie
@@ -80,27 +80,29 @@ function compareElementsAndEntries(entry, elements) {
   // Pour chaque élément
   for (let i = 0; i < elements.length; i++) {
 
-    // J'appelle la fonction normalizeInputEntries qui compare les données
+    // J'intègre l'élément à mon nouveau tableau
     let queryElement = normalizeInputEntries(elements[i])
 
-    // Si il y'a correspondance entre l'élément demandé et la saisie
+    // Si il y'a correspondance entre l'élément demandé dans mes instances et la saisie
     if (queryElement.search(entry) != -1) {
 
       // J'intègre l'élément à mon nouveau tableau
       relatedItems.push(elements[i])
     }
+
   }
   // Je retourne le nouveau tableau
   return relatedItems
 
 }
 
-/** La @function testInput vérifie la saisie de l'utilisateur dans le champ de recherche principale 
+/** La @function testSearchBar vérifie la saisie de l'utilisateur dans le champ de recherche principale 
+ * et affiche les recettes, ingrédients, appareils et ustensiles correspondants
  * @param {MouseEvent} event 
 */ 
 
 // Je crée la fonction
-function testInput(event) {
+function testSearchBar(event) {
 
   // Je désactive le comportement par défaut
   event.preventDefault
@@ -109,13 +111,13 @@ function testInput(event) {
   // Je récupère la valeur du champ
   const entry = mainInput.value
 
-  // Je crée un tableau de tous les tags affichés
-  let allTags = allTagsDisplayedArray()
+  // Je récupère les tags affichés
+  let allWords = allTagsDisplayedArray()
 
-  // Je crée une variable contenant les recettes affichées
-  let filterdRecipes
+  // Je crée une variable contenant les recettes qui seront filtrées
+  let filteredRecipes
 
-  // Si la saisie est supérieure ou égale à 3 caractères, findRecipes effectue la recherche sur les recettes affichées
+  // Si la saisie est supérieure ou égale à 3 caractères, findRecipes effectue la recherche sur les recettes 
   if (entry.length >= 3) {
 
     // J'appelle la fonction normalizeInputEntries
@@ -124,29 +126,29 @@ function testInput(event) {
     // Je crée un tableau contenant les saisies de l'input
     let array = inputText.split(' ')
 
-    // J'appelle la fonction litleWords
+    // J'appelle la fonction litleWords pour exclure les mots inutiles
     let arrayEntry = litleWords(array)
 
     // Pour chaque élément 
     arrayEntry.forEach(elem => {
-      // J'ajoute les tags sélectionnés au tableau de tous les tags
-      allTags.push(elem)
+      // J'ajoute les mots sélectionnés au tableau de tous les mots + tags
+      allWords.push(elem)
     })
 
-    // Je crée un nouvel objet contenant ces éléments avec set et le retourne
-    allTags = [...new Set(allTags)]
+    // Je crée un nouvel objet contenant ces éléments 
+    allWords = [...new Set(allWords)]
 
-    // Je récupère les recettes filtrées
-    filterdRecipes = recoveredRecipes()
+    // Je récupère les recettes 
+    filteredRecipes = recoveredRecipes()
 
-    // J'affiche les tags relatives aux recherches et les recettes correspondantes
-    result(allTags, filterdRecipes)
+    // J'affiche les mots relatifs aux recherches et aux recettes affichées
+    result(allWords, filteredRecipes)
 
   // Sinon
   } else {
 
-    // J'affiche les tags relatifs aux recherches et les recettes correspondantes
-    result(allTags, recipes)
+    // J'affiche les mots relatifs aux recherches et à mon tableau de recettes
+    result(allWords, recipes)
   }
 
 }
@@ -156,8 +158,8 @@ const mainInput = document.getElementById('search')
 mainInput.addEventListener('keyup', (e) => {
   const keyCode = e.code
   if (keyCode === 'Escape') {
-    let allTags = allTagsDisplayedArray()
-    result(allTags, recipes)
+    let allWords = allTagsDisplayedArray()
+    result(allWords, recipes)
   }
   
 })

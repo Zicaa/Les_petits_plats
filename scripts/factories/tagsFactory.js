@@ -141,8 +141,8 @@ function showTagsSelected() {
 
 }
 
-/** la @function allTagsDisplayedArray récupère un array de tous les tags affichés
- * @returns {Array} - tableau de tous les tags affichés
+/** La @function allTagsDisplayedArray crée un array de tous les tags affichés /
+ * @returns {Array} - tableau de tous les tags affichés 
 */
 
 // Je crée la fonction
@@ -159,19 +159,20 @@ function allTagsDisplayedArray() {
   const ulAppliancesTags = allUl[1]
   const ulUstensilsTags = allUl[2]
 
-  // J'accède aux ingrédients tagués et les ajoute à un seul tableau de données
+  // J'accède aux ingrédients et ajoute un seul élément tagué au tableau de données
   const allLiIngredientsTags = ulIngredientsTags.children
   let ingredientsTags = pushTag(allLiIngredientsTags)
-  // J'accède aux appareils tagués et les ajoute à un seul tableau de données
+  // J'accède aux appareil ajoute un seul élément tagué au tableau de données
   const allLiAppliancesTags = ulAppliancesTags.children
   let appliancesTags = pushTag(allLiAppliancesTags)
-  // J'ajoute les appareils tagués aux ingrédients dans un nouveau tableau croisé avec concat
+  // J'ajoute l'appareil tagué à l'ingrédients dans un nouveau tableau croisé avec concat
   let tempArray = ingredientsTags.concat(appliancesTags)
-  // J'accède aux ustensiles tagués et les ajoute à un seul tableau de données
+  // J'accède aux ustensiles et ajoute un seul élément tagué au tableau de données
   const allLiUstensilsTags = ulUstensilsTags.children
   let ustensilsTags = pushTag(allLiUstensilsTags)
-   // J'ajoute les ustensiles tagués à tous les éléments dans un nouveau tableau croisé
+  // J'ajoute l'ustensile tagué à tous les éléments dans un nouveau tableau croisé
   allTags = tempArray.concat(ustensilsTags)
+
   return allTags
 
 }
@@ -212,6 +213,7 @@ function pushTag(elements) {
 function sameTag(allLi, li) {
 
   // Je crée un tableau de tous les éléments listés et l'indexe à -1
+  // pour éviter les erreurs de clôture
   const liArray = allLi.length - 1
 
   // Pour chaque élément

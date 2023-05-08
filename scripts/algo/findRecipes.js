@@ -20,12 +20,12 @@ function findRecipes(arrayOfWords, arrayOfRecipes) {
   for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je crée chaque recette concaténée
-    let recipe = concateRecipes(arrayOfRecipes[i])
+    let concatenedRecipe = concateRecipes(arrayOfRecipes[i])
 
     // J'initialise un compteur correspondant au nombre de recettes trouvées
-    let counter = matchingWords(arrayOfWords, recipe)
+    let counter = matchingWords(arrayOfWords, concatenedRecipe)
 
-    // Si le compteur est strictement égal au nombre de mots stockés dans les inputs
+    // Si le compteur est strictement égal au mot/tag sélectionné
     if (counter === arrayOfWords.length) {
       // J'intègre les recettes contenant ces mots dans le tableau de recettes dynamiques
       recipesSelected.push(arrayOfRecipes[i])
@@ -68,7 +68,7 @@ function matchingWords(arrayOfWords, concatenedRecipe) {
   // Pour chaque élément du tableau d'input
   for (let j = 0; j < arrayOfWords.length; j++) {
 
-    // Si le compteur est indexé en positif alors je l'incrémente pour affichage des recettes correspondantes
+    // Si le compteur est indexé en positif alors je l'incrémente pour affichage des recettes correspondantes 
     if (concatenedRecipe.indexOf(arrayOfWords[j]) != -1) {
       counter++
     } 
