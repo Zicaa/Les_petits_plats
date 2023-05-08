@@ -24,6 +24,7 @@ function concateRecipes(recipe) {
 
   // Je crée la recette concaténée et la retourne
   let recipeString = name + ' ' + appliance + ' ' +  description + ' ' +  ingredients + ' ' +  ustensils
+  
   return recipeString
 
 }

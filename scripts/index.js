@@ -30,9 +30,9 @@ allButtonClose.forEach(button => {
 })
 
 
-// Je lance la fonction testInput 
+// Je lance la fonction testSearchBar 
 mainInput.addEventListener('input', (event) => {
-  testInput(event)
+  testSearchBar(event)
 })
 
 /** La @function numberOfRecipes permet d'afficher le nombre de recettes dans le HTML 
@@ -41,7 +41,6 @@ mainInput.addEventListener('input', (event) => {
 
 // Je crée la fonction
 function numberOfRecipes(displayedRecipes) {
-  console.log(displayedRecipes)
   const result = document.querySelector('.tags-result')
   result.innerHTML = `<span class="tags-result-bold">${displayedRecipes.length}</span> recette(s) trouvée(s)`
 }
@@ -99,6 +98,7 @@ function stringifyRecipes(recipesWithInstances) {
     arrayOfStringifyRecipes.push(recipe)
   }
   // Je retourne le tableau de recettes
+  console.log(arrayOfStringifyRecipes)
   return arrayOfStringifyRecipes
   
 }

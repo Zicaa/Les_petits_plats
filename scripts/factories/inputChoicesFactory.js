@@ -63,7 +63,7 @@ function dropdownNewDisplay(elements, ul, entry) {
 
 }
 
-/** La @function compareElementsAndEntries compare les éléments saisis dans la search bar aux éléments des instances 
+/** La fonction compareElementsAndEntries compare les éléments saisis dans l'input du dropdown aux éléments des instances pour les afficher
  * @param {Array} elements - allIngredients ou allAppliances ou allUstensils   
  * @param {String} entry - données saisies dans les inputs dropdown
  * @returns {Array} - array des éléments correspondants à la saisie
@@ -80,21 +80,27 @@ function compareElementsAndEntries(entry, elements) {
 
     // J'intègre l'élément à mon nouveau tableau
     let queryElement = normalizeInputEntries(elements[i])
+
+    // Si il y'a correspondance entre l'élément demandé dans mes instances et la saisie
     if (queryElement.search(entry) != -1) {
+
+      // J'intègre l'élément à mon nouveau tableau
       relatedItems.push(elements[i])
     }
+    
   }
   // Je retourne le nouveau tableau
   return relatedItems
 
 }
 
-/** La @function testInput vérifie la saisie de l'utilisateur dans le champ de recherche principale 
-  * @param {MouseEvent} event 
-  */ 
+/** La @function testSearchBar vérifie la saisie de l'utilisateur dans le champ de recherche principale 
+ * et affiche les recettes, ingrédients, appareils et ustensiles correspondants
+ * @param {MouseEvent} event 
+*/ 
 
 // Je crée la fonction
-function testInput(event) {
+function testSearchBar(event) {
   
   // Je désactive le comportement par défaut
   event.preventDefault
@@ -103,16 +109,16 @@ function testInput(event) {
   // Je récupère la valeur du champ
   const entry = mainInput.value
 
-  // Je crée un tableau de tous les tags affichés
-  let allTags = allTagsDisplayedArray()
-
+  // Je récupère les tags affichés
+  let allWords = allTagsDisplayedArray()
+  
   // J'ajoute un addEventListener sur évènement 'keyup' des touches de suppression
   // pour relancer la fonction findRecipes avec une recherche sur l'ensemble des recettes 
   // et non celles seulement affichées
   mainInput.addEventListener('keyup', (e) => {
     const keyCode = e.code
     if (keyCode === 'Backspace' || keyCode === 'Delete') {
-      result(allTags, allRecipes)
+      result(allWords, filteredRecipes)
     }
   })
 
@@ -125,26 +131,26 @@ function testInput(event) {
     // Je crée un tableau contenant les saisies de l'input
     let array = inputText.split(' ')
 
-    // J'appelle la fonction litleWords
+    // J'appelle la fonction litleWords pour exclure les mots inutiles
     let arrayEntry = litleWords(array)
 
     // Pour chaque élément 
     arrayEntry.forEach(elem => {
-      // J'ajoute les tags sélectionnés au tableau de tous les tags
-      allTags.push(elem)
+      // J'ajoute les mots sélectionnés au tableau de tous les mots + tags
+      allWords.push(elem)
     })
 
-    // Je crée un nouvel objet contenant ces éléments avec set et le retourne
-    allTags = [...new Set(allTags)]
+    // Je crée un nouvel objet contenant ces éléments
+    allWords = [...new Set(allWords)]
 
-    // J'affiche les tags relatives aux recherches et les recettes correspondantes
-    result(allTags, allRecipes)
+    // J'affiche les mots relatifs aux recherches et aux recettes affichées
+    result(allWords, filteredRecipes)
 
   // Sinon
   } else {
 
-  // J'affiche les tags relatifs aux recherches et les recettes correspondantes
-  result(allTags, recipes)
+  // J'affiche les mots relatifs aux recherches et aux recettes affichées
+  result(allWords, filteredRecipes)
 
   }
 
@@ -156,7 +162,7 @@ mainInput.addEventListener('keyup', (e) => {
   const keyCode = e.code
   if (keyCode === 'Escape') {
     let allTags = allTagsDisplayedArray()
-    result(allTags, allRecipes)
+    result(allTags, filteredRecipes)
   }
 })
 

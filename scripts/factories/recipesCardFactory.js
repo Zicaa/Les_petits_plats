@@ -18,13 +18,13 @@ function recipesCardFactory(arrayOfrecipes) {
    const article = new Element('recipeCard', 'article', 'recip-card').elem
    section.appendChild(article)
    article.id = `article-${arrayOfrecipes[i].id}`
-   const anchor = new Element('recipCardLink', 'a', 'recip-card-link').elem
-   article.appendChild(anchor)
-   anchor.href = '#'
+   const cardLink = new Element('recipCardLink', 'a', 'recip-card-link').elem
+   article.appendChild(cardLink)
+   cardLink.href = '#'
    const divImage = new Element('recipCardImage', 'div', 'recip-card-bg').elem
-   anchor.appendChild(divImage)
+   cardLink.appendChild(divImage)
    const divDescription = new Element('recipCardDescription', 'div', 'recip-card-description').elem
-   anchor.appendChild(divDescription)
+   cardLink.appendChild(divDescription)
    const divTitle = new Element('recipCardDescriptionTitle', 'div', 'recip-card-description-title').elem
    divDescription.appendChild(divTitle)
    const title = new Element('recipCardDescriptionH3', 'h3', 'recip-card-description-title-h3').elem
