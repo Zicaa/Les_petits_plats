@@ -49,7 +49,8 @@ function numberOfRecipes(displayedRecipes) {
 let filteredRecipes = recoveredRecipes()
 numberOfRecipes(filteredRecipes)
 
-/** La @function recoveredRecipes permet de récupérer les recettes 
+
+/** La @function recoveredRecipes permet de récupérer le nombre de recettes affichées
  * @returns {array} - recettes affichées
 */ 
 
@@ -63,16 +64,27 @@ function recoveredRecipes() {
   // Je vérifie si chaque id d'article correspond à l'id des recettes
   let allArticles = Array.from(articles)
   allArticles.forEach(article => {
+
     let articleId = article.id
+
+    // Pour chaque recette avec instances de mon tableau
     for (let i = 0; i < recipes.length; i++) {
       let recipeId = `article-${recipes[i].id}`
       if (articleId == recipeId) {
+        // J'ajoute la recette avec instances à mon tableau de recettes filtrées
         newRecipes.push(recipes[i])
       }
     }
+
   })
+
+  
+
+  // Je transforme les nouvelles recettes en chaîne de caractères et les retourne
   newRecipes = stringifyRecipes(newRecipes) 
+  console.log(newRecipes)
   return newRecipes
+
 }
 
 /** La @function stringifyRecipes permet de transformer l'ensemble des recettes en chaîne de caractère */ 
@@ -93,12 +105,11 @@ function stringifyRecipes(recipesWithInstances) {
   // Pour chaque recette
   for (let i = 0; i < recipesWithInstances.length; i++) {
     // Je concatène l'ensemble des données de la recette
-    let recipe = concateRecipes(recipesWithInstances[i])
+    let concatenedRecipe = concateRecipes(recipesWithInstances[i])
     // J'ajoute la recette concaténée au tableau de recettes
-    arrayOfStringifyRecipes.push(recipe)
+    arrayOfStringifyRecipes.push(concatenedRecipe)
   }
   // Je retourne le tableau de recettes
-  console.log(arrayOfStringifyRecipes)
   return arrayOfStringifyRecipes
   
 }

@@ -24,6 +24,7 @@ function dropdownInput() {
     const ul = document.getElementById('menu-appareil')
     dropdownNewDisplay(allAppliances, ul, entry)
   }
+
   // Si l'id de l'input est égal à ustensiles
   if (input.id == 'ustensiles') {
     // Je récupère l'id de l'ul correspondante
@@ -113,12 +114,12 @@ function testSearchBar(event) {
   let allWords = allTagsDisplayedArray()
   
   // J'ajoute un addEventListener sur évènement 'keyup' des touches de suppression
-  // pour relancer la fonction findRecipes avec une recherche sur l'ensemble des recettes 
+  // pour relancer l'affaichage des recettes avec une recherche sur l'ensemble des recettes 
   // et non celles seulement affichées
   mainInput.addEventListener('keyup', (e) => {
     const keyCode = e.code
     if (keyCode === 'Backspace' || keyCode === 'Delete') {
-      result(allWords, filteredRecipes)
+      result(allWords, allRecipes)
     }
   })
 
@@ -143,15 +144,14 @@ function testSearchBar(event) {
     // Je crée un nouvel objet contenant ces éléments
     allWords = [...new Set(allWords)]
 
-    // J'affiche les mots relatifs aux recherches et aux recettes affichées
-    result(allWords, filteredRecipes)
+    // Je renvoie la recherche relative aux saisies et aux recettes 
+    result(allWords, allRecipes)
 
   // Sinon
   } else {
 
-  // J'affiche les mots relatifs aux recherches et aux recettes affichées
-  result(allWords, filteredRecipes)
-
+  // Je renvoie la recherche relative aux saisies et aux recettes 
+  result(allWords, allRecipes)
   }
 
 }
@@ -161,12 +161,14 @@ const mainInput = document.getElementById('search')
 mainInput.addEventListener('keyup', (e) => {
   const keyCode = e.code
   if (keyCode === 'Escape') {
-    let allTags = allTagsDisplayedArray()
-    result(allTags, filteredRecipes)
+    let allWords = allTagsDisplayedArray()
+    result(allWords, allRecipes)
   }
+  
 })
 
-/** La @function result trouve les correspondance entre tags/saisie et recettes et affiche le résultat
+/** La @function result trouve les correspondance entre tags/saisies et les mots dans les recettes stringifiées
+ * puis renvoie le résultat sous forme de tableau de recettes stringifiées
  * @param {Array} arrayOfWords - tableau des mots saisis et des tags
  * @param {Array} arrayOfRecipes - tableau des recettes affichées ou de toutes les recettes
 */
