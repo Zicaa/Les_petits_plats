@@ -117,9 +117,12 @@ function showTagsSelected() {
 
   // Je récupère la section, si elle est en display grid,
   const section = document.querySelector('.section')
+
   if (section.style.display === 'grid') {
-    // J'appelle la fonction recoveredRecipes pour récupérer les recettes
+
+    // J'appelle la fonction recoveredRecipes pour récupérer les recettes filtrées
     let allRecipes = recoveredRecipes()
+
     // J'affiche les tags et toutes les recettes 
     result(allTags, allRecipes)
     
@@ -129,6 +132,7 @@ function showTagsSelected() {
     result(allTags, recipes)
     const mainInput = document.getElementById('search')
     mainInput.value = ''
+
   }
 
   // J'ajoute un addEventlistener pour fermer les tags au clic + à la touche entrée
