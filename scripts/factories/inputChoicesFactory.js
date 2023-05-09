@@ -114,8 +114,8 @@ function testSearchBar(event) {
   // Je récupère les tags affichés
   let allWords = allTagsDisplayedArray()
 
-  // Je crée une variable contenant les recettes qui seront filtrées
-  let filteredRecipes
+  // Je crée une variable contenant les recettes 
+  let allRecipes
 
   // Si la saisie est supérieure ou égale à 3 caractères, findRecipes effectue la recherche sur les recettes 
   if (entry.length >= 3) {
@@ -139,15 +139,15 @@ function testSearchBar(event) {
     allWords = [...new Set(allWords)]
 
     // Je récupère les recettes 
-    filteredRecipes = recoveredRecipes()
+    allRecipes = recoveredRecipes()
 
-    // J'affiche les mots relatifs aux recherches et aux recettes affichées
-    result(allWords, filteredRecipes)
+    // Je renvoie la recherche relative aux saisies et aux recettes 
+    result(allWords, allRecipes)
 
   // Sinon
   } else {
 
-    // J'affiche les mots relatifs aux recherches et à mon tableau de recettes
+    // Je renvoie la recherche relative aux saisies et aux recettes 
     result(allWords, recipes)
   }
 
@@ -164,7 +164,8 @@ mainInput.addEventListener('keyup', (e) => {
   
 })
 
-/** La @function result trouve les correspondances entre les sélections/recettes puis affiche le résultat dans le header
+/** La @function result trouve les correspondance entre tags/saisies et les mots dans les recettes instanciées
+ * puis renvoie le résultat sous forme de tableau de recettes instanciées
  * @param {Array} arrayOfWords - tableau des mots saisis et des tags
  * @param {Array} arrayOfRecipes - tableau des recettes affichées ou de toutes les recettes
 */ 

@@ -47,7 +47,7 @@ function numberOfRecipes(displayedRecipes) {
 let filteredRecipes = recoveredRecipes()
 numberOfRecipes(filteredRecipes)
 
-/** La @function recoveredRecipes permet de récupérer les recettes affichées
+/** La @function recoveredRecipes permet de récupérer le nombre de recettes affichées
  * @returns {array} - recettes affichées
 */ 
 

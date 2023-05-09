@@ -119,9 +119,10 @@ function showTagsSelected() {
   const section = document.querySelector('.section')
   if (section.style.display === 'grid') {
     // J'appelle la fonction recoveredRecipes pour récupérer les recettes
-    let filteredRecipes = recoveredRecipes()
-    // J'affiche les tags et recettes sélectionnés
-    result(allTags, filteredRecipes)
+    let allRecipes = recoveredRecipes()
+    // J'affiche les tags et toutes les recettes 
+    result(allTags, allRecipes)
+    
 
   // Sinon j'affiche les tags et toutes les recettes
   } else {

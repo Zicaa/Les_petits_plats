@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
-/** La @function findRecipes trouve les recettes contenant les mots saisis et les tags dans les recettes affichées et globales
+/** La @function findRecipes trouve les recettes contenant les mots saisis dans les recettes affichées
  * @param {Array} arrayOfWords - tableau des mots saisis et des tags
- * @param {Array} arrayOfRecipes - tableau des recettes affichées ou de toutes les recettes
+ * @param {Array} arrayOfRecipes - tableau de toutes les recettes sous forme d'objets
 */ 
 
 // Je crée la fonction
@@ -22,12 +22,12 @@ function findRecipes(arrayOfWords, arrayOfRecipes) {
     // Je crée chaque recette concaténée
     let concatenedRecipe = concateRecipes(arrayOfRecipes[i])
 
-    // J'initialise un compteur correspondant au nombre de recettes trouvées
+    // J'effectue la recherche de mots dans les recettes concaténées
     let counter = matchingWords(arrayOfWords, concatenedRecipe)
 
-    // Si le compteur est strictement égal au mot/tag sélectionné
+    // J'intègre les recettes concaténées contenant ces mots sous forme d'objets dans le tableau de recettes
     if (counter === arrayOfWords.length) {
-      // J'intègre les recettes contenant ces mots dans le tableau de recettes dynamiques
+      // J'intègre les recettes contenant ces mots dans le tableau de recettes
       recipesSelected.push(arrayOfRecipes[i])
       // J'incrémente le tableau
       index++
