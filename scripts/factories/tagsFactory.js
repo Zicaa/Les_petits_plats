@@ -119,14 +119,16 @@ function showTagsSelected() {
   const mainInput = document.getElementById('search')
   const entry = mainInput.value
   const arrayEntry = entry.split(' ')
-  // Pour chaque mot saisi, je l'ajoute à mon tableau de mots saisis
+  // Pour chaque saisie, je l'ajoute à mon tableau de tags
   arrayEntry.forEach(word => {
     allTags.push(word)
   })
 
   // Je récupère la section, si elle est en display grid,
   const section = document.querySelector('.section')
+
   if (section.style.display === 'grid') {
+
     // J'affiche tous les tags et recettes
     result(allTags, allRecipes)
 
@@ -137,6 +139,7 @@ function showTagsSelected() {
     result(allTags, allRecipes)
     const mainInput = document.getElementById('search')
     mainInput.value = ''
+
   }
   
   // J'ajoute un addEventlistener pour fermer les tags au clic + à la touche entrée

@@ -178,6 +178,6 @@ function result(arrayOfWords, arrayOfRecipes) {
   findRecipes(arrayOfWords, arrayOfRecipes)
   let filterdRecipes = recoveredRecipes()
   numberOfRecipes(filterdRecipes)
-
+  
 }
 
