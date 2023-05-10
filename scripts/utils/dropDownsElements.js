@@ -4,24 +4,26 @@
 let allIngredients
 let allAppliances
 let allUstensils
+let arrayOfRecipes=[]
 
 /** La @function noDuplicateDropdownsElements empêche la duplication des éléments dans chaque dropdown
- * @param {Array} allRecipe - toutes les recettes
+ * et actualise les ingrédients, appareils et ustensiles disponibles sur les recettes affichées
+ * @param {Array} arrayOfRecipes - toutes les recettes affichées
 */
 
 // Je crée la fonction
-function noDuplicateDropdownsElements(allRecipe) {
-  allIngredients = noDuplicateIngredients(allRecipe)
+function noDuplicateDropdownsElements(arrayOfRecipes) {
+  allIngredients = noDuplicateIngredients(arrayOfRecipes)
   const ulMenuIngredients = document.getElementById('menu-ingredients')
   ulMenuIngredients.innerHTML = ''
   sortAndShowElements(allIngredients, ulMenuIngredients)
 
-  allAppliances = noDuplicateAppliances(allRecipe) 
+  allAppliances = noDuplicateAppliances(arrayOfRecipes) 
   const ulMenuAppliances = document.getElementById('menu-appareil')
   ulMenuAppliances.innerHTML = ''
   sortAndShowElements(allAppliances, ulMenuAppliances)
 
-  allUstensils = noDuplicateUstensils(allRecipe) 
+  allUstensils = noDuplicateUstensils(arrayOfRecipes) 
   const ulMenuUstensils = document.getElementById('menu-ustensiles')
   ulMenuUstensils.innerHTML = ''
   sortAndShowElements(allUstensils, ulMenuUstensils)
@@ -30,20 +32,20 @@ function noDuplicateDropdownsElements(allRecipe) {
 
 
 /** La @function noDuplicateIngredients empêche les doublons d'ingrédients dans les dropdowns
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes affichées
 */
 
 // Je crée la fonction
-function noDuplicateIngredients(allRecipe) {
+function noDuplicateIngredients() {arrayOfRecipes
 
   // Je crée un tableau avec tous les éléments
   let allElements = []
 
   // Pour chaque élément de mon tableau de recettes
-  for (let i = 0; i < allRecipe.length; i++) {
+  for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je récupère les ingrédients
-    const ingredientsRecipe = allRecipe[i].ingredients
+    const ingredientsRecipe = arrayOfRecipes[i].ingredients
 
     // Je crée un tableau de ces ingrédients
     let arrayIngredients = []
@@ -55,8 +57,8 @@ function noDuplicateIngredients(allRecipe) {
       arrayIngredients.push(oneIgredient)
     }
 
-    // J'ajoute chaque ingrédient unique au tableau contenant tous les éléments
-    arrayIngredients.forEach(ingrdnt => allElements.push(ingrdnt))
+     // J'ajoute chaque ingrédient unique au tableau contenant tous les éléments
+    arrayIngredients.forEach(ingr => allElements.push(ingr))
   }
   
   // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
@@ -65,45 +67,45 @@ function noDuplicateIngredients(allRecipe) {
 }
 
 /** La @function noDuplicateAppliances empêche les doublons d'appareils dans les dropdowns
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes affichées
 */
 
 // Je crée la fonction 
-function noDuplicateAppliances(allRecipe) {
+function noDuplicateAppliances(arrayOfRecipes) {
 
    // Je crée un tableau avec tous les éléments
   let allElements = []
 
   // Pour chaque élément de mon tableau de recettes
-  for (let i = 0; i < allRecipe.length; i++) {
+  for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je récupère les appareils
-    const applianceRecipe = allRecipe[i].appliance
+    const applianceRecipe = arrayOfRecipes[i].appliance
 
     // J'ajoute cet appareil unique au tableau contenant tous les éléments
     allElements.push(applianceRecipe)
   }
 
-  // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
+   // Je crée un nouvel objet contenant ces éléments uniques correspondants aux recettes affichées
   let allElementsUnique = [...new Set(allElements)]
   return allElementsUnique
 }
 
 /** La @function noDuplicateUstensils empêche les doublons d'ustensiles dans les dropdowns
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes affichées
 */
 
 // Je crée la fonction 
-function noDuplicateUstensils(allRecipe) {
+function noDuplicateUstensils(arrayOfRecipes) {
 
   // Je crée un tableau avec tous les éléments
   let allElements = []
 
   // Pour chaque ingredient de mon tableau d'ingrédients
-  for (let i = 0; i < allRecipe.length; i++) {
+  for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je récupère les ustensiles
-    const ustensilsRecipe = allRecipe[i].ustensils
+    const ustensilsRecipe = arrayOfRecipes[i].ustensils
 
     // Je crée un tableau de ces ustensiles
     let arrayUstensils = []
@@ -120,7 +122,7 @@ function noDuplicateUstensils(allRecipe) {
     arrayUstensils.forEach(ust => allElements.push(ust))
   }
 
-  // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
+  // Je crée un nouvel objet contenant ces éléments uniques correspondants aux recettes affichées
   let allElementsUnique = [...new Set(allElements)]
   return allElementsUnique
 }
