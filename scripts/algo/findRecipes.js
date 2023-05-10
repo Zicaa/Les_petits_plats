@@ -29,6 +29,7 @@ function findRecipes(arrayOfWords, arrayOfRecipes) {
     if (counter === arrayOfWords.length) {
       // J'intègre les recettes instanciées contenant ces mots sous forme d'objets dans le tableau de recettes
       recipesSelected.push(recipes[i])
+      console.log(recipes[i])
       // J'incrémente le tableau
       index++
     }

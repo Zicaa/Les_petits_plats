@@ -1,23 +1,30 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
+let allIngredients
+let allAppliances
+let allUstensils
+let arrayOfRecipes=[]
+
+
 /** La @function noDuplicateDropdownsElements empêche la duplication des éléments dans chaque dropdown
- * @param {Array} allRecipe - toutes les recettes
+ * et actualise les ingrédients, appareils et ustensiles disponibles sur les recettes affichées
+ * @param {Array} arrayOfRecipes - toutes les recettes affichées
 */ 
 
 // Je crée la fonction
-function noDuplicateDropdownsElements(allRecipe) {
-  allIngredients = noDuplicateIngredients(allRecipe)
+function noDuplicateDropdownsElements(arrayOfRecipes) {
+  allIngredients = noDuplicateIngredients(arrayOfRecipes)
   const ulMenuIngredients = document.getElementById('menu-ingredients')
   ulMenuIngredients.innerHTML = ''
   sortAndShowElements(allIngredients, ulMenuIngredients)
 
-  allAppliances = noDuplicateAppliances(allRecipe) 
+  allAppliances = noDuplicateAppliances(arrayOfRecipes) 
   const ulMenuAppliances = document.getElementById('menu-appareil')
   ulMenuAppliances.innerHTML = ''
   sortAndShowElements(allAppliances, ulMenuAppliances)
 
-  allUstensils = noDuplicateUstensils(allRecipe) 
+  allUstensils = noDuplicateUstensils(arrayOfRecipes) 
   const ulMenuUstensils = document.getElementById('menu-ustensiles')
   ulMenuUstensils.innerHTML = ''
   sortAndShowElements(allUstensils, ulMenuUstensils)
@@ -25,23 +32,24 @@ function noDuplicateDropdownsElements(allRecipe) {
 }
 
 /** La @function noDuplicateIngredients empêche les doublons d'ingrédients dans les dropdowns
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes affichées
 */
 
 // Je crée la fonction
-function noDuplicateIngredients(allRecipe) {
+function noDuplicateIngredients(arrayOfRecipes) {
 
  // Je crée un tableau avec tous les éléments
  let allElements = []
 
   // Pour chaque élément de mon tableau de recettes
-  for (let i = 0; i < allRecipe.length; i++) {
+  for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je récupère les ingrédients
-    const ingredientsRecipe = allRecipe[i].ingredients
+    const ingredientsRecipe = arrayOfRecipes[i].ingredients
 
     // Je crée un tableau de ces ingrédients
     let arrayIngredients = []
+
     for (let ingredient of ingredientsRecipe) {
       // Je crée un ingrédient unique et l'ajoute au tableau d'ingrédients
       let oneIgredient = ingredient.ingredient
@@ -50,55 +58,56 @@ function noDuplicateIngredients(allRecipe) {
 
     // J'ajoute chaque ingrédient unique au tableau contenant tous les éléments
     arrayIngredients.forEach(ingr => allElements.push(ingr))
+  
   }
 
-  // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
+  // Je crée un nouvel objet contenant ces éléments uniques correspondants aux recettes affichées
   let allElementsUnique = [...new Set(allElements)]
   return allElementsUnique
-
+  
 }
 
 /** La @function noDuplicateAppliances empêche les doublons d'appareils dans les dropdowns
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes affichées
 */ 
 
 // Je crée la fonction
-function noDuplicateAppliances(allRecipe) {
+function noDuplicateAppliances(arrayOfRecipes) {
 
    // Je crée un tableau avec tous les éléments
    let allElements = []
 
    // Pour chaque élément de mon tableau de recettes
-   for (let i = 0; i < allRecipe.length; i++) {
+   for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je récupère les appareils
-    const applianceRecipe = allRecipe[i].appliance
+    const applianceRecipe = arrayOfRecipes[i].appliance
 
     // J'ajoute cet appareil unique au tableau contenant tous les éléments
     allElements.push(applianceRecipe)
   }
 
-  // Je crée un nouvel objet contenant ces éléments uniques avec set et le retourne
+  // Je crée un nouvel objet contenant ces éléments uniques correspondants aux recettes affichées
   let allElementsUnique = [...new Set(allElements)]
   return allElementsUnique
 
 }
 
 /** La @function noDuplicateUstensils empêche les doublons d'ustensiles dans les dropdowns
- * @param {Array} allRecipe - toutes les recettes
+ * @param {Array} arrayOfRecipes - toutes les recettes affichées
 */ 
 
 // Je crée la fonction
-function noDuplicateUstensils(allRecipe) {
+function noDuplicateUstensils(arrayOfRecipes) {
 
   // Je crée un tableau avec tous les éléments
   let allElements = []
 
   // Pour chaque ingredient de mon tableau d'ingrédients
-  for (let i = 0; i < allRecipe.length; i++) {
+  for (let i = 0; i < arrayOfRecipes.length; i++) {
 
     // Je récupère les ustensiles
-    const ustensilsRecipe = allRecipe[i].ustensils
+    const ustensilsRecipe = arrayOfRecipes[i].ustensils
 
     // Je crée un tableau de ces ustensiles
     let arrayUstensils = []
@@ -112,6 +121,8 @@ function noDuplicateUstensils(allRecipe) {
     // Je crée un ustensile unique et l'ajoute au tableau d'ustensiles
     arrayUstensils.forEach(ust => allElements.push(ust))
   }
+
+  // Je crée un nouvel objet contenant ces éléments uniques correspondants aux recettes affichées
   let allElementsUnique = [...new Set(allElements)]
   return allElementsUnique
 
@@ -196,7 +207,7 @@ function createItem(elements, ul) {
         showTagsSelected()
       }
     })
-    tagedStyle(arrayTags, li) 
+    barredStyle(arrayTags, li) 
   }
 
   // J'appelle la fonction keybordFunction
@@ -204,13 +215,13 @@ function createItem(elements, ul) {
 
 }
 
-/** La @function tagedStyle change les styles des éléments taggés
+/** La @function barredStyle change les styles des éléments déjà taggés dans le dropdown
  * @param {Array} arrayOfTags - tableau de tous les tags
  * @param {HTMLElement} li - élément de la liste
 */ 
 
 // Je crée la fonction 
-function tagedStyle(arrayOfTags, li) {
+function barredStyle(arrayOfTags, li) {
   arrayOfTags.forEach(tag => {
     if (tag.textContent == li.textContent) {
       li.style.color = 'rgba(255, 255, 255, 0.4)'
@@ -268,7 +279,6 @@ function previousSibling(li) {
   if (prev != null) {
     prev.focus()
   } else {
-    console.log(ul.lastChild)
     ul.lastChild.focus()
   }
 
