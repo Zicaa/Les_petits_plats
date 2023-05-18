@@ -463,6 +463,18 @@ menu, ol, ul {
     font-size: .9rem;
 }
 
+.elements-item {
+    padding: .4rem 1rem .4rem 1.2rem;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: .6rem;
+    margin-bottom: .6rem;
+    background-color: #3282f7;
+}
+
 .fa-times-circle {
     font-size: 1.2rem;
     padding: .2rem;
