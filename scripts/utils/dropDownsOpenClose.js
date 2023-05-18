@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
 /** La @function openDropdown ouvre les dropdowns
@@ -20,9 +19,8 @@ function openDropdown(event) {
   if (target.tagName == 'I') {
     // Je récupère le noeud parent qui correspond au bouton
     buttonOpen = target.parentNode
-    
+  } else {
     // Sinon la cible reste la même
-    } else {
     buttonOpen = target
   }
 
@@ -49,15 +47,9 @@ function openDropdown(event) {
 
   // Je porte le focus sur l'input 
   input.focus()
-  dropdownInput()
 
-  // J'ajoute un eventListener sur évènement 'input' des inputs
-  input.addEventListener('input', (event) => {
-    dropdownInput(event)
-  })
-
-  // J'appelle la fonction onlyOneDropdownOpen
-  onlyOneDropdownOpen(buttonOpen)
+  // J'appelle la fonction autorisant le déploiement d'un seul dropdown
+  oneDropdownOnly(buttonOpen)
  
   // J'ajoute un eventListener sur évènement 'keydown' des dropdowns, 
   // Si keyCode = 'Escape' : la @function close ferme la dropdowns
@@ -67,16 +59,15 @@ function openDropdown(event) {
       close(buttonClose)
     }
   })
-
 }
 
 /** La @function openDropdown permet l'ouverture d'une seule dropdown
   * @param {HTMLElement} elem 
 */
 
-// Je crée la fonction
-function onlyOneDropdownOpen(elem) {
-  const buttonOpen = elem
+// Je crée la fonction 
+function oneDropdownOnly(btnObject) {
+  const buttonOpen = btnObject
   const dropdownTarget = buttonOpen.parentNode
 
   // J'ajoute la classe open à la div parente qui contient les éléments
@@ -102,12 +93,12 @@ function onlyOneDropdownOpen(elem) {
         const form = children[1]
         const formChildren = form.children
         // Je récupère le bouton de fermeture du dropdown
-        const divClose = formChildren[2]
+        const btnClose = formChildren[2]
         // Je récupère les enfants du bouton de fermeture du dropdown
-        const divCloseChild = divClose.children
+        const divCloseChild = btnClose.children
         // Je sélectionne le premier enfant : soit l'icône chevron
         const chevronUp = divCloseChild[0]
-        // Je ferme la fenêtre en appelant la fonction close
+        // Je ferme la fenêtre en appelant la fonction closeTarget
         close(chevronUp)
       }
     }
@@ -127,17 +118,16 @@ function closeDropdown() {
 */
 
 // Je crée la fonction
-
 function close(target) {
 
   let buttonClose
 
-   // Si la cible correspond à la balise icône
+  // Si la cible correspond à la balise icône
   if (target.tagName == 'I') {
     // Je récupère le noeud parent (le bouton) et indique qu'il est l'élément souhaité
     buttonClose = target.parentNode
     // Sinon le bouton de fermeture est l'élément souhaité
-    } else {
+  } else {
     buttonClose = target
   }
 
@@ -156,7 +146,7 @@ function close(target) {
   buttonOpen.style.display = 'flex'
   ul.style.display = 'none'
   dropdown.classList.remove('open')
-  
+
 }
 
 /** La @function searchNodeId récupère l'id de l'élément
@@ -178,6 +168,6 @@ function searchNodeId(element) {
     let id = 'menu-ustensiles'
     return id
   } 
-
 }
+
 

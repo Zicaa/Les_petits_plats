@@ -23,6 +23,10 @@ function recipesCardFactory(arrayOfrecipes) {
    cardLink.href = '#'
    const divImage = new Element('recipCardImage', 'div', 'recip-card-bg').elem
    cardLink.appendChild(divImage)
+   const image = new Element('image', 'img', 'image').elem
+   divImage.appendChild(image)
+   image.src = `./assets/img/${arrayOfrecipes[i].image}`
+   image.alt = `${arrayOfrecipes[i].name}`
    const divDescription = new Element('recipCardDescription', 'div', 'recip-card-description').elem
    cardLink.appendChild(divDescription)
    const divTitle = new Element('recipCardDescriptionTitle', 'div', 'recip-card-description-title').elem

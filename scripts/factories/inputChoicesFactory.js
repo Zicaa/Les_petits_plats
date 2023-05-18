@@ -115,7 +115,7 @@ function testSearchBar(event) {
   let allWords = allTagsDisplayedArray()
 
   // J'ajoute un addEventListener sur évènement 'keyup' des touches de suppression
-  // pour relancer l'affaichage des recettes avec une recherche sur l'ensemble des recettes 
+  // pour relancer l'affichage des recettes avec une recherche sur l'ensemble des recettes 
   // et non celles seulement affichées
   mainInput.addEventListener('keyup', (e) => {
     const keyCode = e.code
