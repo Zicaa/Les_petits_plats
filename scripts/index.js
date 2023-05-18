@@ -28,45 +28,55 @@ allButtonClose.forEach(button => {
   })
 })
 
+// Je lance la fonction testSearchBar
+mainInput.addEventListener('input', (event) => {
+  testSearchBar(event)
+})
+
 /** La @function numberOfRecipes permet d'afficher le nombre de recettes dans le HTML 
  * @param {Array} displayedRecipes - recettes affichées
 */ 
 
 // Je crée la fonction 
 function numberOfRecipes(displayedRecipes) {
-  console.log(displayedRecipes)
   const result = document.querySelector('.tags-result')
   result.innerHTML = `<span class="tags-result-bold">${displayedRecipes.length}</span> recette(s) trouvée(s)`
-} 
+}
 
-// J'appelle la fonction qui récupère les recettes filtrées dans le HTML 
+// J'appelle la fonction qui récupère les recettes filtrées dans le HTML
 let filteredRecipes = recoveredRecipes()
 numberOfRecipes(filteredRecipes)
 
-/** La @function recoveredRecipes permet de récupérer les recettes affichées
+/** La @function recoveredRecipes récupère les recettes affichées de chaque article par concordance avec leur ID
  * @returns {array} - recettes affichées
-*/
+*/ 
 
-// Je crée la fonction
+// Je crée la fonction 
 function recoveredRecipes() {
 
   // Je crée un tableau qui contient les recettes
   let newRecipes = []
   let articles = document.querySelectorAll('.recip-card')
 
-  // Je vérifie si chaque id d'article correspond à l'id des recettes
+  // Je parcours le tableau d'article
   let allArticles = Array.from(articles)
   allArticles.forEach(article => {
+
+    // Je récupère l'id des articles
     let articleId = article.id
+
+    // Pour chaque recette avec instances de mon tableau
     for (let i = 0; i < recipes.length; i++) {
       let recipeId = `article-${recipes[i].id}`
+      // Si l'id des article correspond à l'id des recettes
       if (articleId == recipeId) {
+        // J'ajoute la recette avec instances à mon tableau de recettes 
         newRecipes.push(recipes[i])
       }
     }
   }) 
+  console.log(newRecipes)
   return newRecipes
 }
-
 
 
