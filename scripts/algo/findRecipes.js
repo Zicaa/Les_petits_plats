@@ -21,6 +21,7 @@ function findRecipes(arrayOfWords, arrayOfRecipes) {
 
     // Je crée chaque recette sous forme de strings dans mon tableau de recette
     let recipe = arrayOfRecipes[i]
+    console.log(arrayOfRecipes[i])
 
     // J'effectue la recherche de mots dans les recettes concaténées
     let counter = matchingWords(arrayOfWords, recipe)

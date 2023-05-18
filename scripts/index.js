@@ -113,5 +113,4 @@ function stringifyRecipes(recipesWithInstances) {
   }
   // Je retourne le tableau de recettes
   return arrayOfStringifyRecipes
-  
 }
